@@ -25,15 +25,14 @@ class AppServiceProvider extends ServiceProvider
         // 1. Fix lỗi độ dài key cho database
         Schema::defaultStringLength(191);
 
-        // 2. Tự động chạy migrate khi ứng dụng chạy trên Render
-        // Code này sẽ tự tạo bảng sessions, users... cho em
-        if (config('app.env') === 'production') {
-            try {
-                Artisan::call('migrate', ['--force' => true]);
-            } catch (\Exception $e) {
-                // Nếu lỗi thì ghi vào log để mình kiểm tra, không làm sập app
-                Log::error("Auto-migrate failed: " . $e->getMessage());
-            }
+    // Chỉ chạy migrate nếu là môi trường production và không phải là chạy qua Terminal
+    if (config('app.env') === 'production' && !$this->app->runningInConsole()) {
+        try {
+            // Thiết lập timeout ngắn để không làm treo tiến trình khởi động của PHP-FPM
+            Artisan::call('migrate', ['--force' => true]);
+        } catch (\Exception $e) {
+            Log::error("Migration error: " . $e->getMessage());
         }
+    }
     }
 }
