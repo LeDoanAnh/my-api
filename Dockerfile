@@ -4,6 +4,7 @@ ENV WEBROOT /var/www/html/public
 ENV APP_ENV production
 ENV APP_DEBUG false
 
+# Copy mọi thứ trong thư mục hiện tại (chính là my-api) vào /var/www/html
 COPY . /var/www/html/
 
 RUN composer install --no-dev --optimize-autoloader && \
