@@ -23,4 +23,4 @@ RUN php artisan config:clear
 RUN php artisan route:clear
 
 # Lệnh khởi chạy của em thường ở cuối, ví dụ:
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+CMD php artisan serve --host=0.0.0.0 --port=10000
