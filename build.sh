@@ -11,3 +11,5 @@ php artisan view:cache
 
 # Nếu có dùng database của Render thì bỏ dấu # ở dòng dưới
 # php artisan migrate --force
+
+php artisan migrate --force

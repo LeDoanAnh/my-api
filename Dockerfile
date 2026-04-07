@@ -14,3 +14,12 @@ RUN /var/www/html/build.sh
 
 # 5. Cấp quyền cho các thư mục cache của Laravel
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+
+# ... (giữ nguyên các dòng cũ của bạn) ...
+
+# 6. Tạo script khởi động để chạy migrate trước khi bật server
+RUN echo "#!/bin/sh\nphp /var/www/html/artisan migrate --force\n/start.sh" > /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+# 7. Chạy script này khi container bắt đầu
+CMD ["/usr/local/bin/entrypoint.sh"]
