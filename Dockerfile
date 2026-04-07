@@ -1,25 +1,21 @@
-# 1. Chọn môi trường PHP 8.2 có sẵn Nginx (rất nhẹ và nhanh)
+# Sử dụng Image có sẵn Nginx và PHP-FPM cực nhẹ và tương thích tốt với Render
 FROM richarvey/nginx-php-fpm:latest
 
-# 2. Copy toàn bộ code Laravel vào trong máy ảo Docker
-COPY . /var/www/html
-
-# 3. Cấu hình các biến môi trường cơ bản
+# Thiết lập biến môi trường bắt buộc cho Laravel
 ENV WEBROOT /var/www/html/public
 ENV APP_ENV production
+ENV APP_DEBUG false
 
-# 4. Chạy file build.sh mà bạn đã tạo
-RUN chmod +x /var/www/html/build.sh
-RUN /var/www/html/build.sh
+# Copy toàn bộ mã nguồn vào thư mục làm việc của web server
+COPY . /var/www/html
 
-# 5. Cấp quyền cho các thư mục cache của Laravel
+# Cài đặt các thư viện PHP cần thiết thông qua Composer
+# Bước này sẽ chạy tự động khi Render build image
+RUN composer install --no-dev --optimize-autoloader
+
+# Phân quyền cho các thư mục quan trọng để Laravel có thể ghi log và cache
+# Nếu không có bước này, app sẽ báo lỗi 500 khi chạy
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
-# ... (giữ nguyên các dòng cũ của bạn) ...
-
-# 6. Tạo script khởi động để chạy migrate trước khi bật server
-RUN echo "#!/bin/sh\nphp /var/www/html/artisan migrate --force\n/start.sh" > /usr/local/bin/entrypoint.sh
-RUN chmod +x /usr/local/bin/entrypoint.sh
-
-# 7. Chạy script này khi container bắt đầu
-CMD ["/usr/local/bin/entrypoint.sh"]
+# Lưu ý: Image richarvey tự động chạy Nginx và PHP nên KHÔNG CẦN thêm lệnh CMD ở đây.
+# Việc thêm CMD sai cú pháp thường là nguyên nhân gây lỗi 127.
