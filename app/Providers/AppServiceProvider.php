@@ -22,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        \Illuminate\Support\Facades\Schema::defaultStringLength(191);
         // 1. Fix lỗi độ dài key cho database
     //     Schema::defaultStringLength(191);
 
