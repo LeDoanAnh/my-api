@@ -31,3 +31,11 @@ Route::middleware('auth:sanctum')->group(function () {
     // Đăng xuất
     Route::post('/logout', [AuthController::class, 'logout']);
 });
+Route::get('/init-db', function () {
+    try {
+        \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
+        return "Database migrated successfully!";
+    } catch (\Exception $e) {
+        return "Error: " . $e->getMessage();
+    }
+});

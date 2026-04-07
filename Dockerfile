@@ -19,3 +19,8 @@ RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cac
 
 # Lưu ý: Image richarvey tự động chạy Nginx và PHP nên KHÔNG CẦN thêm lệnh CMD ở đây.
 # Việc thêm CMD sai cú pháp thường là nguyên nhân gây lỗi 127.
+RUN php artisan config:clear
+RUN php artisan route:clear
+
+# Lệnh khởi chạy của em thường ở cuối, ví dụ:
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
