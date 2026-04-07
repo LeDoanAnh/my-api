@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Api\AuthController;
 
 /*
@@ -38,4 +39,13 @@ Route::get('/init-db', function () {
     } catch (\Exception $e) {
         return "Error: " . $e->getMessage();
     }
+});
+
+Route::get('/create-admin', function () {
+    $user = \App\Models\User::create([
+        'name' => 'Admin Test',
+        'email' => 'admin@gmail.com',
+        'password' => Hash::make('12345678'),
+    ]);
+    return "User created: " . $user->email;
 });
