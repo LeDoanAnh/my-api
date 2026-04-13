@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,3 +50,4 @@ Route::get('/create-admin', function () {
     ]);
     return "User created: " . $user->email;
 });
+Route::get('/users', [UserController::class, 'index']);
