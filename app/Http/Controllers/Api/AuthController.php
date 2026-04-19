@@ -5,42 +5,93 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
-    // Đăng nhập
+    public function getRequestToken()
+    {
+        $token = Str::random(40);
+        Cache::put('req_token_' . $token, 'pending', now()->addMinutes(15));
+
+        return response()->json([
+            'success' => true,
+            'expires_at' => now()->addMinutes(15)->toDateTimeString(),
+            'request_token' => $token
+        ]);
+    }
+
     public function login(Request $request)
     {
         $fields = $request->validate([
-            'email' => 'required|string|email',
-            'password' => 'required|string'
+            'username' => 'required|string',
+            'password' => 'required|string',
+            'request_token' => 'required|string'
         ]);
 
-        // Tìm user theo email
-        $user = User::where('email', $fields['email'])->first();
-
-        // Kiểm tra mật khẩu
-        if (!$user || !Hash::check($fields['password'], $user->password)) {
-            return response()->json([
-                'message' => 'Email hoặc mật khẩu không chính xác'
-            ], 401);
+        if (!Cache::has('req_token_' . $fields['request_token'])) {
+            return response()->json(['message' => 'Token không tồn tại hoặc hết hạn'], 401);
         }
 
-        // Tạo Token cho thiết bị di động
-        $token = $user->createToken('flutter_api_token')->plainTextToken;
+        $user = User::where('username', $fields['username'])->first();
 
-        return response()->json([
-            'message' => 'Đăng nhập thành công',
-            'user' => $user,
-            'token' => $token
-        ], 200);
+        if (!$user || !Hash::check($fields['password'], $user->password)) {
+            return response()->json(['message' => 'Thông tin đăng nhập sai'], 401);
+        }
+
+        Cache::put('req_token_' . $fields['request_token'], 'validated', now()->addMinutes(15));
+        Cache::put('user_for_token_' . $fields['request_token'], $user->id, now()->addMinutes(15));
+
+        return response()->json(['success' => true]);
     }
 
-    // Đăng xuất
+    public function createSession(Request $request)
+    {
+        $requestToken = $request->input('request_token');
+
+        if (Cache::get('req_token_' . $requestToken) !== 'validated') {
+            return response()->json(['success' => false, 'message' => 'Token chưa xác thực'], 401);
+        }
+
+        $userId = Cache::get('user_for_token_' . $requestToken);
+        $user = User::find($userId);
+
+        $sessionId = $user->createToken('session_id')->plainTextToken;
+
+        Cache::forget('req_token_' . $requestToken);
+        Cache::forget('user_for_token_' . $requestToken);
+
+        return response()->json([
+            'success' => true,
+            'session_id' => $sessionId
+        ]);
+    }
+
+    public function getAccountDetails(Request $request)
+    {
+        $sessionId = $request->query('session_id');
+
+        $tokenModel = \Laravel\Sanctum\PersonalAccessToken::findToken($sessionId);
+
+        if (!$tokenModel) {
+            return response()->json(['message' => 'Session không hợp lệ'], 401);
+        }
+
+        $user = $tokenModel->tokenable;
+
+        return response()->json([
+            'id' => $user->id,
+            'username' => $user->username,
+            'full_name' => $user->full_name,
+            'email' => $user->email,
+            'department_id' => $user->department_id
+        ]);
+    }
+
     public function logout(Request $request)
     {
-        // Hủy bỏ token hiện tại đang dùng để gọi API này
         $request->user()->currentAccessToken()->delete();
 
         return response()->json([
