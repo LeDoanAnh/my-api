@@ -37,7 +37,7 @@ class AuthController extends Controller
 
         $user = User::where('username', $fields['username'])->first();
 
-        if (!$user || !Hash::check($fields['password'], $user->password)) {
+       if (!$user || $fields['password'] !== $user->password) {
             return response()->json(['message' => 'Thông tin đăng nhập sai'], 401);
         }
 
