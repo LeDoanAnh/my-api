@@ -22,12 +22,12 @@ Route::middleware('auth:sanctum')->group(function () {
     });
     Route::get('/users', [UserController::class, 'index']);
     Route::post('/logout', [AuthController::class, 'logout']);
-    Route::prefix('v1')->group(function () {
+
+});
+Route::prefix('v1')->group(function () {
         Route::get('/user/statistics', [SubmissionController::class, 'getStatistics']);
         Route::get('/submissions/recent', [SubmissionController::class, 'getRecentSubmissions']);
 });
-});
-
 Route::get('/create-admin', function () {
     $user = \App\Models\User::create([
         'username' => 'admin_test',
