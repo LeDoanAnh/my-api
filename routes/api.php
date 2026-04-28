@@ -21,6 +21,10 @@ Route::middleware('auth:sanctum')->group(function () {
     });
     Route::get('/users', [UserController::class, 'index']);
     Route::post('/logout', [AuthController::class, 'logout']);
+    Route::prefix('v1')->group(function () {
+        Route::get('/user/statistics', [App\Http\Controllers\Api\SubmissionController::class, 'getStatistics']);
+        Route::get('/submissions/recent', [App\Http\Controllers\Api\SubmissionController::class, 'getRecentSubmissions']);
+    });
 });
 
 Route::get('/create-admin', function () {
