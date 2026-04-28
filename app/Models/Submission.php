@@ -9,13 +9,16 @@ class Submission extends Model
 {
     protected $table = 'submissions';
 
+    // Cập nhật creator_id cho đúng với database bạn gửi
     protected $fillable = [
-        'user_id',
+        'creator_id',
         'title',
         'content',
+        'category_id',
+        'location_id',
         'status',
-        'priority',
-        'department_id'
+        'start_time',
+        'end_time'
     ];
 
     protected $casts = [
@@ -23,8 +26,11 @@ class Submission extends Model
         'updated_at' => 'datetime',
     ];
 
+    /**
+     * Một tờ trình thuộc về một người tạo (User)
+     */
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'creator_id');
     }
 }
