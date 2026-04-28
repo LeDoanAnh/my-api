@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\SubmissionController;
 use Illuminate\Support\Facades\Hash;
 
 Route::get('/authentication/token/new', [AuthController::class, 'getRequestToken']);
@@ -22,9 +23,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/users', [UserController::class, 'index']);
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::prefix('v1')->group(function () {
-        Route::get('/user/statistics', [App\Http\Controllers\Api\SubmissionController::class, 'getStatistics']);
-        Route::get('/submissions/recent', [App\Http\Controllers\Api\SubmissionController::class, 'getRecentSubmissions']);
-    });
+        Route::get('/user/statistics', [SubmissionController::class, 'getStatistics']);
+        Route::get('/submissions/recent', [SubmissionController::class, 'getRecentSubmissions']);
+});
 });
 
 Route::get('/create-admin', function () {

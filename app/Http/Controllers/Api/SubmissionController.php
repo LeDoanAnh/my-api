@@ -10,37 +10,42 @@ use Illuminate\Http\JsonResponse;
 class SubmissionController extends Controller
 {
     /**
-     * Lấy thống kê số lượng tờ trình của người dùng hiện tại
-     * Phục vụ cho Widget: _buildPersonalStats trong Flutter
+     * Lấy thống kê số lượng tờ trình theo user_id truyền từ URL
+     * API: /api/v1/user/statistics?user_id=...
      */
     public function getStatistics(Request $request): JsonResponse
     {
-        $userId = $request->user()->id;
+        // Lấy user_id từ query string (?user_id=...) giống cách lấy session_id
+        $userId = $request->query('user_id');
 
-        // Truy vấn dữ liệu từ bảng submissions
+        if (!$userId) {
+            return response()->json(['message' => 'Missing user_id parameter'], 400);
+        }
+
+        // Truy vấn dựa trên cột creator_id trong database của bạn
         $stats = [
-            'total_submissions' => Submission::where('user_id', $userId)->count(),
-            'pending_submissions' => Submission::where('user_id', $userId)
-                                        ->where('status', 'pending')
-                                        ->count(),
-            'rejected_submissions' => Submission::where('user_id', $userId)
-                                        ->where('status', 'rejected')
-                                        ->count(),
+            'total_submissions' => Submission::where('creator_id', $userId)->count(),
+            'pending_submissions' => Submission::where('creator_id', $userId)->where('status', 'pending')->count(),
+            'rejected_submissions' => Submission::where('creator_id', $userId)->where('status', 'rejected')->count(),
         ];
 
         return response()->json($stats);
     }
 
     /**
-     * Lấy danh sách tờ trình gần đây
-     * Phục vụ cho Widget: _buildRecentActivityList trong Flutter
+     * Lấy danh sách 5 tờ trình gần nhất theo user_id
+     * API: /api/v1/submissions/recent?user_id=...
      */
     public function getRecentSubmissions(Request $request): JsonResponse
     {
-        $userId = $request->user()->id;
+        $userId = $request->query('user_id');
 
-        // Lấy 5 đơn mới nhất của người dùng
-        $recentSubmissions = Submission::where('user_id', $userId)
+        if (!$userId) {
+            return response()->json(['message' => 'Missing user_id parameter'], 400);
+        }
+
+        // Lấy 5 đơn mới nhất. Sửa 'user_id' thành 'creator_id' cho đúng database thực tế
+        $recentSubmissions = Submission::where('creator_id', $userId)
             ->orderBy('created_at', 'desc')
             ->take(5)
             ->get()
@@ -50,8 +55,9 @@ class SubmissionController extends Controller
                     'title' => $item->title ?? 'Tờ trình không tiêu đề',
                     'status' => $item->status,
                     'status_label' => $this->getStatusLabel($item->status),
-                    'time' => $item->created_at->diffForHumans(), // Ví dụ: "10 phút trước"
-                    'created_at_formatted' => $item->created_at->format('H:i A'), // Ví dụ: "10:30 AM"
+                    // diffForHumans() sẽ trả về "10 minutes ago" hoặc "10 phút trước"
+                    'time' => $item->created_at->diffForHumans(),
+                    'created_at_formatted' => $item->created_at->format('H:i A'),
                 ];
             });
 
@@ -59,9 +65,9 @@ class SubmissionController extends Controller
     }
 
     /**
-     * Hàm phụ trợ chuyển đổi status sang ngôn ngữ hiển thị
+     * Hàm phụ trợ chuyển đổi status sang tiếng Việt
      */
-    private function getStatusLabel(string $status): string
+    private function getStatusLabel(?string $status): string
     {
         $labels = [
             'pending'  => 'Chờ phê duyệt',
@@ -69,6 +75,6 @@ class SubmissionController extends Controller
             'rejected' => 'Bị từ chối',
         ];
 
-        return $labels[$status] ?? $status;
+        return $labels[$status] ?? 'Không xác định';
     }
 }
