@@ -33,4 +33,12 @@ class Submission extends Model
     {
         return $this->belongsTo(User::class, 'creator_id');
     }
+    public function location()
+    {
+        return $this->belongsTo(Location::class, 'location_id');
+    }
+    public function assetRequests()
+    {
+        return $this->hasMany(AssetRequest::class, 'submission_id');
+    }
 }

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\SubmissionController;
+use App\Http\Controllers\Api\CalendarController;
 use Illuminate\Support\Facades\Hash;
 
 Route::get('/authentication/token/new', [AuthController::class, 'getRequestToken']);
@@ -15,7 +16,7 @@ Route::get('/account', [AuthController::class, 'getAccountDetails']);
 Route::get('/ping', function () {
     return response()->json(['status' => 'ok', 'time' => now()->toDateTimeString()]);
 });
-
+Route::get('/submissions/calendar', [CalendarController::class, 'getCalendarEvents']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', function (Request $request) {
         return $request->user();
