@@ -91,6 +91,7 @@ class AuthController extends Controller
             return [
                 'id' => $role->id,
                 'role_name' => $role->role_name,
+                'description' => $role->description,
             ];
         })
     ]);
