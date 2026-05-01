@@ -72,23 +72,28 @@ class AuthController extends Controller
     public function getAccountDetails(Request $request)
     {
         $sessionId = $request->query('session_id');
+    $tokenModel = \Laravel\Sanctum\PersonalAccessToken::findToken($sessionId);
 
-        $tokenModel = \Laravel\Sanctum\PersonalAccessToken::findToken($sessionId);
+    if (!$tokenModel) {
+        return response()->json(['message' => 'Session không hợp lệ'], 401);
+    }
 
-        if (!$tokenModel) {
-            return response()->json(['message' => 'Session không hợp lệ'], 401);
-        }
+    // Load kèm theo các roles của user
+    $user = $tokenModel->tokenable()->with('roles')->first();
 
-        $user = $tokenModel->tokenable;
-
-        return response()->json([
-            'id' => $user->id,
-            'username' => $user->username,
-            'full_name' => $user->full_name,
-            'email' => $user->email,
-            'role_id' => $user->role_id,
-            'department_id' => $user->department_id
-        ]);
+    return response()->json([
+        'id' => $user->id,
+        'username' => $user->username,
+        'full_name' => $user->full_name,
+        'email' => $user->email,
+        'department_id' => $user->department_id,
+        'roles' => $user->roles->map(function($role) {
+            return [
+                'id' => $role->id,
+                'role_name' => $role->role_name,
+            ];
+        })
+    ]);
     }
 
     public function logout(Request $request)

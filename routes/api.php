@@ -29,14 +29,3 @@ Route::prefix('v1')->group(function () {
         Route::get('/user/statistics', [SubmissionController::class, 'getStatistics']);
         Route::get('/submissions/recent', [SubmissionController::class, 'getRecentSubmissions']);
 });
-Route::get('/create-admin', function () {
-    $user = \App\Models\User::create([
-        'username' => 'admin_test',
-        'full_name' => 'Admin Test',
-        'email' => 'admin@gmail.com',
-        'password' => Hash::make('12345678'),
-        'status' => 'active',
-        'role_id' => 1,
-    ]);
-    return "User created: " . $user->username;
-});
