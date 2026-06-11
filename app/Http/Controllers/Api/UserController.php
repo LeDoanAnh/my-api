@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -99,6 +100,56 @@ class UserController extends Controller
             ], 500);
         }
     }
+    public function update(Request $request, int $id)
+    {
+        $user = User::findOrFail($id);
+
+        $validated = $request->validate([
+            'full_name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($id)],
+            'username' => ['required', 'string', 'max:255', Rule::unique('users', 'username')->ignore($id)],
+            'password' => ['nullable', 'string', 'min:6'],
+            'department_id' => ['required', 'exists:departments,id'],
+            'role_ids' => ['required', 'array', 'min:1'],
+            'role_ids.*' => ['exists:roles,id'],
+            'status' => ['required', Rule::in(['active', 'inactive', 'locked'])],
+        ]);
+
+        DB::transaction(function () use ($user, $validated) {
+            $payload = [
+                'full_name' => $validated['full_name'],
+                'email' => $validated['email'],
+                'username' => $validated['username'],
+                'department_id' => $validated['department_id'],
+                'status' => $validated['status'] === 'locked' ? 'inactive' : $validated['status'],
+            ];
+
+            if (!empty($validated['password'])) {
+                $payload['password'] = Hash::make($validated['password']);
+            }
+
+            $user->update($payload);
+            $user->roles()->sync($validated['role_ids']);
+        });
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Cập nhật người dùng thành công.',
+            'data' => ['id' => $user->id],
+        ]);
+    }
+
+    public function deactivate(int $id)
+    {
+        $user = User::findOrFail($id);
+        $user->update(['status' => 'inactive']);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Đã chuyển người dùng sang trạng thái không hoạt động.',
+        ]);
+    }
+
     public function show(int $id)
     {
         try {

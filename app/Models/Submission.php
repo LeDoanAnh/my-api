@@ -18,7 +18,6 @@ class Submission extends Model
         'status',
         'start_time',
         'end_time',
-        'location_id',
     ];
 
     protected $casts = [
@@ -64,6 +63,11 @@ class Submission extends Model
         return $this->hasMany(ApprovalLog::class, 'submission_id', 'id');
     }
 
+    public function preApprovals(): HasMany
+    {
+        return $this->hasMany(SubmissionPreApproval::class, 'submission_id', 'id');
+    }
+
     /**
      * Nội dung các bước thực hiện (Dùng để check target_dept_id như đã làm ở API)
      */
@@ -79,7 +83,7 @@ class Submission extends Model
                     ->withPivot('start_time', 'end_time');
     }
     public function steps() {
-    return $this->hasMany(SubmissionStepContent::class, 'submission_id', 'id');
+    return $this->hasMany(SubmissionStepContent::class, 'submission_id', 'id')->orderBy('step_order');
     }
 
     public function logs() {

@@ -103,4 +103,44 @@ class AssetController extends Controller
             return response()->json(['success' => false, 'message' => 'Lỗi: ' . $e->getMessage()], 500);
         }
     }
+
+    public function update(Request $request, int $id): JsonResponse
+    {
+        $asset = Asset::findOrFail($id);
+
+        $validator = Validator::make($request->all(), [
+            'name'       => 'required|string|max:255',
+            'description'=> 'required|string',
+            'unit'       => 'required|string|max:50',
+            'asset_type' => 'required|in:returnable,consumable',
+            'dept_id'    => 'required|exists:departments,id',
+            'status'     => 'required|in:active,inactive,ready,in stock,available',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['success' => false, 'message' => $validator->errors()->first()], 422);
+        }
+
+        if ($asset->currentRequest()->exists() && $request->status === 'inactive') {
+            return response()->json([
+                'success' => false,
+                'message' => 'Không thể ngừng hoạt động vật tư đang được mượn.',
+            ], 409);
+        }
+
+        $asset->update([
+            'asset_name'    => $request->name,
+            'asset_code'    => $request->description,
+            'unit'          => $request->unit,
+            'type'          => $request->asset_type,
+            'department_id' => $request->dept_id,
+            'status'        => $request->status === 'active' ? 'ready' : $request->status,
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Cập nhật vật tư thành công.',
+            'data' => $asset,
+        ]);
+    }
 }

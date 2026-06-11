@@ -58,6 +58,8 @@ Route::prefix('v1')->group(function () {
 Route::prefix('actor')->group(function () {
         Route::get('list', [UserController::class, 'index']);
         Route::post('/create',[UserController::class, "store"]);
+        Route::put('/update/{id}', [UserController::class, 'update']);
+        Route::delete('/{id}', [UserController::class, 'deactivate']);
         Route::get('/detail/{id}',[UserController::class, "show"]);
 });
 Route::prefix('department')->group(function () {
@@ -71,12 +73,14 @@ Route::prefix('location')->group(function () {
         Route::get('list', [LocationController::class, 'index']);
         Route::get('/detail/{id}', [LocationController::class, 'show']);
         Route::post('/create', [LocationController::class, 'store']);
+        Route::put('/update/{id}', [LocationController::class, 'update']);
 });
 
 Route::prefix('asset')->group(function () {
         Route::get('list', [AssetController::class, 'index']);
         Route::get('/detail/{id}', [AssetController::class, 'show']);
         Route::post('/create', [AssetController::class, 'store']);
+        Route::put('/update/{id}', [AssetController::class, 'update']);
         Route::get('/asset-tasks', [AssetTaskController::class, 'index']);
         Route::get('/asset-tasks/{submissionId}', [AssetTaskController::class, 'show']);
         Route::post('/asset-tasks/{submissionId}/handover', [AssetTaskController::class, 'handover']);
@@ -87,12 +91,14 @@ Route::prefix('asset-submissions')->group(function () {
 Route::prefix('workflow')->group(function () {
         Route::get('/list', [WorkflowController::class, 'index']);
         Route::get('/detail/{id}', [WorkflowController::class, 'show']);
+        Route::post('/store', [WorkflowController::class, 'store']);
+        Route::put('/update/{id}', [WorkflowController::class, 'update']);
 });
 
 Route::prefix('notifications')->group(function () {
         Route::get('/list', [NotificationController::class, 'index']);
-        Route::patch('/{id}/read', [NotificationController::class, 'markAsRead']);
         Route::post('/read_all/{user_id}', [NotificationController::class, 'markAllAsRead']);
+        Route::match(['post', 'patch'], '/{id}/read', [NotificationController::class, 'markAsRead']);
     });
 
 Route::prefix('role')->group(function () {
@@ -101,6 +107,7 @@ Route::prefix('role')->group(function () {
 
 Route::prefix('v1/approver')->group(function () {
     Route::get('/submission/{submissionId}', [ApproverController::class, 'show']);
+    Route::post('/submission/{submissionId}/pre-sign', [ApproverController::class, 'preSign']);
     Route::post('/submission/{submissionId}/decide', [ApproverController::class, 'decide']);
 });
 Route::prefix('v1/borrow')->group(function () {

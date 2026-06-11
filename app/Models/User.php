@@ -22,7 +22,6 @@ class User extends Authenticatable
         'email',
         'password',
         'full_name',
-        'role_id',
         'department_id',
         'status',
         'fcm_token'

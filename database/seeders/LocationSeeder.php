@@ -3,27 +3,18 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Location;
+use Illuminate\Support\Facades\DB;
 
 class LocationSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
-        $locations = [
-            ['department_id' => 1, 'location_name' => 'Grand Hall A', 'capacity' => '500', 'status' => 'available'],
-            ['department_id' => 2, 'location_name' => 'Meeting Room 2', 'capacity' => '20', 'status' => 'maintenance'],
-            ['department_id' => 1, 'location_name' => 'VIP Lounge', 'capacity' => '10', 'status' => 'available'],
-            ['department_id' => 1, 'location_name' => 'Central Stadium', 'capacity' => '100', 'status' => 'available'],
-            ['department_id' => 2, 'location_name' => 'IT Lab 402', 'capacity' => '40', 'status' => 'in use'],
-            ['department_id' => 1, 'location_name' => 'Basement Storage', 'capacity' => '5', 'status' => 'available'],
-            ['department_id' => 2, 'location_name' => 'Grand Hall B', 'capacity' => '300', 'status' => 'maintenance'],
-            ['department_id' => 2, 'location_name' => 'Audio Studio', 'capacity' => '15', 'status' => 'available'],
-            ['department_id' => 1, 'location_name' => 'Reception Room', 'capacity' => '30', 'status' => 'available'],
-            ['department_id' => 2, 'location_name' => 'Multi-purpose Gym', 'capacity' => '1000', 'status' => 'available'],
-        ];
-
-        foreach ($locations as $loc) {
-            \App\Models\Location::create($loc);
-        }
+        DB::table('locations')->insert([
+            ['id' => 1, 'location_code' => 'HALL-A', 'department_id' => 4, 'location_name' => 'Hoi truong A', 'address' => 'Tang 1 nha A', 'capacity' => '500', 'status' => 'available', 'created_at' => now(), 'updated_at' => now()],
+            ['id' => 2, 'location_code' => 'ROOM-B201', 'department_id' => 3, 'location_name' => 'Phong hoc B201', 'address' => 'Tang 2 nha B', 'capacity' => '80', 'status' => 'available', 'created_at' => now(), 'updated_at' => now()],
+            ['id' => 3, 'location_code' => 'LAB-402', 'department_id' => 2, 'location_name' => 'Phong lab 402', 'address' => 'Tang 4 nha B', 'capacity' => '45', 'status' => 'available', 'created_at' => now(), 'updated_at' => now()],
+            ['id' => 4, 'location_code' => 'MEET-501', 'department_id' => 5, 'location_name' => 'Phong hop Ban Giam hieu', 'address' => 'Tang 5 nha Hieu bo', 'capacity' => '30', 'status' => 'available', 'created_at' => now(), 'updated_at' => now()],
+            ['id' => 5, 'location_code' => 'YOUTH-YARD', 'department_id' => 6, 'location_name' => 'San sinh hoat Doan', 'address' => 'Khu sinh vien', 'capacity' => '300', 'status' => 'available', 'created_at' => now(), 'updated_at' => now()],
+        ]);
     }
 }

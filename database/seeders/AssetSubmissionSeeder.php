@@ -2,119 +2,186 @@
 
 namespace Database\Seeders;
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
 
 class AssetSubmissionSeeder extends Seeder
 {
     public function run(): void
     {
-        // 0. Dọn dẹp dữ liệu cũ (Xóa sạch để tạo mới cho chuẩn)
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        DB::table('asset_requests')->truncate();
-        DB::table('submission_locations')->truncate();
-        DB::table('submission_step_contents')->truncate();
-        DB::table('approval_log')->whereIn('submission_id', [20, 21, 22, 23])->delete();
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-
-        $scenarios = [
-            // --- NHÓM 1: 2 ĐƠN ĐÃ BÀN GIAO (handler_id = 3, có borrow_date) ---
-            [
-                'id' => 20,
-                'title' => 'Mượn thiết bị tổ chức Gala Chào Tân Sinh Viên',
-                'status' => 'approved',
-                'handler' => 3,
-                'items' => [
-                    ['id' => 1, 'n' => 'Loa Sony chính'], ['id' => 3, 'n' => 'Máy chiếu Epson'],
-                    ['id' => 5, 'n' => 'Mic không dây'], ['id' => 10, 'n' => 'TV Samsung 65 inch']
-                ]
-            ],
-            [
-                'id' => 21,
-                'title' => 'Cấp phát vật tư thi tập trung học kỳ 2',
-                'status' => 'approved',
-                'handler' => 3,
-                'items' => [
-                    ['id' => 4, 'n' => '10 Ram giấy A4'], ['id' => 6, 'n' => '2 Hộp bút viết bảng'],
-                    ['id' => 9, 'n' => '3 Hộp mực in'], ['id' => 2, 'n' => '5 Bình nước Lavie']
-                ]
-            ],
-
-            // --- NHÓM 2: 2 ĐƠN CHƯA BÀN GIAO (handler_id = null, borrow_date = null) ---
-            [
-                'id' => 22,
-                'title' => 'Yêu cầu thiết bị cho Workshop AI & Mobile',
-                'status' => 'approved',
-                'handler' => null,
-                'items' => [
-                    ['id' => 7, 'n' => 'Laptop Dell demo'], ['id' => 8, 'n' => 'Sạc dự phòng 20k'],
-                    ['id' => 3, 'n' => 'Máy chiếu Lab 402'], ['id' => 5, 'n' => 'Mic trợ giảng Sony']
-                ]
-            ],
-            [
-                'id' => 23,
-                'title' => 'Mượn vật tư phục vụ họp Hội đồng trường',
-                'status' => 'approved',
-                'handler' => null,
-                'items' => [
-                    ['id' => 1, 'n' => 'Dàn âm thanh hội trường'], ['id' => 10, 'n' => 'Màn hình hiển thị'],
-                    ['id' => 2, 'n' => '20 bình nước uống'], ['id' => 4, 'n' => '5 Ram giấy in hồ sơ']
-                ]
-            ],
-        ];
-
-        foreach ($scenarios as $scene) {
-            // 1. Tạo/Cập nhật Tờ trình (Submissions)
-            DB::table('submissions')->updateOrInsert(
-                ['id' => $scene['id']],
-                [
-                    'title' => $scene['title'],
-                    'content' => 'Nội dung chi tiết yêu cầu cho: ' . $scene['title'],
-                    'creator_id' => 4, // Cán bộ Mai
-                    'category_id' => 1,
-                    'status' => $scene['status'],
-                    'created_at' => now()->subDays(2),
-                ]
-            );
-
-            // 2. Tạo Log phê duyệt (Để đảm bảo đơn này đã "Approved")
-            DB::table('approval_log')->insert([
-                'submission_id' => $scene['id'],
-                'approver_id' => 3, // Trưởng phòng Đức duyệt
-                'action' => 'approved',
-                'comment' => 'Đã phê duyệt, bộ phận kho chuẩn bị bàn giao.',
-                'created_at' => now()->subDays(1),
+        $makeSubmission = function (array $data): void {
+            DB::table('submissions')->insert([
+                'id' => $data['id'],
+                'title' => $data['title'],
+                'content' => $data['content'],
+                'creator_id' => $data['creator_id'],
+                'category_id' => $data['category_id'],
+                'status' => $data['status'],
+                'start_time' => $data['start_time'] ?? null,
+                'end_time' => $data['end_time'] ?? null,
+                'created_at' => $data['created_at'] ?? now(),
+                'updated_at' => $data['updated_at'] ?? now(),
             ]);
+        };
 
-            // 3. Tạo 4 món đồ cho mỗi đơn (Sử dụng 2 cột ngày)
-            foreach ($scene['items'] as $item) {
-                DB::table('asset_requests')->insert([
-                    'submission_id' => $scene['id'],
-                    'asset_id' => $item['id'],
-                    'borrower_id' => 4, // Người mượn là Mai
-                    'handler_id' => $scene['handler'], // Nhân viên giao (Đức hoặc NULL)
-
-                    // Ngày hẹn: Luôn có (Mặc định hẹn 1 ngày sau khi tạo đơn)
-                    'expected_borrow_date' => Carbon::now()->subDays(1)->setHour(8)->setMinute(0),
-
-                    // Ngày thực tế: Có nếu đã bàn giao, NULL nếu chưa bàn giao
-                    'borrow_date' => $scene['handler'] ? now()->subHours(2) : null,
-
-                    'expected_return_date' => Carbon::now()->addDays(2),
-                    'note' => $item['n'],
-                    'created_at' => now(),
-                ]);
-            }
-
-            // 4. Thêm lời nhắn bổ sung
-            DB::table('submission_step_contents')->insert([
-                'submission_id' => $scene['id'],
-                'step_order' => 1,
-                'target_dept_id' => 1,
-                'content_text' => 'Ghi chú: Đề nghị bàn giao thiết bị đúng tình trạng hoạt động tốt.',
+        $makeStep = function (int $submissionId, int $order, int $deptId, string $note): int {
+            return DB::table('submission_step_contents')->insertGetId([
+                'submission_id' => $submissionId,
+                'step_order' => $order,
+                'target_dept_id' => $deptId,
+                'content_text' => $note,
                 'created_at' => now(),
+                'updated_at' => now(),
             ]);
-        }
+        };
+
+        $makeLog = function (int $submissionId, int $stepId, int $approverId, string $action, string $comment, int $hoursAgo = 24): void {
+            DB::table('approval_log')->insert([
+                'submission_id' => $submissionId,
+                'step_content_id' => $stepId,
+                'approver_id' => $approverId,
+                'action' => $action,
+                'comment' => $comment,
+                'created_at' => now()->subHours($hoursAgo),
+                'updated_at' => now()->subHours($hoursAgo),
+            ]);
+        };
+
+        $makeNotification = function (int $userId, int $submissionId, string $type, string $title, string $message): void {
+            DB::table('notifications')->insert([
+                'user_id' => $userId,
+                'submission_id' => $submissionId,
+                'type' => $type,
+                'title' => $title,
+                'message' => $message,
+                'is_read' => false,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        };
+
+        // 1. Moi tao, dang cho Van phong Doan duyet step dau.
+        $makeSubmission([
+            'id' => 1,
+            'title' => 'Dang ky ngay hoi CLB cong nghe',
+            'content' => 'To chuc ngay hoi gioi thieu cac CLB cong nghe, can hoi truong, am thanh va vat tu truyen thong.',
+            'creator_id' => 2,
+            'category_id' => 1,
+            'status' => 'pending',
+            'start_time' => Carbon::now()->addDays(10)->setHour(8)->setMinute(0),
+            'end_time' => Carbon::now()->addDays(10)->setHour(17)->setMinute(0),
+            'created_at' => now()->subHours(2),
+        ]);
+        $makeStep(1, 1, 6, 'Van phong Doan xac nhan ke hoach to chuc.');
+        $makeStep(1, 2, 4, 'Phong CTSV kiem tra quy mo va an toan sinh vien.');
+        $makeStep(1, 3, 1, 'Phong Tai chinh tham dinh kinh phi vat tu.');
+        $makeStep(1, 4, 5, 'Ban Giam hieu phe duyet cuoi.');
+        DB::table('submission_locations')->insert([
+            'submission_id' => 1,
+            'location_id' => 1,
+            'start_time' => Carbon::now()->addDays(10)->setHour(8)->setMinute(0),
+            'end_time' => Carbon::now()->addDays(10)->setHour(17)->setMinute(0),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        $makeNotification(8, 1, 'pending_approval', 'Yeu cau phe duyet moi', 'To trinh dang cho Van phong Doan xu ly.');
+
+        // 2. Da qua 2 phong, dang cho Tai chinh.
+        $makeSubmission([
+            'id' => 2,
+            'title' => 'Workshop ky nang phong van cho sinh vien nam cuoi',
+            'content' => 'Can hoi truong, may chieu va kinh phi in an tai lieu cho 150 sinh vien.',
+            'creator_id' => 2,
+            'category_id' => 1,
+            'status' => 'pending',
+            'start_time' => Carbon::now()->addDays(15)->setHour(13)->setMinute(0),
+            'end_time' => Carbon::now()->addDays(15)->setHour(17)->setMinute(0),
+            'created_at' => now()->subDays(1),
+        ]);
+        $s21 = $makeStep(2, 1, 6, 'Xac nhan chuong trinh phu hop hoat dong sinh vien.');
+        $s22 = $makeStep(2, 2, 4, 'Kiem tra danh sach tham du va phuong an dieu phoi.');
+        $makeStep(2, 3, 1, 'Tham dinh chi phi tai lieu va nuoc uong.');
+        $makeStep(2, 4, 5, 'Phe duyet cap truong.');
+        $makeLog(2, $s21, 8, 'approved', 'Dong y ve noi dung chuong trinh.', 22);
+        $makeLog(2, $s22, 6, 'approved', 'Da kiem tra danh sach va phuong an to chuc.', 12);
+        DB::table('asset_requests')->insert([
+            ['submission_id' => 2, 'asset_id' => 1, 'borrower_id' => 2, 'handler_id' => null, 'expected_borrow_date' => Carbon::now()->addDays(15), 'expected_return_date' => Carbon::now()->addDays(16), 'note' => 'May chieu cho workshop', 'status' => 'pending', 'created_at' => now(), 'updated_at' => now()],
+            ['submission_id' => 2, 'asset_id' => 5, 'borrower_id' => 2, 'handler_id' => null, 'expected_borrow_date' => Carbon::now()->addDays(15), 'expected_return_date' => Carbon::now()->addDays(15), 'note' => '20 ram tai lieu', 'status' => 'pending', 'created_at' => now(), 'updated_at' => now()],
+        ]);
+        $makeNotification(3, 2, 'pending_approval', 'Yeu cau phe duyet moi', 'To trinh dang cho Phong Tai chinh xu ly.');
+
+        // 3. Muon thiet bi da duyet het va da ban giao mot phan.
+        $makeSubmission([
+            'id' => 3,
+            'title' => 'Muon thiet bi livestream le tot nghiep',
+            'content' => 'Muon laptop, micro, loa va phong hop de livestream le tot nghiep.',
+            'creator_id' => 2,
+            'category_id' => 2,
+            'status' => 'approved',
+            'start_time' => Carbon::now()->addDays(4)->setHour(7)->setMinute(30),
+            'end_time' => Carbon::now()->addDays(4)->setHour(12)->setMinute(0),
+            'created_at' => now()->subDays(4),
+        ]);
+        $s31 = $makeStep(3, 1, 2, 'Phong Cong nghe kiem tra thiet bi.');
+        $s32 = $makeStep(3, 2, 1, 'Phong Tai chinh xac nhan vat tu tieu hao.');
+        $s33 = $makeStep(3, 3, 5, 'Ban Giam hieu duyet su dung nguon luc.');
+        $makeLog(3, $s31, 4, 'approved', 'Thiet bi san sang ban giao.', 70);
+        $makeLog(3, $s32, 3, 'approved', 'Dong y cap vat tu kem theo.', 62);
+        $makeLog(3, $s33, 7, 'approved', 'Phe duyet toan bo de xuat.', 50);
+        DB::table('asset_requests')->insert([
+            ['submission_id' => 3, 'asset_id' => 2, 'borrower_id' => 2, 'handler_id' => 9, 'expected_borrow_date' => Carbon::now()->addDays(4), 'borrow_date' => now()->subHours(3), 'expected_return_date' => Carbon::now()->addDays(5), 'note' => 'Laptop livestream', 'status' => 'borrowed', 'created_at' => now(), 'updated_at' => now()],
+            ['submission_id' => 3, 'asset_id' => 3, 'borrower_id' => 2, 'handler_id' => 9, 'expected_borrow_date' => Carbon::now()->addDays(4), 'borrow_date' => now()->subHours(3), 'expected_return_date' => Carbon::now()->addDays(5), 'note' => 'Micro khong day', 'status' => 'borrowed', 'created_at' => now(), 'updated_at' => now()],
+            ['submission_id' => 3, 'asset_id' => 4, 'borrower_id' => 2, 'handler_id' => null, 'expected_borrow_date' => Carbon::now()->addDays(4), 'borrow_date' => null, 'expected_return_date' => Carbon::now()->addDays(5), 'note' => 'Loa san khau', 'status' => 'pending', 'created_at' => now(), 'updated_at' => now()],
+        ]);
+        DB::table('submission_locations')->insert([
+            'submission_id' => 3,
+            'location_id' => 4,
+            'start_time' => Carbon::now()->addDays(4)->setHour(7)->setMinute(30),
+            'end_time' => Carbon::now()->addDays(4)->setHour(12)->setMinute(0),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        $makeNotification(2, 3, 'approved', 'To trinh da duoc duyet', 'De xuat livestream le tot nghiep da duoc phe duyet.');
+
+        // 4. Bi tu choi tai Ban Giam hieu.
+        $makeSubmission([
+            'id' => 4,
+            'title' => 'De xuat mua bo man hinh LED san khau',
+            'content' => 'De xuat mua bo man hinh LED phuc vu cac su kien lon trong nam.',
+            'creator_id' => 2,
+            'category_id' => 3,
+            'status' => 'rejected',
+            'start_time' => Carbon::now()->addDays(30),
+            'end_time' => Carbon::now()->addDays(45),
+            'created_at' => now()->subDays(5),
+        ]);
+        $s41 = $makeStep(4, 1, 1, 'Phong Tai chinh tham dinh ngan sach.');
+        $s42 = $makeStep(4, 2, 5, 'Ban Giam hieu xem xet chu truong.');
+        $makeLog(4, $s41, 3, 'approved', 'Kinh phi co the can doi neu duoc phe duyet chu truong.', 110);
+        $makeLog(4, $s42, 7, 'rejected', 'Chua phu hop ke hoach mua sam nam nay.', 100);
+        $makeNotification(2, 4, 'rejected', 'To trinh bi tu choi', 'De xuat mua man hinh LED chua duoc phe duyet.');
+
+        // 5. Muon vat tu dang cho Tai chinh, da qua Cong nghe.
+        $makeSubmission([
+            'id' => 5,
+            'title' => 'Muon thiet bi cho lop tap huan AI can ban',
+            'content' => 'Can laptop demo, may chieu va vat tu in an cho lop tap huan.',
+            'creator_id' => 2,
+            'category_id' => 2,
+            'status' => 'pending',
+            'start_time' => Carbon::now()->addDays(7)->setHour(8)->setMinute(0),
+            'end_time' => Carbon::now()->addDays(7)->setHour(11)->setMinute(30),
+            'created_at' => now()->subHours(18),
+        ]);
+        $s51 = $makeStep(5, 1, 2, 'Phong Cong nghe xac nhan tinh san sang cua thiet bi.');
+        $makeStep(5, 2, 1, 'Phong Tai chinh xac nhan vat tu tieu hao.');
+        $makeStep(5, 3, 5, 'Ban Giam hieu phe duyet cuoi.');
+        $makeLog(5, $s51, 4, 'approved', 'Da giu thiet bi cho lop tap huan.', 8);
+        DB::table('asset_requests')->insert([
+            ['submission_id' => 5, 'asset_id' => 1, 'borrower_id' => 2, 'handler_id' => null, 'expected_borrow_date' => Carbon::now()->addDays(7), 'expected_return_date' => Carbon::now()->addDays(8), 'note' => 'May chieu lop tap huan', 'status' => 'pending', 'created_at' => now(), 'updated_at' => now()],
+            ['submission_id' => 5, 'asset_id' => 6, 'borrower_id' => 2, 'handler_id' => null, 'expected_borrow_date' => Carbon::now()->addDays(7), 'expected_return_date' => Carbon::now()->addDays(7), 'note' => 'But viet bang', 'status' => 'pending', 'created_at' => now(), 'updated_at' => now()],
+        ]);
+        $makeNotification(3, 5, 'pending_approval', 'Yeu cau phe duyet moi', 'To trinh muon thiet bi AI dang cho Tai chinh.');
     }
 }

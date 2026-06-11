@@ -29,6 +29,7 @@ class DepartmentController extends Controller
                 'id' => $dept->id,
                 'dept_name' => $dept->dept_name,
                 'location_desc' => $dept->location_desc,
+                'status' => $dept->status ?? 'active',
                 'parent_name' => $dept->parent ? $dept->parent->dept_name : null,
                 'has_children' => Department::where('parent_dept_id', $dept->id)->exists(),
             ];
@@ -46,7 +47,7 @@ class DepartmentController extends Controller
             $departments = Department::with([
                 'assets' => function($query) {
                     // Bạn có thể lọc bớt các cột cần thiết để giảm tải dung lượng API
-                    $query->select('id', 'department_id', 'asset_name', 'asset_code', 'status', 'unit');
+                    $query->select('id', 'department_id', 'asset_name', 'asset_code', 'status', 'unit', 'type');
                 },
                 'locations' => function($query) {
                     $query->select('id', 'department_id', 'location_name', 'capacity', 'status');
@@ -82,7 +83,7 @@ class DepartmentController extends Controller
 
                 // Danh sách tài sản (lấy 5 cái đầu để preview)
                 'assets' => function($query) {
-                    $query->select('id', 'department_id', 'asset_name', 'asset_code', 'status', 'unit')
+                    $query->select('id', 'department_id', 'asset_name', 'asset_code', 'status', 'unit', 'type')
                         ->limit(5);
                 },
 
@@ -121,6 +122,7 @@ class DepartmentController extends Controller
             'dept_name'      => 'required|string|max:255|unique:departments,dept_name',
             'location_desc'  => 'nullable|string|max:500',
             'parent_dept_id' => 'nullable|integer|exists:departments,id',
+            'status'         => 'nullable|in:active,inactive',
         ], [
             'dept_name.required' => 'Tên phòng ban không được để trống.',
             'dept_name.unique'   => 'Tên phòng ban đã tồn tại trong hệ thống.',
@@ -138,6 +140,7 @@ class DepartmentController extends Controller
             'dept_name'      => $request->dept_name,
             'location_desc'  => $request->location_desc,
             'parent_dept_id' => $request->parent_dept_id,
+            'status'         => $request->status ?? 'active',
         ]);
 
         return response()->json([
@@ -159,6 +162,7 @@ class DepartmentController extends Controller
             'dept_name'      => 'sometimes|required|string|max:255|unique:departments,dept_name,' . $id,
             'location_desc'  => 'nullable|string|max:500',
             'parent_dept_id' => 'nullable|integer|exists:departments,id',
+            'status'         => 'nullable|in:active,inactive',
         ]);
 
         if ($validator->fails()) {
@@ -168,7 +172,7 @@ class DepartmentController extends Controller
             ], 422);
         }
 
-        $department->update($request->only(['dept_name', 'location_desc', 'parent_dept_id']));
+        $department->update($request->only(['dept_name', 'location_desc', 'parent_dept_id', 'status']));
 
         return response()->json([
             'success' => true,
@@ -184,19 +188,12 @@ class DepartmentController extends Controller
     {
         $department = Department::findOrFail($id);
 
-        // Không cho xoá nếu còn đơn vị con
-        if ($department->children()->exists()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Không thể xoá đơn vị đang có đơn vị con trực thuộc.',
-            ], 409);
-        }
-
-        $department->delete();
+        $department->update(['status' => 'inactive']);
 
         return response()->json([
             'success' => true,
-            'message' => 'Xoá phòng ban thành công.',
+            'message' => 'Đã chuyển đơn vị sang trạng thái không hoạt động.',
+            'data' => $department,
         ]);
     }
 }

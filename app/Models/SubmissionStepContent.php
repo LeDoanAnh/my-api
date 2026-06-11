@@ -16,4 +16,14 @@ class SubmissionStepContent extends Model
     {
         return $this->belongsTo(Submission::class);
     }
+
+    public function approvalLogs()
+    {
+        return $this->hasMany(ApprovalLog::class, 'step_content_id');
+    }
+
+    public function preApprovals()
+    {
+        return $this->hasMany(SubmissionPreApproval::class, 'step_content_id');
+    }
 }

@@ -10,7 +10,8 @@ class Department extends Model
     protected $fillable = [
         'dept_name',
         'location_desc',
-        'parent_dept_id'
+        'parent_dept_id',
+        'status',
     ];
     public function parent()
     {

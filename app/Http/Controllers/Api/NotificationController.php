@@ -3,21 +3,15 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Kreait\Firebase\Messaging\CloudMessage;
-use Kreait\Firebase\Contract\Messaging;
 use App\Models\Notification;
+use App\Models\SubmissionStepContent;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Kreait\Firebase\Messaging\CloudMessage;
 
 class NotificationController extends Controller
 {
-    // 1. Dùng Dependency Injection để tránh lỗi app('firebase.messaging') ở một số môi trường
-    protected $messaging;
-
-    // public function __construct(Messaging $messaging)
-    // {
-    //     $this->messaging = $messaging;
-    // }
-
     public function updateToken(Request $request)
     {
         try {
@@ -35,51 +29,36 @@ class NotificationController extends Controller
 
             return response()->json([
                 'success' => true,
-                'message' => 'Đã cập nhật Token thành công',
-                'current_token' => $user->fcm_token
+                'message' => 'Da cap nhat FCM token thanh cong',
+                'current_token' => $user->fcm_token,
             ]);
         } catch (\Exception $e) {
-            return response()->json(['success' => false, 'message' => 'Lỗi Server: ' . $e->getMessage()], 500);
+            return response()->json(['success' => false, 'message' => 'Loi Server: ' . $e->getMessage()], 500);
         }
     }
 
     public function sendTest(Request $request)
     {
         if (!$request->has('token')) {
-            return response()->json(['message' => 'Thiếu Device Token!'], 400);
+            return response()->json(['message' => 'Thieu device token'], 400);
         }
 
         try {
             $user = $request->user();
-            $deviceToken = $request->token;
-            $submissionId = '12345';
-            $title = 'Tờ trình đã được phê duyệt';
-            $body = 'Yêu cầu mượn thiết bị của bạn đã được Admin phê duyệt.';
-            $type = 'success';
+            if (!$user) {
+                return response()->json(['message' => 'Unauthenticated'], 401);
+            }
 
-            $localNoti = Notification::create([
-                'user_id' => $user->id,
-                'title'   => $title,
-                'message' => $body,
-                'type'    => $type,
-                'is_read' => false,
+            $notification = $this->createAndSend($user, 'Thong bao thu', 'Kiem tra Firebase Cloud Messaging thanh cong.', 'test', [
+                'id' => '12345',
+                'screen' => 'DETAIL_SCREEN',
+            ], $request->token);
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Da gui thanh cong',
+                'notification_id' => $notification->id,
             ]);
-
-            $message = CloudMessage::fromArray([
-                'token' => $deviceToken,
-                'notification' => ['title' => $title, 'body' => $body],
-                'data' => [
-                    'click_action' => 'FLUTTER_NOTIFICATION_CLICK',
-                    'id'           => (string)$submissionId,
-                    'type'         => $type,
-                    'local_id'     => (string)$localNoti->id,
-                    'screen'       => 'DETAIL_SCREEN',
-                ],
-            ]);
-
-            $this->messaging->send($message);
-
-            return response()->json(['status' => 'success', 'message' => 'Đã gửi thành công!']);
         } catch (\Exception $e) {
             return response()->json(['status' => 'error', 'message' => $e->getMessage()], 500);
         }
@@ -89,18 +68,15 @@ class NotificationController extends Controller
     {
         try {
             \Carbon\Carbon::setLocale('vi');
-            // Lấy user_id từ query string (?user_id=3)
             $userId = $request->query('user_id');
 
-            // Kiểm tra nếu không truyền user_id thì báo lỗi 400 luôn
             if (!$userId) {
                 return response()->json([
                     'status' => 'error',
-                    'message' => 'Vui lòng cung cấp user_id trên URL (ví dụ: ?user_id=3)'
+                    'message' => 'Vui long cung cap user_id tren URL',
                 ], 400);
             }
 
-            // Truy vấn dữ liệu dựa trên user_id đơn thuần
             $notifications = Notification::where('user_id', $userId)
                 ->orderBy('created_at', 'desc')
                 ->get();
@@ -114,87 +90,175 @@ class NotificationController extends Controller
                 'status' => 'success',
                 'user_id' => $userId,
                 'total' => $notifications->count(),
-                'data' => $notifications
+                'data' => $notifications,
             ]);
-
         } catch (\Exception $e) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'Lỗi SQL: ' . $e->getMessage()
+                'message' => 'Loi SQL: ' . $e->getMessage(),
             ], 500);
         }
     }
 
     public function markAsRead($id)
     {
-        $notification = Notification::findOrFail($id);
+        $notification = Notification::find($id);
+        if (!$notification) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Khong tim thay thong bao',
+            ], 404);
+        }
+
         $notification->update(['is_read' => true]);
-        return response()->json(['message' => 'Đã đánh dấu đọc']);
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Da danh dau da doc',
+            'data' => $notification->fresh(),
+        ]);
     }
 
     public function markAllAsRead($user_id)
     {
-        Notification::where('user_id', $user_id)
+        $updated = Notification::where('user_id', $user_id)
             ->where('is_read', false)
             ->update(['is_read' => true]);
 
-        return response()->json(['message' => 'Đã đọc tất cả']);
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Da doc tat ca',
+            'updated' => $updated,
+        ]);
     }
 
-    public function notifyApprover($approver, $submission)
+    public function notifyApproversForStep(SubmissionStepContent $step): void
     {
-        $title = 'Yêu cầu phê duyệt mới';
-        $body = 'Tờ trình: ' . $submission->title . ' đang chờ bạn xử lý.';
-        $type = 'warning';
+        $step->loadMissing(['submission', 'department']);
 
-        Notification::create([
-            'user_id' => $approver->id,
-            'submission_id' => $submission->id,
+        $approvers = User::where('department_id', $step->target_dept_id)
+            ->whereHas('roles', fn($q) => $q->where('roles.id', 3))
+            ->get();
+
+        foreach ($approvers as $approver) {
+            $this->notifyApprover($approver, $step);
+        }
+    }
+
+    public function notifyPreApproversForStep(SubmissionStepContent $step): void
+    {
+        $step->loadMissing(['submission', 'department']);
+
+        $staffUsers = User::where('department_id', $step->target_dept_id)
+            ->whereHas('roles', fn($q) => $q->where('roles.id', 4))
+            ->get();
+
+        if ($staffUsers->isEmpty()) {
+            $this->notifyApproversForStep($step);
+            return;
+        }
+
+        foreach ($staffUsers as $staff) {
+            $this->notifyPreApprover($staff, $step);
+        }
+    }
+
+    public function notifyPreApprover(User $staff, SubmissionStepContent $step): void
+    {
+        $step->loadMissing(['submission', 'department']);
+
+        $title = 'Yeu cau ky nhay moi';
+        $body = 'To trinh "' . $step->submission->title . '" dang cho phong ban ban xem truoc.'
+            . ($step->department ? ' Phong: ' . $step->department->dept_name . '.' : '');
+
+        $this->createAndSend($staff, $title, $body, 'pending_pre_approval', [
+            'id' => (string) $step->submission_id,
+            'step_id' => (string) $step->id,
+            'dept_id' => (string) $step->target_dept_id,
+            'screen' => 'APPROVE_SCREEN',
+        ]);
+    }
+
+    public function notifyApprover(User $approver, SubmissionStepContent $step): void
+    {
+        $step->loadMissing(['submission', 'department']);
+
+        $title = 'Yeu cau phe duyet moi';
+        $body = 'To trinh "' . $step->submission->title . '" dang cho ban xu ly.'
+            . ($step->department ? ' Phong: ' . $step->department->dept_name . '.' : '');
+
+        $this->createAndSend($approver, $title, $body, 'pending_approval', [
+            'id' => (string) $step->submission_id,
+            'step_id' => (string) $step->id,
+            'dept_id' => (string) $step->target_dept_id,
+            'screen' => 'APPROVE_SCREEN',
+        ]);
+    }
+
+    public function notifyCreator(User $creator, $submission, string $action): void
+    {
+        $isApproved = $action === 'approved';
+        $title = $isApproved ? 'To trinh da duoc duyet' : 'To trinh bi tu choi';
+        $body = $isApproved
+            ? "To trinh \"{$submission->title}\" da duoc tat ca phong ban phe duyet."
+            : "To trinh \"{$submission->title}\" da bi tu choi boi mot phong ban.";
+
+        $this->createAndSend($creator, $title, $body, $isApproved ? 'approved' : 'rejected', [
+            'id' => (string) $submission->id,
+            'screen' => 'DETAIL_SCREEN',
+        ]);
+    }
+
+    public function notifyCreatorRevisionRequested(User $creator, $submission, User $staff, ?string $comment = null): void
+    {
+        $title = 'To trinh can chinh sua';
+        $body = "To trinh \"{$submission->title}\" can chinh sua theo gop y cua {$staff->full_name}."
+            . ($comment ? " Noi dung: {$comment}" : '');
+
+        $this->createAndSend($creator, $title, $body, 'revision_requested', [
+            'id' => (string) $submission->id,
+            'screen' => 'DETAIL_SCREEN',
+        ]);
+    }
+
+    private function createAndSend(User $user, string $title, string $body, string $type, array $data = [], ?string $overrideToken = null): Notification
+    {
+        $notification = Notification::create([
+            'user_id' => $user->id,
+            'submission_id' => $data['id'] ?? null,
             'title' => $title,
             'message' => $body,
             'type' => $type,
             'is_read' => false,
         ]);
 
-        $message = CloudMessage::fromArray([
-            'token' => $approver->fcm_token,
-            'notification' => ['title' => $title, 'body' => $body],
-            'data' => [
-                'id' => (string)$submission->id,
-                'screen' => 'APPROVE_SCREEN',
-                'type' => $type
-            ],
-        ]);
-        $this->messaging->send($message);
-    }
-    // Thêm vào NotificationController
-    public function notifyCreator($creator, $submission, $action)
-    {
-        $isApproved = $action === 'approved';
-        $title   = $isApproved ? 'Tờ trình đã được duyệt' : 'Tờ trình bị từ chối';
-        $body    = $isApproved
-            ? "Tờ trình \"{$submission->title}\" đã được tất cả phòng ban phê duyệt."
-            : "Tờ trình \"{$submission->title}\" đã bị từ chối bởi một phòng ban.";
-
-        Notification::create([
-            'user_id'  => $creator->id,
-            'title'    => $title,
-            'message'  => $body,
-            'type'     => $isApproved ? 'approved' : 'rejected',
-            'is_read'  => false,
-        ]);
-
-        if ($creator->fcm_token) {
-            $message = CloudMessage::fromArray([
-                'token'        => $creator->fcm_token,
-                'notification' => ['title' => $title, 'body' => $body],
-                'data'         => [
-                    'id'     => (string)$submission->id,
-                    'screen' => 'DETAIL_SCREEN',
-                    'type'   => $isApproved ? 'approved' : 'rejected',
-                ],
-            ]);
-            $this->messaging->send($message);
+        $token = $overrideToken ?: $user->fcm_token;
+        if (!$token) {
+            return $notification;
         }
+
+        try {
+            $payload = array_merge([
+                'click_action' => 'FLUTTER_NOTIFICATION_CLICK',
+                'type' => $type,
+                'local_id' => (string) $notification->id,
+            ], array_map(fn($value) => (string) $value, $data));
+
+            $message = CloudMessage::fromArray([
+                'token' => $token,
+                'notification' => ['title' => $title, 'body' => $body],
+                'data' => $payload,
+            ]);
+
+            app('firebase.messaging')->send($message);
+        } catch (\Throwable $e) {
+            Log::warning('[FCM] Cannot send notification', [
+                'user_id' => $user->id,
+                'notification_id' => $notification->id,
+                'error' => $e->getMessage(),
+            ]);
+        }
+
+        return $notification;
     }
 }

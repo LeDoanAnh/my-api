@@ -112,4 +112,35 @@ class LocationController extends Controller
             return response()->json(['success' => false, 'message' => 'Lỗi: ' . $e->getMessage()], 500);
         }
     }
+
+    public function update(Request $request, int $id): JsonResponse
+    {
+        $location = Location::findOrFail($id);
+
+        $validator = Validator::make($request->all(), [
+            'name'     => 'required|string|max:255',
+            'capacity' => 'required|string',
+            'address'  => 'required|string|max:255',
+            'dept_id'  => 'required|exists:departments,id',
+            'status'   => 'required|in:active,inactive,available',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['success' => false, 'message' => $validator->errors()->first()], 422);
+        }
+
+        $location->update([
+            'location_name' => $request->name,
+            'capacity'      => $request->capacity,
+            'address'       => $request->address,
+            'department_id' => $request->dept_id,
+            'status'        => $request->status === 'available' ? 'active' : $request->status,
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Cập nhật địa điểm thành công.',
+            'data' => $location,
+        ]);
+    }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Submission;
+use App\Models\SubmissionStepContent;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
@@ -81,7 +82,7 @@ class SubmissionController extends Controller
         $isLeader = $user->roles->contains('id', 3); // Trưởng phòng
         $isStaff = $user->roles->contains('id', 4);  // Cán bộ nghiệp vụ
 
-        $query = Submission::with(['category', 'creator', 'approvalLogs.approver']);
+        $query = Submission::with(['category', 'creator', 'approvalLogs.approver', 'preApprovals.staff']);
 
         // 1. TÌM KIẾM
         if ($keyword) {
@@ -106,8 +107,66 @@ class SubmissionController extends Controller
                     // Xem đơn CHỜ của phòng mình để ký
                     $q->where(function ($sub) use ($userDeptId) {
                         $sub->where('status', 'pending')
-                            ->whereHas('creator', function ($c) use ($userDeptId) {
-                                $c->where('department_id', $userDeptId);
+                            ->whereExists(function ($current) use ($userDeptId) {
+                                $current->select(DB::raw(1))
+                                    ->from('submission_step_contents as current_steps')
+                                    ->whereColumn('current_steps.submission_id', 'submissions.id')
+                                    ->where('current_steps.target_dept_id', $userDeptId)
+                                    ->where(function ($preCheck) use ($userDeptId) {
+                                        $preCheck->whereNotExists(function ($staff) use ($userDeptId) {
+                                            $staff->select(DB::raw(1))
+                                                ->from('users as pre_staff')
+                                                ->join('role_user as pre_staff_roles', 'pre_staff_roles.user_id', '=', 'pre_staff.id')
+                                                ->where('pre_staff.department_id', $userDeptId)
+                                                ->where('pre_staff_roles.role_id', 4);
+                                        })
+                                        ->orWhereExists(function ($signed) {
+                                            $signed->select(DB::raw(1))
+                                                ->from('submission_pre_approvals as pre_logs')
+                                                ->whereColumn('pre_logs.submission_id', 'submissions.id')
+                                                ->whereColumn('pre_logs.step_content_id', 'current_steps.id')
+                                                ->where('pre_logs.action', 'signed');
+                                        });
+                                    })
+                                    ->whereNotExists(function ($doneCurrent) {
+                                        $doneCurrent->select(DB::raw(1))
+                                            ->from('approval_log as current_logs')
+                                            ->leftJoin('users as current_approvers', 'current_approvers.id', '=', 'current_logs.approver_id')
+                                            ->whereColumn('current_logs.submission_id', 'submissions.id')
+                                            ->where(function ($logMatch) {
+                                                $logMatch->whereColumn('current_logs.step_content_id', 'current_steps.id')
+                                                    ->orWhere(function ($legacyLog) {
+                                                        $legacyLog->whereNull('current_logs.step_content_id')
+                                                            ->whereColumn('current_approvers.department_id', 'current_steps.target_dept_id');
+                                                    });
+                                            });
+                                    })
+                                    ->whereNotExists(function ($previous) {
+                                        $previous->select(DB::raw(1))
+                                            ->from('submission_step_contents as previous_steps')
+                                            ->whereColumn('previous_steps.submission_id', 'submissions.id')
+                                            ->where(function ($order) {
+                                                $order->whereColumn('previous_steps.step_order', '<', 'current_steps.step_order')
+                                                    ->orWhere(function ($sameOrder) {
+                                                        $sameOrder->whereColumn('previous_steps.step_order', 'current_steps.step_order')
+                                                            ->whereColumn('previous_steps.id', '<', 'current_steps.id');
+                                                    });
+                                            })
+                                            ->whereNotExists(function ($approvedPrevious) {
+                                                $approvedPrevious->select(DB::raw(1))
+                                                    ->from('approval_log as previous_logs')
+                                                    ->leftJoin('users as previous_approvers', 'previous_approvers.id', '=', 'previous_logs.approver_id')
+                                                    ->whereColumn('previous_logs.submission_id', 'submissions.id')
+                                                    ->where('previous_logs.action', 'approved')
+                                                    ->where(function ($logMatch) {
+                                                        $logMatch->whereColumn('previous_logs.step_content_id', 'previous_steps.id')
+                                                            ->orWhere(function ($legacyLog) {
+                                                                $legacyLog->whereNull('previous_logs.step_content_id')
+                                                                    ->whereColumn('previous_approvers.department_id', 'previous_steps.target_dept_id');
+                                                            });
+                                                    });
+                                            });
+                                    });
                             });
                     })
                     // HOẶC xem những đơn mình ĐÃ ký (lịch sử)
@@ -119,10 +178,59 @@ class SubmissionController extends Controller
                 // TRƯỜNG HỢP: CÁN BỘ (ROLE 4)
                 elseif ($isStaff) {
                     // CHỈ xem đơn của phòng mình VÀ trạng thái KHÁC pending (đã có kết quả)
-                    $q->whereIn('status', ['approved', 'rejected'])
-                      ->whereHas('creator', function ($c) use ($userDeptId) {
-                          $c->where('department_id', $userDeptId);
-                      });
+                    $q->where(function ($staffQuery) use ($userId, $userDeptId) {
+                        $staffQuery->where(function ($pending) use ($userDeptId) {
+                            $pending->where('status', 'pending')
+                                ->whereExists(function ($current) use ($userDeptId) {
+                                    $current->select(DB::raw(1))
+                                        ->from('submission_step_contents as current_steps')
+                                        ->whereColumn('current_steps.submission_id', 'submissions.id')
+                                        ->where('current_steps.target_dept_id', $userDeptId)
+                                        ->whereNotExists(function ($doneCurrent) {
+                                            $doneCurrent->select(DB::raw(1))
+                                                ->from('approval_log as current_logs')
+                                                ->leftJoin('users as current_approvers', 'current_approvers.id', '=', 'current_logs.approver_id')
+                                                ->whereColumn('current_logs.submission_id', 'submissions.id')
+                                                ->where(function ($logMatch) {
+                                                    $logMatch->whereColumn('current_logs.step_content_id', 'current_steps.id')
+                                                        ->orWhere(function ($legacyLog) {
+                                                            $legacyLog->whereNull('current_logs.step_content_id')
+                                                                ->whereColumn('current_approvers.department_id', 'current_steps.target_dept_id');
+                                                        });
+                                                });
+                                        })
+                                        ->whereNotExists(function ($previous) {
+                                            $previous->select(DB::raw(1))
+                                                ->from('submission_step_contents as previous_steps')
+                                                ->whereColumn('previous_steps.submission_id', 'submissions.id')
+                                                ->where(function ($order) {
+                                                    $order->whereColumn('previous_steps.step_order', '<', 'current_steps.step_order')
+                                                        ->orWhere(function ($sameOrder) {
+                                                            $sameOrder->whereColumn('previous_steps.step_order', 'current_steps.step_order')
+                                                                ->whereColumn('previous_steps.id', '<', 'current_steps.id');
+                                                        });
+                                                })
+                                                ->whereNotExists(function ($approvedPrevious) {
+                                                    $approvedPrevious->select(DB::raw(1))
+                                                        ->from('approval_log as previous_logs')
+                                                        ->leftJoin('users as previous_approvers', 'previous_approvers.id', '=', 'previous_logs.approver_id')
+                                                        ->whereColumn('previous_logs.submission_id', 'submissions.id')
+                                                        ->where('previous_logs.action', 'approved')
+                                                        ->where(function ($logMatch) {
+                                                            $logMatch->whereColumn('previous_logs.step_content_id', 'previous_steps.id')
+                                                                ->orWhere(function ($legacyLog) {
+                                                                    $legacyLog->whereNull('previous_logs.step_content_id')
+                                                                        ->whereColumn('previous_approvers.department_id', 'previous_steps.target_dept_id');
+                                                                });
+                                                        });
+                                                });
+                                        });
+                                });
+                        })
+                        ->orWhereHas('preApprovals', function ($pre) use ($userId) {
+                            $pre->where('staff_id', $userId);
+                        });
+                    });
                 }
             });
         } else {
@@ -134,8 +242,11 @@ class SubmissionController extends Controller
 
         $submissions = $query->orderBy('created_at', 'desc')->paginate($perPage);
 
-        $items = collect($submissions->items())->map(function ($item) use ($type, $userId) {
+        $items = collect($submissions->items())->map(function ($item) use ($type, $userId, $isStaff) {
             $myAction = $item->approvalLogs->where('approver_id', $userId)->last();
+            $myPreAction = $item->preApprovals->where('staff_id', $userId)->last();
+            $lastPreApproval = $item->preApprovals->where('action', 'signed')->last()
+                ?: $item->preApprovals->last();
             $lastLog = $item->approvalLogs->whereIn('action', ['approved', 'rejected'])->last();
 
             $approverName = $lastLog && $lastLog->approver ? $lastLog->approver->full_name : null;
@@ -144,7 +255,14 @@ class SubmissionController extends Controller
 
             // Xử lý nhãn hiển thị cho Tab duyệt đơn
             if ($type === 'pending_approval') {
-                if ($item->status === 'pending' && !$myAction) {
+                if ($isStaff && $myPreAction) {
+                    $displayStatus = $myPreAction->action === 'signed' ? "Tôi đã ký nháy" : "Tôi đã báo sửa";
+                    $statusCode = $myPreAction->action;
+                    $approverName = "Báº¡n";
+                } elseif ($isStaff && $item->status === 'pending') {
+                    $displayStatus = "Chờ tôi ký nháy";
+                    $statusCode = "waiting_pre_approval";
+                } elseif ($item->status === 'pending' && !$myAction) {
                     $displayStatus = "Chờ tôi ký";
                     $statusCode = "waiting_for_me";
                 } elseif ($myAction) {
@@ -164,6 +282,8 @@ class SubmissionController extends Controller
                 'status_code' => $statusCode,
                 'creator_name' => $item->creator->full_name ?? 'Ẩn danh',
                 'approver_name' => $approverName,
+                'pre_approval_status' => $lastPreApproval?->action,
+                'pre_approver_name' => $lastPreApproval?->staff?->full_name,
             ];
         });
 
@@ -212,6 +332,10 @@ class SubmissionController extends Controller
                  * Ta tìm log dựa trên việc người duyệt (approver) thuộc phòng ban (target_dept_id) của bước đó.
                  */
                 $log = $submission->approvalLogs->first(function ($item) use ($step) {
+                    if ($item->step_content_id) {
+                        return (int) $item->step_content_id === (int) $step->id;
+                    }
+
                     return $item->approver && $item->approver->department_id == $step->target_dept_id;
                 });
 
@@ -349,7 +473,7 @@ class SubmissionController extends Controller
                     $entityId = isset($item['entity_id']) ? (int) $item['entity_id'] : null;
                     $quantity  = (int) ($item['quantity'] ?? 1);
                     $timeInfo  = $item['time_info']  ?? '';
-                    $itemType  = $item['type']       ?? 'fixed_asset';
+                    $itemType  = $item['type']       ?? 'returnable';
 
                     if ($itemType === 'location') {
                         // ── Bảng 3: submission_locations ─────────────────────
@@ -382,15 +506,26 @@ class SubmissionController extends Controller
                             'updated_at'    => now(),
                         ]);
                     } else {
+                        $expectedBorrowDate = !empty($item['expected_borrow_date'])
+                            ? $item['expected_borrow_date']
+                            : $request->start_date;
+
+                        $expectedReturnDate = !empty($item['expected_return_date'])
+                            ? $item['expected_return_date']
+                            : null;
+
+                        if ($itemType === 'returnable' && $expectedReturnDate === null) {
+                            $expectedReturnDate = $request->end_date;
+                        }
                         // ── Bảng 4: asset_requests ───────────────────────────
                         DB::table('asset_requests')->insert([
                             'submission_id'        => $submissionId,
                             'asset_id'             => $entityId,
                             'borrower_id'          => $creatorId,
                             'handler_id'           => null,
-                            'expected_borrow_date' => $request->start_date,
+                            'expected_borrow_date' => $expectedBorrowDate,
                             'borrow_date'          => null,
-                            'expected_return_date' => $request->end_date,
+                            'expected_return_date' => $expectedReturnDate,
                             'actual_return_date'   => null,
                             'note'                 => "SL: {$quantity} | Chi tiết: {$timeInfo}",
                             'created_at'           => now(),
@@ -421,6 +556,15 @@ class SubmissionController extends Controller
             }
 
             DB::commit();
+
+            $firstStep = SubmissionStepContent::where('submission_id', $submissionId)
+                ->orderBy($stepOrderCol)
+                ->orderBy('id')
+                ->first();
+
+            if ($firstStep) {
+                app(NotificationController::class)->notifyPreApproversForStep($firstStep);
+            }
 
             return response()->json([
                 'success'       => true,

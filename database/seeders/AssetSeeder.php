@@ -3,27 +3,21 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Asset;
+use Illuminate\Support\Facades\DB;
 
 class AssetSeeder extends Seeder
 {
-   public function run()
+    public function run(): void
     {
-        $assets = [
-            ['department_id' => 1, 'asset_name' => 'Sony Speaker v73', 'asset_code' => 'AS-001', 'status' => 'ready', 'unit' => 'Unit'],
-            ['department_id' => 2, 'asset_name' => 'Lavie Water 19L', 'asset_code' => 'CS-001', 'status' => 'in stock', 'unit' => 'Tank'],
-            ['department_id' => 2, 'asset_name' => 'Epson Projector X41', 'asset_code' => 'AS-002', 'status' => 'borrowed', 'unit' => 'Unit'],
-            ['department_id' => 1, 'asset_name' => 'Double A A4 Paper', 'asset_code' => 'CS-002', 'status' => 'out of stock', 'unit' => 'Ream'],
-            ['department_id' => 2, 'asset_name' => 'Wireless Mic Sony', 'asset_code' => 'AS-003', 'status' => 'ready', 'unit' => 'Set'],
-            ['department_id' => 2, 'asset_name' => 'Whiteboard Markers', 'asset_code' => 'CS-003', 'status' => 'in stock', 'unit' => 'Box'],
-            ['department_id' => 1, 'asset_name' => 'Dell Latitude Laptop', 'asset_code' => 'AS-004', 'status' => 'repairing', 'unit' => 'Unit'],
-            ['department_id' => 1, 'asset_name' => 'Powerbank 20k mAh', 'asset_code' => 'AS-005', 'status' => 'ready', 'unit' => 'Unit'],
-            ['department_id' => 2, 'asset_name' => 'HP Ink 107a', 'asset_code' => 'CS-004', 'status' => 'in stock', 'unit' => 'Box'],
-            ['department_id' => 1, 'asset_name' => 'Samsung TV 65 inch', 'asset_code' => 'AS-006', 'status' => 'ready', 'unit' => 'Unit'],
-        ];
-
-        foreach ($assets as $asset) {
-            \App\Models\Asset::create($asset);
-        }
+        DB::table('assets')->insert([
+            ['id' => 1, 'department_id' => 2, 'asset_name' => 'May chieu Epson EB-X51', 'asset_code' => 'IT-PRJ-001', 'status' => 'ready', 'type' => 'returnable', 'unit' => 'bo', 'created_at' => now(), 'updated_at' => now()],
+            ['id' => 2, 'department_id' => 2, 'asset_name' => 'Laptop Dell Latitude 5440', 'asset_code' => 'IT-LAP-001', 'status' => 'ready', 'type' => 'returnable', 'unit' => 'chiec', 'created_at' => now(), 'updated_at' => now()],
+            ['id' => 3, 'department_id' => 2, 'asset_name' => 'Bo micro khong day Shure', 'asset_code' => 'IT-MIC-001', 'status' => 'ready', 'type' => 'returnable', 'unit' => 'bo', 'created_at' => now(), 'updated_at' => now()],
+            ['id' => 4, 'department_id' => 2, 'asset_name' => 'Loa keo Sony V73', 'asset_code' => 'IT-SPK-001', 'status' => 'ready', 'type' => 'returnable', 'unit' => 'bo', 'created_at' => now(), 'updated_at' => now()],
+            ['id' => 5, 'department_id' => 1, 'asset_name' => 'Giay A4 Double A', 'asset_code' => 'TC-PAP-001', 'status' => 'in stock', 'type' => 'consumable', 'unit' => 'ram', 'created_at' => now(), 'updated_at' => now()],
+            ['id' => 6, 'department_id' => 1, 'asset_name' => 'But long bang xanh', 'asset_code' => 'TC-PEN-001', 'status' => 'in stock', 'type' => 'consumable', 'unit' => 'hop', 'created_at' => now(), 'updated_at' => now()],
+            ['id' => 7, 'department_id' => 1, 'asset_name' => 'Nuoc uong Lavie 19L', 'asset_code' => 'TC-WAT-001', 'status' => 'in stock', 'type' => 'consumable', 'unit' => 'binh', 'created_at' => now(), 'updated_at' => now()],
+            ['id' => 8, 'department_id' => 4, 'asset_name' => 'Bo backdrop di dong', 'asset_code' => 'CTSV-BD-001', 'status' => 'ready', 'type' => 'returnable', 'unit' => 'bo', 'created_at' => now(), 'updated_at' => now()],
+        ]);
     }
 }
