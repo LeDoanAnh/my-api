@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class AuthController extends Controller
@@ -86,6 +87,8 @@ class AuthController extends Controller
         'full_name' => $user->full_name,
         'email' => $user->email,
         'department_id' => $user->department_id,
+        'session_id' => $sessionId,
+        'is_first_login' => (bool) $user->is_first_login,
         'roles' => $user->roles->map(function($role) {
             return [
                 'id' => $role->id,
@@ -102,6 +105,75 @@ class AuthController extends Controller
 
         return response()->json([
             'message' => 'Đã đăng xuất thành công'
+        ]);
+    }
+
+    public function changePassword(Request $request)
+    {
+        $fields = $request->validate([
+            'current_password' => 'required|string',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        $token = $request->bearerToken();
+        $tokenModel = \Laravel\Sanctum\PersonalAccessToken::findToken($token);
+
+        if (!$tokenModel) {
+            return response()->json(['message' => 'Session không hợp lệ'], 401);
+        }
+
+        $user = $tokenModel->tokenable;
+
+        if (!$user || !Hash::check($fields['current_password'], $user->password)) {
+            return response()->json(['message' => 'Mật khẩu hiện tại không đúng'], 422);
+        }
+
+        $user->password = $fields['password'];
+        $user->is_first_login = false;
+        $user->save();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Đổi mật khẩu thành công',
+            'is_first_login' => false,
+        ]);
+    }
+
+    public function forgotPassword(Request $request)
+    {
+        $fields = $request->validate([
+            'identifier' => 'required|string',
+        ]);
+
+        $identifier = $fields['identifier'];
+        $user = User::where('email', $identifier)
+            ->orWhere('username', $identifier)
+            ->first();
+
+        if (!$user) {
+            return response()->json(['message' => 'Không tìm thấy người dùng'], 404);
+        }
+
+        if (empty($user->email)) {
+            return response()->json(['message' => 'Người dùng chưa có email'], 422);
+        }
+
+        $newPassword = Str::random(10);
+        $user->password = $newPassword;
+        $user->is_first_login = true;
+        $user->save();
+
+        Mail::raw(
+            "Mật khẩu mới của bạn là: {$newPassword}\nVui lòng đăng nhập và đổi mật khẩu ngay.",
+            function ($message) use ($user) {
+                $message->to($user->email)
+                    ->subject('Mật khẩu mới');
+            }
+        );
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Mật khẩu mới đã được gửi về email của bạn',
         ]);
     }
 }

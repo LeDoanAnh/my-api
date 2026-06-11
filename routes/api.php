@@ -27,6 +27,8 @@ Route::get('/authentication/token/new', [AuthController::class, 'getRequestToken
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/authentication/session/new', [AuthController::class, 'createSession']);
 Route::get('/account', [AuthController::class, 'getAccountDetails']);
+Route::post('/change-password', [AuthController::class, 'changePassword']);
+Route::post('/forgot-password', [AuthController::class, 'forgotPassword']);
 
 Route::get('/ping', function () {
     return response()->json(['status' => 'ok', 'time' => now()->toDateTimeString()]);

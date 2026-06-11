@@ -7,6 +7,7 @@ use App\Http\Requests\CreateUserRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -69,14 +70,17 @@ class UserController extends Controller
     {
         DB::beginTransaction();
         try {
+            $plainPassword = $request->password;
+
             // 1. Tạo bản ghi User mới
             $user = User::create([ // Sửa 'user thành $user
                 'full_name'     => $request->full_name,     // Sửa các dấu nháy đơn trước request
                 'email'         => $request->email,
                 'username'      => $request->username,
-                'password'      => Hash::make($request->password),
+                'password'      => Hash::make($plainPassword),
                 'department_id' => $request->department_id,
                 'status'        => $request->status,
+                'is_first_login' => true,
             ]);
 
             // 2. Đồng bộ danh sách vai trò vào bảng trung gian role_user
@@ -84,16 +88,30 @@ class UserController extends Controller
 
             DB::commit();
 
+            Mail::raw(
+                "Xin chào {$user->full_name},\n"
+                . "Tài khoản của bạn đã được tạo thành công.\n\n"
+                . "Tên đăng nhập: {$user->username}\n"
+                . "Mật khẩu:     {$plainPassword}\n\n"
+                . "Vui lòng đổi mật khẩu sau lần đăng nhập đầu tiên.",
+                function ($message) use ($user) {
+                    $message->to($user->email)
+                        ->subject('Thông tin tài khoản của bạn');
+                }
+            );
+
             return response()->json([
                 'success' => true,
-                'message' => 'Tạo tài khoản người dùng thành công!',
+                'message' => 'Tài khoản đã được tạo và thông tin đăng nhập đã gửi về email',
                 'data'    => [
                     'id' => $user->id // Sửa 'user thành $user
                 ]
             ], 201);
 
         } catch (Exception $e) { // Sửa 'e thành $e
-            DB::rollBack();
+            if (DB::transactionLevel() > 0) {
+                DB::rollBack();
+            }
             return response()->json([
                 'success' => false,
                 'message' => 'Có lỗi xảy ra khi tạo tài khoản: ' . $e->getMessage() // Sửa 'e thành $e
@@ -126,6 +144,7 @@ class UserController extends Controller
 
             if (!empty($validated['password'])) {
                 $payload['password'] = Hash::make($validated['password']);
+                $payload['is_first_login'] = true;
             }
 
             $user->update($payload);

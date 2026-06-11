@@ -24,7 +24,8 @@ class User extends Authenticatable
         'full_name',
         'department_id',
         'status',
-        'fcm_token'
+        'fcm_token',
+        'is_first_login',
     ];
 
     /**
@@ -48,6 +49,7 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'department_id' => 'integer',
+            'is_first_login' => 'boolean',
         ];
     }
     public function roles()
