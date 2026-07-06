@@ -28,6 +28,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/authentication/session/new', [AuthController::class, 'createSession']);
 Route::get('/account', [AuthController::class, 'getAccountDetails']);
 Route::post('/change-password', [AuthController::class, 'changePassword']);
+Route::post('/account/signature', [AuthController::class, 'saveSignature']);
 Route::post('/forgot-password', [AuthController::class, 'forgotPassword']);
 
 Route::get('/ping', function () {
@@ -53,8 +54,10 @@ Route::prefix('v1')->group(function () {
         Route::get('/user/statistics', [SubmissionController::class, 'getStatistics']);
         Route::get('/submissions/recent', [SubmissionController::class, 'getRecentSubmissions']);
         Route::get('/submissions', [SubmissionController::class, 'index']);
+        Route::get('/submissions/{id}/pdf', [SubmissionController::class, 'pdf']);
         Route::get('/submissions/{id}/detail', [SubmissionController::class, 'show']);
         Route::post('/submissions', [SubmissionController::class, 'store']);
+        Route::put('/submissions/{id}', [SubmissionController::class, 'update']);
         Route::get('/departments/resources', [DepartmentController::class, 'getDepartmentsWithResources']);
 });
 Route::prefix('actor')->group(function () {

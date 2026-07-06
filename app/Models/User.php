@@ -25,6 +25,7 @@ class User extends Authenticatable
         'department_id',
         'status',
         'fcm_token',
+        'signature_path',
         'is_first_login',
     ];
 

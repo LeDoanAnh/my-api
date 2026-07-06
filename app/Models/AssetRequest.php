@@ -26,6 +26,7 @@ class AssetRequest extends Model
         return $this->belongsTo(Submission::class, 'submission_id');
     }
     protected $casts = [
+        'expected_borrow_date' => 'datetime',
         'borrow_date'          => 'datetime',
         'expected_return_date' => 'datetime',
         'actual_return_date'   => 'datetime',

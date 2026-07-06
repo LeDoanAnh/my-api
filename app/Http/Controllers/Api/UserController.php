@@ -190,6 +190,9 @@ class UserController extends Controller
                     'status'               => $user->status,
                     'department_id'        => $user->department_id,
                     'department_name'      => $user->department?->dept_name,
+                    'signature_url'        => $user->signature_path
+                        ? url('/storage/' . ltrim($user->signature_path, '/'))
+                        : null,
                     'roles'                => $user->roles->map(fn($r) => [
                         'id'          => $r->id,
                         'role_name'   => $r->role_name,

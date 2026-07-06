@@ -9,6 +9,7 @@ use App\Models\SubmissionPreApproval;
 use App\Models\SubmissionPreApprovalAttachment;
 use App\Models\SubmissionStepContent;
 use App\Models\User;
+use App\Services\SubmissionApprovalFlowService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -199,20 +200,7 @@ class ApproverController extends Controller
 
     private function sendNextNotification(Submission $submission): void
     {
-        $submission->loadMissing('creator');
-        $notifier = app(NotificationController::class);
-
-        if ($submission->status === 'approved' || $submission->status === 'rejected') {
-            if ($submission->creator) {
-                $notifier->notifyCreator($submission->creator, $submission, $submission->status);
-            }
-            return;
-        }
-
-        $nextStep = $this->getCurrentStep($submission);
-        if ($nextStep) {
-            $notifier->notifyPreApproversForStep($nextStep);
-        }
+        app(SubmissionApprovalFlowService::class)->dispatchSubmission($submission);
     }
 
     public function preSign(Request $request, int $submissionId)
@@ -263,16 +251,19 @@ class ApproverController extends Controller
                 'comment' => $request->comment ?? '',
             ]);
 
+            if ($request->action === 'revision_requested') {
+                $submission->update(['status' => 'rejected']);
+            }
+
             $this->storePreApprovalAttachments($request, $preApproval);
 
             return $preApproval;
         });
 
-        $notifier = app(NotificationController::class);
         if ($request->action === 'signed') {
-            $notifier->notifyApproversForStep($currentStep);
-        } elseif ($submission->creator) {
-            $notifier->notifyCreatorRevisionRequested($submission->creator, $submission, $staff, $request->comment);
+            app(SubmissionApprovalFlowService::class)->notifyCurrentStepApprovers($currentStep);
+        } else {
+            app(SubmissionApprovalFlowService::class)->notifyRevisionRequested($submission, $staff, $request->comment);
         }
 
         return response()->json([

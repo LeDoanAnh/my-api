@@ -1,0 +1,5894 @@
+﻿=== Page 3 ===
+BỘ GIÁO DỤC VÀ ĐÀO TẠO
+BỘ NÔNG NGHIỆP VÀ
+MÔI TRƯỜNG
+TRƯỜNG ĐẠI HỌC THỦY LỢI
+LÊ DOÃN ANH
+XÂY DỰNG
+ỨNG DỤNG DI ĐỘNG PHÊ DUYỆT TỜ TRÌNH
+ĐIỆN TỬ VỚI FLUTTER VÀ LARAVEL
+ĐỒ ÁN TỐT NGHIỆP
+HÀ NỘI, NĂM 20
+2
+6
+
+=== Page 23 ===
+BỘ GIÁO DỤC VÀ ĐÀO TẠO
+BỘ NÔNG NGHIỆP VÀ
+MÔI TRƯỜNG
+TRƯỜNG ĐẠI HỌC THỦY LỢI
+LÊ DOÃN ANH
+XÂY DỰNG
+ỨNG DỤNG DI ĐỘNG PHÊ DUYỆT TỜ TRÌNH
+ĐIỆN TỬ VỚI FLUTTER VÀ LARAVEL
+Ngành :
+Công Nghệ Thông Tin
+Mã số:
+7480201
+NGƯỜI HƯỚNG DẪN
+1.
+TS. Nguyễn Văn Thẩm
+HÀ NỘI, NĂM
+20
+2
+6
+
+=== Page 25 ===
+L
+Ê DO
+ÃN ANH
+ĐỒ ÁN/KL TỐT NGHIỆP
+HÀ NỘI, NĂM
+2
+026
+
+=== Page 27 ===
+Họ
+tên
+sinh
+viên:
+Lê Doãn Anh
+Hệ
+đào
+tạo
+:
+Đại
+học
+chính
+quy
+Lớp:
+6
+4
+CNTT
+2
+Ngành:
+Công
+nghệ
+thông
+tin
+Khoa
+:
+Công
+nghệ
+thông
+tin
+1.
+TÊN ĐỀ TÀI:
+X
+ây dựng ứng
+dụng di động phê duyệt tờ trình điện tử với flutter
+và laravel
+2.
+CÁC
+TÀI
+LIỆU
+CƠ
+BẢN:
+[1]
+Flutter Team. (2026). Flutter Documentation
+(v3.44.0). Tài liệu truy cập từ:
+h
+ttps://docs.flutter.dev/
+[2]
+Flutter Team. (2026). Flutter API Reference (v3.44.0). Tài liệu
+truy cập từ:
+https://api.flutter.dev/
+[3]
+Dart Team. (n.d.). The Dart Programming Language
+—
+Documentation. Tài liệu truy
+cập từ: https://dart.dev/guides
+[4]
+Laravel LLC. (2026). Laravel Documentation (v13.x). Tài liệu truy cập từ:
+https://laravel.com/docs/13.x
+[5]
+Th
+e PHP Group. (n.d.). PHP: Hypertext Preprocessor
+—
+Official Documentation. Tài
+liệu truy cập từ: https://www.php.net/docs.php
+[6]
+Oracle Corporation. (n.d.). MySQL 8.4 Reference Manual. Tài liệu truy cập từ:
+https://dev.mysql.com/doc/refman/8.4/en/
+[7]
+Fielding, R
+. T., & Taylor, R. N. (2000). Architectural Styles and the Design of
+Network
+-
+based Software Architectures. Tài liệu truy cập từ: https://restfulapi.net/
+[8]
+Google LLC. (n.d.). Firebase Cloud Messaging
+—
+Flutter Integration. Tài liệu truy
+cập từ: https://fireb
+ase.flutter.dev/docs/messaging/overview/
+CỘNG
+HOÀ
+XÃ
+HỘI
+CHỦ
+NGHĨA
+VIỆT
+NAM
+Độc
+lập
+-
+Tự
+do
+-
+Hạnh
+phúc
+NHIỆM
+VỤ
+ĐỒ
+ÁN
+TỐT
+NGHIỆP
+
+=== Page 40 ===
+[9]
+Leisink, F. (n.d.). Hive CE
+—
+Lightweight and blazing fast key
+-
+value database. Tài
+liệu truy cập từ: https://pub.dev/packages/hive_ce
+[10]
+Object Management Group. (2011). Business Process Model and Notation (BPMN)
+2.0
+Specification. Tài liệu truy cập từ: https://www.omg.org/spec/BPMN/2.0/
+3
+.
+NỘI DUNG CÁC PHẦN THUYẾT MINH CẦN TÍNH TOÁN
+:
+Nội
+dung
+cần
+thuyết
+minh
+Tỉ
+lệ
+%
+Chương
+1:
+Khảo sát và phân tích ứng dụng phê duyệt tờ trình
+điện tử
+-
+Bài toán
+phê duyệt tờ trình
+điện tử
+-
+Giải pháp công nghệ phát triển
+-
+Mô hình hóa chức năng ứng dụng
+phê duyệt tờ trình
+điện tử
+-
+Mô hình dữ liệu ứng
+phê duyệt tờ trình
+điện tử
+4
+0%
+Chương
+2:
+Thiết kế ứng dụng
+phê duyệt tờ trình
+điện tử
+-
+Thiết kế hệ thống tổng thể
+-
+Thiết kế giao diện người dùng
+-
+Thiết kế API
+3
+0%
+Chương
+3:
+Triển khai ứng dụng
+phê duyệt tờ trình
+điện tử
+-
+Triển khai ứng dụng
+-
+Một số kết quả của ứng dụng
+3
+0
+%
+4
+. NỘI DUNG CÁC PHẦN
+THUYẾT MINH CẦN TÍNH TOÁN
+:
+Phần
+Họ
+và
+tên
+giáo
+viên
+hướng
+dẫn
+Chương
+1:
+Khảo sát và phân tích ứng dụng
+phê
+duyệt tờ trình
+điện tử
+-
+Bài toán
+phê duyệt tờ trình
+điện tử
+-
+Giải pháp công nghệ phát triển
+-
+Mô hình hóa chức năng ứng dụng
+phê duyệt
+tờ trình
+điện tử
+-
+Mô hình dữ liệu ứng dụng
+phê duyệt tờ trình
+điện tử
+TS.
+Nguyễn
+Văn
+Thẩm
+
+=== Page 42 ===
+Chương
+2:
+Thiết kế ứng dụng phê duyệt tờ
+trình
+điện tử
+-
+Thiết kế hệ thống tổng thể
+-
+Thiết kế giao diện người dùng
+-
+Thiết kế
+API
+TS.
+Nguyễn
+Văn
+Thẩm
+Chương
+3:
+Triển khai ứng dụng phê duyệt tờ
+trình
+đi
+ện t
+ử
+-
+Triển khai ứng dụng
+-
+Một số kết quả của ứng dụng
+TS.
+Nguyễn
+Văn
+Thẩm
+5. NGÀY
+GIAO
+NHIỆM
+VỤ
+ĐỒ
+ÁN
+TỐT
+NGHIỆP
+Ngày .....
+....
+tháng.......
+năm
+20
+2
+6
+Trưởng
+Bộ
+môn
+Giáo
+viên
+hướng
+dẫn
+chính
+Nhiệm
+vụ
+Đồ
+án
+tốt
+nghiệp
+đã
+được
+Hội
+đồng
+thi
+tốt
+nghiệp
+của
+Khoa
+thông
+qua
+Ngày tháng.
+năm 202
+6
+Ch
+ủ
+t
+ị
+ch H
+ộ
+i đ
+ồ
+ng
+Sinh
+viên
+đã
+hoàn
+thành
+và
+nộp
+bản
+Đồ
+án
+tốt
+nghiệp
+cho
+Hội
+đồng
+thi
+Ngày. . .
+tháng
+.
+.
+.....
+năm
+202
+6
+Sinh
+viên
+làm
+Đồ
+án
+tốt
+nghiệp
+
+=== Page 44 ===
+TRƯỜNG ĐẠI HỌC THUỶ LỢI
+KHOA CÔNG NGHỆ THÔNG TIN
+BẢN TÓM TẮT ĐỀ CƯƠNG ĐỒ ÁN TỐT NGHIỆP
+Tên đề tài:
+Xây dựng ứng dụng di động phê duyệt tờ trình điện tử với flutter và
+laravel
+Sinh viên thực hiện
+:
+Lê Doãn Anh
+Lớp
+: 6
+4
+CNTT
+2
+Mã sinh viên:
+2
+251061697
+Số điện thoại:
+0
+338978783
+Email:
+ledoana
+nhhtg2003
+@gmail.com
+Giáo viên hướng dẫn
+: TS. Nguyễn Văn Thẩm
+TÓM TẮT ĐỀ TÀI
+Trong kỷ nguyên chuyển đổi số, việc tối ưu hóa quy trình hành chính thông qua các nền
+tảng công
+nghệ, đặc biệt là thiết bị di động, đã trở thành yêu cầu cấp thiết nhằm nâng cao
+hiệu suất vận hành. Tại các cơ sở giáo dục đại học, các thủ tục như xin phép tổ chức sự
+kiện, trình ký dự toán kinh phí hay đề xuất hoạt động của các đơn vị như liên chi hội,
+liên
+chi đoàn, các khoa và các câu lạc bộ hiện nay vẫn chủ yếu được thực hiện theo phương thức
+thủ công. Việc luân chuyển văn bản giấy giữa các phòng ban không chỉ gây tốn kém thời
+gian, chi phí in ấn mà còn làm gia tăng nhu cầu lưu trữ vật lý, trong khi n
+gười khởi tạo tờ
+trình phải mất nhiều thời gian di chuyển để xin chữ ký và không thể theo dõi được tiến độ
+xử lý một cách kịp thời.
+Nhằm giải quyết những bất cập trên, đề tài “
+Xây dựng ứng dụng di động phê duyệt tờ
+trình điện tử với flutter và laravel
+” đượ
+c đề xuất với mục tiêu số hóa toàn bộ quy trình
+xử lý tờ trình. Hệ thống giúp tối ưu hóa không gian lưu trữ thông qua việc thay thế giấy tờ
+truyền thống, đồng thời rút ngắn thời gian di chuyển giữa các phòng ban nhờ khả năng tạo
+
+=== Page 55 ===
+lập, gửi và phê duyệt tờ tr
+ình trực tuyến. Người dùng có thể theo dõi trạng thái tờ trình theo
+thời gian thực, trong khi người phê duyệt có thể xử lý ngay trên thiết bị di động một cách
+nhanh chóng và linh hoạt. Bên cạnh đó, hệ thống cung cấp giao diện trực quan để hiển thị
+tình trạ
+ng sử dụng các địa điểm như hội trường, quảng trường, bao gồm cả các đăng ký đã
+được phê duyệt và đang trong quá trình xét duyệt, giúp các đơn vị chủ động lựa chọn thời
+gian tổ chức phù hợp. Đồng thời, thông tin về việc mượn vật tư, thiết bị (âm thanh, ánh
+sáng, nước uống,…) cũng được cập nhật sớm đến các phòng ban liên quan, giúp cán bộ phụ
+trách chủ động chuẩn bị ngay khi tờ trình được thông qua, tránh tình trạng bỏ sót thông tin
+và đảm bảo quá trình tổ chức diễn ra hiệu quả.
+CÁC MỤC TIÊU CHÍNH
+Mục
+tiêu nghiên cứu
+Nghiên cứu tổng quan về
+chuyển đổi số trong quản lý hành chính
+và các hệ thống
+phê duyệt điện tử (e
+-
+approval system).
+Tìm hiểu kiến trúc hệ thống client
+-
+server trong phát triển ứng dụng di động kết hợp
+backend web.
+Nghiên cứu framework:
+Flu
+tter
+cho phát triển ứng dụng di động đa nền tảng
+Laravel
+cho xây dựng hệ thống backend và API
+Phân tích các mô hình workflow phê duyệt:
+Phê duyệt một bước (single
+-
+step approval)
+Phê duyệt nhiều bước (multi
+-
+step approval)
+So sánh các phương pháp triển
+khai:
+RESTful API vs GraphQL
+Push notification vs polling trong cập nhật trạng thái
+Nghiên cứu các giải pháp đảm bảo:
+Xác thực và phân quyền người dùng (Authentication & Authorization)
+Bảo mật dữ liệu (JWT, HTTPS)
+Mục tiêu kỹ thuật
+
+=== Page 57 ===
+Xây dựng
+hệ thống phê d
+uyệt tờ trình điện tử hoàn chỉnh
+, bao gồm:
+Backend (Laravel)
+Xây dựng RESTful API:
+Đăng nhập / đăng ký (JWT Authentication)
+Quản lý tờ trình (CRUD)
+Workflow phê duyệt nhiều bước
+Quản lý người dùng và phân quyền (Admin/User/Manager)
+Thiết kế cơ sở dữ liệu (
+MySQL):
+Bảng users, requests, approvals, roles, locations
+Tích hợp:
+Xuất file PDF (tờ trình)
+Gửi thông báo (Firebase Cloud Messaging)
+Mobile App (Flutter)
+Xây dựng các chức năng:
+Đăng nhập / đăng xuất
+Tạo tờ trình
+Danh sách và chi tiết tờ trình
+Phê
+duyệt / từ chối
+Theo dõi trạng thái xử lý
+Theo dõi trang thái của các địa điểm
+Tích hợp API từ backend
+Thiết kế UI theo Material Design
+Web Admin
+Quản lý người dùng
+Cấu hình workflow
+Quản lý danh mục (địa điểm, loại tờ trình)
+Mục tiêu đánh giá
+
+=== Page 59 ===
+Hiệu năng h
+ệ thống:
+Thời gian phản hồi API
+Tải danh sách tờ trình
+Khả năng chịu tải:
+Độ chính xác hệ thống:
+Workflow xử lý đúng logic
+Không xảy ra lỗi mất trạng thái phê duyệt
+Đánh giá trải nghiệm người dùng:
+UI thân thiện, dễ sử dụng
+Thao tác hoàn thành
+Bảo mật:
+Xác thực JWT hoạt động chính xác
+Không lộ dữ liệu nhạy cảm qua API
+KẾT QUẢ DỰ KIẾN
+Kết quả định lượng
+A
+PI backend
+Mobile app
+Hệ thống
+Độ ổn định
+Sản phẩm đầu ra
+Hệ thống hoàn chỉnh
+Backend Laravel + Database MySQL
+API đầy đủ
+chức năng
+Mobile App Flutter hoạt động ổn định
+Ứng dụng demo
+Ứng dụng mobile:
+Tạo
+–
+gửi
+–
+duyệt
+–
+theo dõi tờ trình
+
+=== Page 61 ===
+Tùy chọn
+Web Admin:
+Quản lý hệ thống
+API test qua Postman
+Báo cáo và đánh giá
+Báo cáo đồ
+án
+:
+Kiến trúc hệ thống
+Thiết kế CSDL (ERD)
+Use Case,
+Sequence Diagram
+Biểu đồ đánh giá:
+Response time
+Throughput
+Slide thuyết trình
+Source code đầy đủ (GitHub)
+
+=== Page 63 ===
+i
+LỜI CAM ĐOAN
+Tôi xin khẳng định rằng Đồ án tốt nghiệp này là công trình nghiên cứu do chính tôi thực
+hiện. Toàn bộ kết quả
+được trình bày trong đồ án là trung thực, không sao chép từ bất kỳ
+nguồn nào dưới mọi hình thức. Mọi tài liệu tham khảo sử dụng trong quá trình thực hiện
+đều đã được trích dẫn và ghi rõ nguồn theo đúng quy định.
+Tác giả ĐATN
+Lê Doãn Anh
+
+=== Page 65 ===
+ii
+LỜI CÁM ƠN
+Trước tiên, em xin bày tỏ lòng biết ơn sâu sắc đến Ban Giám hiệu Trường Đại học
+Thủy lợi, cùng toàn thể các thầy cô giáo trong khoa Công nghệ thông tin đã tạo điều
+kiện thuận
+lợi, tận tình giảng dạy và hỗ trợ em trong suốt quá trình học tập, rèn luyện
+tại trường cũng như trong thời gian thực hiện đề tài tốt nghiệp này.
+Đặc biệt, em xin gửi lời cảm ơn chân thành và sâu sắc nhất đến TS. Nguyễn Văn
+Thẩm, người thầy đã trực tiếp hư
+ớng dẫn, động viên và dành nhiều thời gian chia sẻ
+những kiến thức, định hướng quý báu để em hoàn thành đồ án tốt nghiệp này. Sự chỉ
+dẫn tận tâm và nghiêm túc của Thầy không chỉ giúp em tháo gỡ những vướng mắc
+kỹ thuật trong suốt quá trình nghiên cứu, triể
+n khai hệ thống mà còn giúp em học hỏi
+được phương pháp làm việc khoa học, hiệu quả.
+Em cũng xin gửi lời cảm ơn đến gia đình, bạn bè và các anh chị tại đơn vị thực tập
+–
+những người đã luôn đồng hành, động viên, chia sẻ kinh nghiệm thực tế và tạo mọi
+điều
+kiện tốt nhất để em có thể yên tâm học tập và hoàn thành giai đoạn quan trọng
+này.
+Cuối cùng, dù đã dành nhiều thời gian, công sức và cố gắng hoàn thiện đề tài một
+cách chỉn chu nhất, song do hạn chế về mặt thời gian và kinh nghiệm thực tiễn nên
+đồ án chắc
+chắn không tránh khỏi những thiếu sót. Em rất mong nhận được những ý
+kiến đóng góp, nhận xét và phê bình quý báu từ các thầy cô trong Hội đồng chấm đồ
+án để hệ thống ngày càng hoàn thiện và mang tính thực tiễn cao hơn.
+Em xin chân thành cảm ơn!
+
+=== Page 67 ===
+iii
+
+=== Page 69 ===
+iv
+MỤC
+LỤC
+CHƯƠNG 1: KHẢO SÁT VÀ PHÂN TÍCH ỨNG DỤNG
+PHÊ DUYỆT TỜ TRÌNH
+ĐIỆN TỬ
+1
+1.1
+Bài toán phê duyệt tờ trình điện tử
+................................
+................................
+...................
+1
+1.2 Giải pháp công nghệ phát triển
+................................
+................................
+.............................
+2
+1.2.1 Công nghệ thiết kế giao diện ứng dụng
+................................
+................................
+.........
+2
+1.2.2 Công nghệ lưu trữ dữ liệu cục bộ
+................................
+................................
+..................
+3
+1.2.3 Công nghệ Backend API và máy chủ
+................................
+................................
+............
+4
+1.2.4 Công nghệ tích hợp
+................................
+................................
+................................
+........
+6
+1.3 Mô hình hóa chức năng ứng
+dụng phê duyệt điện tử
+................................
+............................
+8
+1.3.1 Yêu cầu ứng dụng phê duyệt tờ trình
+................................
+................................
+.............
+8
+1
+.
+3
+.
+2
+Biểu đồ
+u
+se case tổng quát
+................................
+................................
+...........................
+10
+1
+.
+3
+.
+3
+Phân rã biểu đồ usecase
+................................
+................................
+...............................
+11
+1
+.3
+.4
+Phân tích các chứ
+c năn
+g chính
+ứng dụng phê duyệt tờ trình
+................................
+.......
+14
+1.4 Mô hình dữ liệu ứng dụng phê duyệt tờ trình
+................................
+................................
+.....
+33
+1.4.1. Nhóm bảng người dùng và phân quyền
+................................
+................................
+......
+34
+1.4.2. Nhóm bảng phòng ban
+................................
+................................
+................................
+37
+1.4.3. Nhóm bảng tờ trình
+................................
+................................
+................................
+.....
+39
+1.4.4. Nhóm bảng phê duyệt
+................................
+................................
+................................
+.
+45
+1.4.5. Nhóm bảng cơ sở vật chất
+................................
+................................
+...........................
+49
+1.4.6. Nhóm bảng thông báo
+................................
+................................
+................................
+.
+52
+CHƯƠNG 2: THIẾT KẾ ỨNG DỤNG PHÊ DUYỆT TỜ TRÌNH
+ĐIỆN TỬ
+.............................
+54
+2.1 Thiết kế hệ thống tổng thể
+................................
+................................
+................................
+...
+54
+2.1.1 Mô hình tổng quan hệ thống
+................................
+................................
+........................
+54
+2.1.2 Sơ đồ kiến trúc hệ thống
+................................
+................................
+..............................
+55
+2.2 Thiết kế giao diện người dùng
+................................
+................................
+............................
+56
+2
+.2.1 Nguyên tắc thiết kế giao diện
+................................
+................................
+.......................
+56
+2.2.2 Một số giao diện của ứng dụng
+................................
+................................
+....................
+57
+2.3 Thiết k
+ế API
+................................
+................................
+................................
+........................
+64
+2.3.1 Nguyên tắc thiết kế API
+................................
+................................
+...............................
+64
+
+=== Page 72 ===
+v
+2.3.2. Danh sách các nhóm API chính
+................................
+................................
+..................
+65
+CHƯƠNG 3: TRIỂN K
+HAI ỨNG DỤNG PHÊ DUYỆT TỜ TRÌNH
+ĐIỆN TỬ
+........................
+68
+3.1 Triển khai ứng dụng
+................................
+................................
+................................
+............
+68
+3.1.1 Môi trường phát triển
+................................
+................................
+................................
+...
+68
+3.1.2 Cấ
+u trúc mã nguồn
+................................
+................................
+................................
+.......
+69
+3.1.3 Luồng hoạt động cơ bản
+................................
+................................
+...............................
+71
+a. Luồng tạo và gửi tờ trình
+................................
+................................
+................................
+......
+71
+b. Luồng phê duyệt tờ trình
+................................
+................................
+................................
+.......
+71
+c. Luồng quản trị hệ thống
+................................
+................................
+................................
+........
+71
+3.2. Một số kết quả của ứng dụng
+................................
+................................
+.............................
+72
+3.2.1. Giao diện đăng
+nhập
+................................
+................................
+................................
+...
+72
+3.2.2. Giao diện trang chủ
+................................
+................................
+................................
+.....
+73
+3.2.3. Giao diện danh sách tờ trình
+................................
+................................
+.......................
+74
+3.2.4. Giao diện tạo tờ trình
+................................
+................................
+................................
+..
+75
+3.2.
+5
+. Giao diện phê duyệt tờ trình
+................................
+................................
+.......................
+76
+3.2.7. Giao diện quản lý cơ sở vật chất
+................................
+................................
+.................
+77
+3.2.8. Giao diện thông báo
+................................
+................................
+................................
+....
+78
+3.2.10. Giao diện xuất PDF
+................................
+................................
+................................
+...
+79
+3.3. Đánh giá kết quả đạt được
+................................
+................................
+................................
+..
+80
+3.
+3
+.1. Chức năng đã hoà
+n thành
+................................
+................................
+............................
+80
+3.
+3
+.2. Ưu điểm của hệ thống
+................................
+................................
+................................
+.
+80
+3.
+3
+.3. Hạn chế của hệ thống
+................................
+................................
+................................
+..
+81
+3.
+3
+.4. Hướng phát triển
+................................
+................................
+................................
+.........
+81
+KẾT LUẬN VÀ HƯỚNG PHÁT TRIỂN
+................................
+................................
+.....................
+83
+TÀI LIỆU THAM KHẢO
+................................
+................................
+................................
+.............
+84
+
+=== Page 73 ===
+vi
+
+=== Page 74 ===
+vii
+DANH M
+Ụ
+C CÁC HÌNH
+Ả
+NH
+Hình 1.1 Usecase tổng quát
+................................
+................................
+................................
+...........
+10
+Hình 1.2 Usecase quản lý tờ trình
+................................
+................................
+................................
+.
+11
+Hình 1.3 Usecase qu
+ản lý phê duyệt
+................................
+................................
+..............................
+11
+Hình 1.4
+Usecase quản lý CSVC
+................................
+................................
+................................
+...
+12
+Hình 1.5
+Usecase quản lý bàn giao/thu hồi
+................................
+................................
+...................
+12
+Hình
+1.5 Usecase quản lý phòng ban
+................................
+................................
+............................
+12
+Hình 1.6
+Usecase quản lý luồng phê duyệt
+................................
+................................
+...................
+13
+Hình 1.7
+Usecase quản lý danh sách
+................................
+................................
+.............................
+13
+Hình
+1.8 Usecase quản lý người dùng
+................................
+................................
+...........................
+13
+Hình 1.9
+Usecase quản lý phê duyệt
+................................
+................................
+..............................
+14
+Hình 1.10 Biểu đồ hoạt động phê duyệt tờ trình
+................................
+................................
+...........
+18
+Hình 1.11 Biểu đồ tuần tự phê duyệt tờ trình
+................................
+................................
+................
+19
+Hình 1.12 Usecase quản lý CSVC
+................................
+................................
+................................
+20
+Hình 1.13 Usecase quản lý bàn giao/thu hồi
+................................
+................................
+................
+20
+Hình 1.14 Biểu đồ hoạt động Usecase thêm CSVC
+................................
+................................
+.....
+23
+Hình 1.15 Biểu đồ hoạt động Usecase thu hồi CSVC
+................................
+................................
+...
+23
+Hình
+1.16 Biểu đồ hoạt động Usecase cập nhật CSVC
+................................
+................................
+23
+Hình 1.17 Biểu đồ hoạt động Usecase thu hồi/bàn giao CSVC
+................................
+...................
+23
+Hình 1.18 Biểu đồ tuần tự usecase thêm CSVC
+................................
+................................
+............
+24
+Hình 1.19
+Biểu đồ tuần tự usecase cập nhật CSVC
+................................
+................................
+......
+24
+Hình
+1.20
+Biểu đồ tuần tự usecase trả thiết bị
+................................
+................................
+...............
+25
+Hình 1.21
+Biểu đồ tuần tự usecase bàn giao/thu hồi CSVC
+................................
+..........................
+25
+Hình 1.22 Usecase quản lý phòng ban
+................................
+................................
+..........................
+26
+Hình 1.23 Biểu đồ hoạt động thêm phòng ban
+................................
+................................
+.............
+28
+Hình 1.24 Biểu đồ hoạt động cập nhật phòng ban
+................................
+................................
+.........
+28
+Hình 1.
+25 Biểu đồ tuần tự thêm phòng ban
+................................
+................................
+...................
+28
+Hình 1.26 Biểu đồ tuần tự cập nhật phòng ban
+................................
+................................
+.............
+29
+
+=== Page 75 ===
+viii
+Hình 1.27 Biểu đồ use case quản lý luồng phê duyệt
+................................
+................................
+....
+29
+Hình 1.28 Biểu đồ hoạt động thêm luồng phê duyệt
+................................
+................................
+.....
+31
+Hình
+1.29 Biểu đồ hoạt động cập nhậtluồng phê duyệt
+................................
+................................
+.
+31
+Hình 1.30 Biểu đồ tuần tự cập nhật luồng phê duyệt
+................................
+................................
+....
+32
+Hình 1.31 Sơ đồ database
+................................
+................................
+................................
+..............
+33
+Hình 2.1 Sơ đồ kiến trúc hệ thống
+................................
+................................
+................................
+.
+55
+Hình 2.2 Giao diện đăng nhập
+................................
+................................
+................................
+.......
+58
+Hình 2.3 Giao diện trang chủ.
+................................
+................................
+................................
+........
+58
+Hình 2.4 Giao diện danh sách tờ
+trình của người dùng
+................................
+................................
+.
+59
+Hình 2.5 Giao diện tạo tờ trình
+................................
+................................
+................................
+......
+59
+Hình 2.6 Giao diện theo dõi trạng thái tờ trình
+................................
+................................
+..............
+60
+Hình 2.7 Giao diện danh sách tờ trình chờ duyệt.
+................................
+................................
+........
+61
+Hìn
+h 2.8 Giao diện phê duyệt tờ trình
+................................
+................................
+..........................
+62
+Hình 2.9 Giao diện quản lý CSVC
+................................
+................................
+...............................
+63
+Hình 2.10 Giao diện thông báo.
+................................
+................................
+................................
+....
+63
+Hình 2.11 Giao diện xuất PDF
+................................
+................................
+................................
+......
+64
+Hình 3.1 Cấu trúc mã nguồ
+n Flutter
+................................
+................................
+..............................
+69
+Hình 3.2 Cấu trúc
+Laravel
+................................
+................................
+................................
+.............
+70
+Hình 3.3 Màn hình đăng nhập
+................................
+................................
+................................
+.......
+72
+Hình 3.4 Màn hình trang chủ
+................................
+................................
+................................
+.........
+73
+Hình 3.5 Màn hình danh sá
+ch tờ trình
+................................
+................................
+...........................
+74
+Hình 3.6 Màn hình tạo tờ trình
+................................
+................................
+................................
+......
+75
+Hình 3.7 Màn hình phê duyệt/từ chối
+................................
+................................
+............................
+76
+Hình 3.8 Màn hình tạo CSVC
+................................
+................................
+................................
+.......
+77
+Hình 3.9 Màn hình danh sách tờ trình
+................................
+................................
+...........................
+77
+Hình 3.10 Màn hình chi tiết CSVC
+................................
+................................
+...............................
+77
+Hình 3.11 Màn hình danh sách thông báo
+................................
+................................
+.....................
+78
+Hình 3.12 Màn hình xuất file PDF
+................................
+................................
+................................
+79
+
+=== Page 76 ===
+ix
+
+=== Page 77 ===
+x
+DANH
+M
+Ụ
+C B
+Ả
+NG BI
+Ể
+U
+Bảng 1.1 Bảng đặc tả use case Duyệt tờ trình
+................................
+................................
+...............
+14
+Bảng 1.2 Bảng đặc tả use case Từ chối tờ trình
+................................
+................................
+............
+15
+Bảng 1.3 Bảng đặc tả use case Yêu cầu chỉnh sửa
+................................
+................................
+........
+16
+Bảng 1.4 Bảng đặc tả use case Thêm CSVC
+................................
+................................
+.................
+20
+Bảng 1.5 Bảng đặc tả use case Cập nhật cơ sở vật chất
+................................
+................................
+21
+Bả
+ng 1.6 Bảng đặc tả use case
+Quản lý bàn giao/thu hồi thiết bị
+................................
+..................
+22
+Bảng 1.7 Bảng đặc tả use case Thêm phòng ban
+................................
+................................
+...........
+26
+Bảng 1.8 Bảng đặc tả use case Cập nhật phòng ban
+................................
+................................
+......
+27
+Bảng 1.9 Bảng
+đặc tả use case Thêm luồng phê duyệt
+................................
+................................
+..
+30
+Bảng 1.10 Bảng đặc tả use case Cập nhật luồng phê duyệt
+................................
+...........................
+30
+Bảng 1.11 Bảng users
+................................
+................................
+................................
+....................
+3
+4
+Bảng 1.12 Bảng
+roles
+................................
+................................
+................................
+.....................
+35
+Bảng
+1.13 Bảng
+role_user
+................................
+................................
+................................
+.............
+36
+Bảng 1.14 Bảng
+sessions
+................................
+................................
+................................
+...............
+37
+Bảng 1.15 Bảng
+departments
+................................
+................................
+................................
+.........
+37
+Bảng 1.15 Bảng
+departments (Tiếp)
+................................
+................................
+..............................
+38
+Bảng 1.16 Bảng
+locations
+................................
+................................
+................................
+..............
+38
+Bảng 1.16 Bảng
+locations (Tiếp)
+................................
+................................
+................................
+...
+39
+Bảng 1.17 Bảng
+submission_categories
+................................
+................................
+........................
+40
+Bảng 1.18 Bảng
+submissions
+................................
+................................
+................................
+.........
+40
+Bảng 1.18 Bảng
+submissions (Tiếp)
+................................
+................................
+..............................
+41
+Bảng 1.19 Bảng
+submission_locations
+................................
+................................
+..........................
+42
+Bảng 1.20 Bảng
+submission_step_contents
+................................
+................................
+...................
+43
+Bảng 1.21 Bảng
+submission_attachments
+................................
+................................
+.....................
+44
+Bảng 1.22 Bảng
+approval_configs
+................................
+................................
+................................
+.
+45
+Bảng 1.23 Bảng
+approval_log
+................................
+................................
+................................
+.......
+46
+Bảng 1.23 Bảng
+approval_log (Tiếp)
+................................
+................................
+............................
+47
+
+=== Page 78 ===
+xi
+Bảng 1.24 Bảng
+submission_pre_approvals
+................................
+................................
+..................
+47
+Bảng 1.24 Bảng
+submi
+ssion_pre_approvals
+(Tiếp)
+................................
+................................
+.......
+48
+Bảng 1.25 Bảng
+submission_pre_approval_attachments
+................................
+..............................
+49
+Bảng 1.26
+Bảng assets
+................................
+................................
+................................
+..................
+50
+Bảng 1.27 Bảng
+asset_requests
+................................
+................................
+................................
+.....
+51
+Bảng 1.28 Bảng
+notifications
+................................
+................................
+................................
+........
+52
+Bảng 1.28 Bảng
+notifications (Tiếp)
+................................
+................................
+.............................
+53
+B
+ả
+ng 2.1 B
+ả
+ng mô t
+ả
+sơ đ
+ồ
+ki
+ế
+n trúc h
+ệ
+th
+ố
+ng
+................................
+................................
+..............
+55
+Bảng 2.2 Bảng danh sách API
+................................
+................................
+................................
+.......
+65
+
+=== Page 79 ===
+1
+CHƯƠNG
+1:
+KH
+Ả
+O SÁT VÀ PHÂN TÍCH
+Ứ
+NG D
+Ụ
+NG
+PHÊ DUY
+Ệ
+T T
+Ờ
+TRÌNH
+ĐI
+Ệ
+N T
+Ử
+1.1
+Bài toán
+phê duy
+ệ
+t t
+ờ
+trình
+đi
+ệ
+n t
+ử
+Trong thực tế của tổ chức có quy mô lớn nhỏ khác nhau thì việc tổ chức các chương trình,
+đề xuất phát triển các cơ s
+ở
+vật chất dù lớn hay bé đều phải thông qua các phòng ban tr
+ự
+c
+tiếp để xin và đề xuất
+từ nh
+ữ
+ng thực tr
+ạ
+ng trên có thể thấy được các hạn chế
+trong quy trình
+phê duyệt truyền thống:
+−
+Người phê duyệt phải liên tục in ấn để liên hệ người duyệt ký duyệt nếu gây khó khăn
+trong việc bảo quản trong lúc di chuyển giữa các phòng ban nếu nó có quá nhiều quy
+trình.
+−
+Người lập tờ trình luôn phải di
+chuyển qua nhiều phòng khác nhau nếu cần phê duyệt ở
+nhiều phòng ban khác nhau, nếu di chuyển qua các phòng có khoảng cách quá xa nhau
+thì có thể gây lãng phí thời gian gây ảnh hưởng đến nhiều công việc khác
+.
+−
+Khi xin phê duyệt phòng ban cần kiểm tra các để
+xuất và báo cáo hoàn toàn không thể
+ký duyệt
+ngày dẫn đến không thể hoàn toàn xác định được trạng thái của tờ trình đã
+được xem xét, ký duyệt hay ch
+ư
+a gây mơ hồ, mất thời gian cho người duyệt.
+−
+Tờ trình ở dạng vật lý nên cần không gian phù hợp
+lưu trữ
+tron
+g quá trình xem xét và
+báo cáo sau này, với khối lượng khổng lồ của các yêu cầu khác nhau dẫn đến có thể thất
+lạc và tổn h
+ạ
+i gây kh
+ó
+khăn cho việc thống kê sau này.
+−
+Với việc lư
+ạ
+trữ vật lý như vậy việc tìm kiếm sẽ hoàn toàn thủ công 100% g
+â
+y tốn thời
+gian
+và nhân công của tổ chức, khoảng thời gian thống kê vô tình bị thu hẹp.
+Từ thực tế đó, đề tài đồ án hướng đến phát triển
+dựa trên nhu cầu sử dụng
+một ứng dụng
+duyệt tờ trình
+điện tử phù hợp
+dành riêng cho các tổ chức lớn nhỏ khác nha
+u
+:
+−
+Tạo tờ trình nhanh c
+hóng.
+−
+Gửi trực tiếp đến các phòng ban và chờ xem xét duyệt.
+−
+Hoàn toàn theo dõi tự động được tờ đơn đã đến phòng ban nào để hoàn toàn có thể xử
+lý.
+
+=== Page 84 ===
+2
+−
+Nh
+ậ
+n được thông báo ngay lập tức khi tờ trình được duyệt, từ chối hoặc yêu cầu chỉnh
+sửa để kịp thời xử lý và
+hoàn thiện tờ trình.
+−
+Khi tờ trình được thống kê hoàn toàn có thể xem xét quản lý được các vật chất, thiết bị
+và địa điểm liên quan đến tờ trình
+.
+Ứng dụng này hướng đến một hệ th
+ố
+ng du
+yệt
+tờ trình nhanh, linh hoạt, giảm tối thiểu việc
+chiếm dụng không gian, hư hại các tài liệu quan trong
+, n
+ghiệp vụ linh hoạt
+hơn
+. Với đề tài
+đồ án hiện tại đang chú trọng vào các tờ trình trong các trường Đại học hiện tại.
+1.2
+Gi
+ả
+i
+pháp công ngh
+ệ
+phát tri
+ể
+n
+Đ
+ể
+phát tri
+ể
+n
+ứ
+ng d
+ụ
+ng phê duy
+ệ
+t t
+ờ
+trình tr
+ự
+c tuy
+ế
+n
+m
+ộ
+t cách hi
+ệ
+u qu
+ả
+, đáp
+ứ
+ng nhu c
+ầ
+u
+s
+ử
+d
+ụ
+ng th
+ự
+c t
+ế
+cũng như d
+ễ
+dàng m
+ở
+r
+ộ
+ng v
+ề
+sau, đ
+ề
+tài s
+ử
+d
+ụ
+ng
+các công ngh
+ệ
+hi
+ệ
+n đ
+ạ
+i
+phù h
+ợ
+p cho c
+ả
+phía khách hàng (client
+–
+ứ
+ng d
+ụ
+ng
+Android/IOS
+) và phía máy ch
+ủ
+(s
+erver
+–
+backend
+Laravel
+API).
+1.2
+.1
+Công ngh
+ệ
+thi
+ế
+t k
+ế
+g
+iao di
+ệ
+n
+ứ
+ng d
+ụ
+ng
+Ứ
+ng d
+ụ
+ng đư
+ợ
+c xây d
+ự
+ng
+linh ho
+ạ
+t cho c
+ả
+Android và IOS
+, v
+ớ
+i giao di
+ệ
+n ngư
+ờ
+i dùng đư
+ợ
+c
+phát tri
+ể
+n b
+ằ
+ng:
+−
+Ngôn ng
+ữ
+l
+ậ
+p trình
+Dart
+:
+Đây là ngôn ngữ hiện đại do Google phát triển, tối
+ưu cho phát
+triển giao diện (UI) và đa nền tảng. Dart sở hữu cú pháp dễ học, hiệu suất cao nhờ cơ
+chế biên dịch AOT & JIT, cùng tính năng an toàn bộ nhớ (Null Safety) giúp ứng dụng
+vận hành mượt mà và ổn định trên di động, web và máy tính để bàn.
+−
+Framewor
+k
+Flutter
+: Là b
+ộ
+công c
+ụ
+giao di
+ệ
+n (UI Toolkit) m
+ạ
+nh m
+ẽ
+do Google phát tri
+ể
+n,
+cho phép xây d
+ự
+ng các
+ứ
+ng d
+ụ
+ng đa n
+ề
+n t
+ả
+ng v
+ớ
+i hi
+ệ
+u su
+ấ
+t b
+ả
+n đ
+ị
+a cao t
+ừ
+m
+ộ
+t mã ngu
+ồ
+n
+duy nh
+ấ
+t. Flutter s
+ử
+d
+ụ
+ng h
+ệ
+th
+ố
+ng Widget phong phú, linh ho
+ạ
+t, d
+ễ
+tùy ch
+ỉ
+nh và h
+ỗ
+tr
+ợ
+cơ ch
+ế
+Hot Reload giúp tăng t
+ố
+c đ
+ộ
+phát tri
+ể
+n cũng như t
+ố
+i ưu hóa tr
+ả
+i nghi
+ệ
+m ngư
+ờ
+i
+dùng trên di đ
+ộ
+ng, web và máy tính đ
+ể
+bàn.
+
+=== Page 87 ===
+3
+1
+.
+2
+.2
+Công ngh
+ệ
+l
+ưu tr
+ữ
+d
+ữ
+li
+ệ
+u c
+ụ
+c b
+ộ
+1.2.2.1
+Ch
+ứ
+c năng c
+ủ
+a Hive trong
+ứ
+ng d
+ụ
+ng
+Trong hệ thống, Hive đóng vai trò quản lý các vùng
+dữ liệu phi cấu trúc và các dữ liệu trạng
+thái cần truy cập nhanh, cụ thể bao gồm:
+−
+Lưu token đăng nhập: Lưu trữ các chuỗi mã hóa bảo mật như AccessToken và
+RefreshToken sau khi người dùng xác thực thành công, giúp duy trì trạng thái đăng nhập
+(Session) giữ
+a các lần khởi động ứng dụng.
+−
+Lưu thông tin người dùng: Lưu trữ cục bộ các thông tin cơ bản của tài khoản hiện hành
+(như Họ tên, Email, Vai trò/Role, Ảnh đại diện) nhằm hiển thị ngay lập tức lên giao
+diện (UI) mà không cần đợi phản hồi từ API backend.
+−
+Lưu
+cấu hình ứng dụng (App Settings): Ghi nhớ các thiết lập tùy chỉnh của người dùng
+như ngôn ngữ hiển thị (Việt/Anh), chế độ giao diện (Light/Dark Mode), trạng thái bật/tắt
+thông báo.
+−
+Lưu dữ liệu tạm (Caching): Hỗ trợ lưu trữ tạm thời các phản hồi từ API hoặc
+các biểu
+mẫu dữ liệu (Form) chưa hoàn tất, giúp ứng dụng có thể hoạt động mượt mà hoặc hỗ
+trợ chế độ ngoại tuyến (Offline Mode) ở mức độ cơ bản.
+1.2.2.2
+Ưu đi
+ể
+m vư
+ợ
+t tr
+ộ
+i c
+ủ
+a Hive
+So với các giải pháp lưu trữ truyền thống khác trên Flutter (như SQLite, Sh
+ared Preferences),
+Hive sở hữu những thế mạnh cốt lõi:
+−
+Nhẹ và tốc độ thực thi nhanh vượt trội: Do được tối ưu bằng Dart thuần và không dựa
+trên các thư viện native cồng kềnh, Hive có tốc độ đọc/ghi (I/O) cực nhanh, gần như
+tương đương với bộ nhớ RAM, giúp
+giảm thiểu tối đa độ trễ trên giao diện người dùng.
+−
+Độ tương thích cao với Flutter: Được thiết kế chuyên biệt cho Flutter, Hive hỗ trợ lưu
+trữ trực tiếp các kiểu dữ liệu nguyên bản của Dart và cho phép định nghĩa các Adapter
+(TypeAdapter) để dễ dàng lưu tr
+ữ các đối tượng phức tạp (Custom Objects/Models).
+
+=== Page 89 ===
+4
+−
+Kiến trúc NoSQL (Không cần SQL): Loại bỏ hoàn toàn sự phức tạp của việc viết câu
+lệnh truy vấn SQL, quản lý sơ đồ bảng (Schema) hay thực hiện các thao tác Migration
+phức tạp. Dữ liệu được quản lý theo mô hì
+nh các "Box" (hộp chứa) tương tự như các
+file JSON.
+−
+Truy xuất dữ liệu cục bộ hiệu quả: Hỗ trợ cơ chế lập chỉ mục (Indexing) mạnh mẽ và
+khả năng lắng nghe sự thay đổi dữ liệu theo thời gian thực (Reactive và Stream
+-
+based),
+giúp UI tự động cập nhật ngay khi
+dữ liệu dưới local thay đổi.
+1.
+2
+.
+3
+Công ngh
+ệ
+Backend API và máy ch
+ủ
+1.2.3.1
+T
+ổ
+ng quan v
+ề
+Laravel Framework
+Laravel là một khung phát triển ứng dụng web (Web Framework) mã nguồn mở mạnh mẽ,
+viết bằng ngôn ngữ PHP và tuân thủ nghiêm ngặt mô hình kiến trúc MV
+C (Model
+-
+View
+-
+Controller) [4], [5]. Laravel được cộng đồng phát triển đánh giá cao nhờ việc cung cấp một
+cú pháp minh bạch, phong phú và hệ sinh thái công cụ hỗ trợ toàn diện.
+Khung phát triển này tích hợp sẵn trình ánh xạ dữ liệu quan hệ Eloquent ORM (Obj
+ect
+-
+Relational Mapping) giúp tối ưu hóa các thao tác truy vấn cơ sở dữ liệu, hệ thống quản lý
+phiên bản cơ sở dữ liệu (Migrations), bộ kiểm tra dữ liệu đầu vào (Validation) mạnh mẽ và
+công cụ dòng lệnh Artisan [4]. Nhờ đó, tốc độ phát triển phần mềm được đ
+ẩy nhanh đáng
+kể trong khi vẫn đảm bảo cấu trúc mã nguồn tường minh và dễ bảo trì.
+1.2.3.2
+Mô hình ki
+ế
+n trúc RESTful API
+REST (Representational State Transfer) là một phong cách kiến trúc phần mềm chuẩn hóa
+dựa trên giao thức HTTP để hướng dẫn việc trao đổ
+i dữ liệu giữa các thành phần trong hệ
+thống mạng [7]. Hệ thống API được thiết kế theo chuẩn RESTful sử dụng các phương thức
+HTTP (HTTP Methods) để định nghĩa rõ ràng các hành động tác động lên tài nguyên
+(Resources):
+−
+GET: Truy xuất và đọc thông tin tài ng
+uyên (ví dụ: lấy danh sách tờ trình).
+
+=== Page 91 ===
+5
+−
+POST: Khởi tạo một tài nguyên mới (ví dụ: tạo mới một tờ trình hoặc tài khoản).
+−
+PUT / PATCH: Cập nhật toàn bộ hoặc một phần dữ liệu của tài nguyên hiện có.
+−
+Hủy bỏ hoặc xóa
+bỏ hoàn toàn tài nguyên khỏi hệ thốn
+g.
+Kiến trúc RESTful API giúp phân tách độc lập hoàn toàn giữa tầng xử lý logic phía máy
+chủ (Backend) và tầng hiển thị giao diện phía ứng dụng di động Flutter (Frontend) [7]. Dữ
+liệu truyền tải giữa hai thực thể này được định dạng đồng nhất dưới dạng JSON
+(JavaScript
+Object Notation), cho phép ứng dụng di động gửi yêu cầu (Requests) và nhận phản hồi
+(Responses) một cách bất đồng bộ và mượt mà.
+1.2.3.3
+Vai trò c
+ủ
+a Laravel trong h
+ệ
+th
+ố
+ng
+Trong kiến trúc tổng thể, Laravel đóng vai trò là hạt nhân điều
+phối và xử lý toàn bộ logic
+nghiệp vụ (Business Logic) của hệ thống qua các phân hệ cốt lõi:
+−
+Xác thực (Authentication): Triển khai cơ chế xác thực an toàn qua mã thông báo
+(Sanctum/JWT), cấp phát Token hợp lệ cho Client và bảo vệ các điểm cuối API khỏi
+tru
+y cập trái phép [4].
+−
+Tạo tờ trình: Tiếp nhận biểu mẫu từ ứng dụng di động, kiểm tra dữ liệu đầu vào
+(Validation), xử lý lưu trữ tệp đính kèm và thiết lập trạng thái quy trình ban đầu.
+−
+Xử lý luồng duyệt (Workflow): Quản lý logic phân nhánh phức tạp (Phê duy
+ệt, từ chối,
+yêu cầu sửa đổi), tự động tính toán cấp duyệt tiếp theo và cập nhật trạng thái theo thời
+gian thực [10].
+−
+Phân quyền vai trò (RBAC): Quản lý sơ đồ tổ chức phòng ban và phân quyền dựa trên
+vai trò (Nhân viên, Trưởng phòng, Giám đốc) để giới hạn
+phạm vi trách nhiệm của tài
+khoản [4].
+−
+Quản lý cơ sở vật chất: Giám sát danh mục tài sản, trang thiết bị của cơ quan để cung
+cấp dữ liệu tham chiếu chính xác cho các tờ trình mua sắm hoặc sửa chữa.
+
+=== Page 92 ===
+6
+−
+Quản lý thông báo (Notifications): Tích hợp dịch vụ Fireba
+se Cloud Messaging (FCM)
+để tự động hóa việc đẩy thông báo (Push Notification) tức thì đến thiết bị di động của
+người dùng [8].
+1.2.3.4
+H
+ệ
+qu
+ả
+n tr
+ị
+cơ s
+ở
+d
+ữ
+li
+ệ
+u MySQL và môi trư
+ờ
+ng Laragon
+−
+Môi trường phát triển Laragon: Là môi trường phát triển cục bộ
+(Local Development)
+hiệu năng cao dành cho PHP và cơ sở dữ liệu; hỗ trợ tự động cấu hình máy chủ ảo
+giúp triển khai và thử nghiệm backend nhanh chóng, ổn định.
+−
+Hệ quản trị cơ sở dữ liệu MySQL: Là hệ quản trị cơ sở dữ liệu quan hệ (RDBMS)
+giúp lưu trữ bền v
+ững (Persistent Storage) và bảo đảm tính toàn vẹn dữ liệu [6]. Thông
+qua Laravel Migrations, MySQL đảm nhận lưu trữ:
+₊
+Dữ liệu người dùng: Thông tin tài khoản, thông tin định danh và mật khẩu đã băm
+mã hóa (Hashing), cùng bảng liên kết phân quyền vai trò (RB
+AC).
+₊
+Dữ liệu tờ trình: Tiêu đề, nội dung, phân loại, liên kết tệp đính kèm và trạng thái
+hiện tại của biểu mẫu.
+₊
+Luồng phê duyệt: Cấu hình quy trình duyệt, định nghĩa các bước ký duyệt bắt buộc
+theo từng loại tờ trình hoặc phòng ban [10].
+₊
+Lịch sử xử lý (Aud
+it Log): Nhật ký chi tiết về các hành động tác động lên tờ trình
+(Thời gian, người thực hiện, lý do từ chối) phục vụ công tác giám sát.
+₊
+Thông báo & Cơ sở vật chất: Trạng thái thông báo cá nhân (Đã đọc/Chưa đọc) và
+danh mục tài sản, trang thiết bị của cơ qu
+an.
+1.2.4 Công ngh
+ệ
+tích h
+ợ
+p
+Để hoàn thiện hệ sinh thái và tối ưu hóa quy trình vận hành luồng công việc, hệ thống tiến
+hành tích hợp các công nghệ bổ trợ, giải pháp truyền thông thời gian thực và các công cụ
+quản lý chất lượng phần mềm tiêu chuẩn
+1.2.4.1
+D
+ị
+ch v
+ụ
+thông báo đ
+ẩ
+y Firebase Cloud Messaging (FCM)
+Firebase Cloud Messaging (FCM) là một giải pháp truyền tải thông điệp đa nền tảng dựa
+trên nền tảng đám mây của Google, cho phép gửi thông báo và tin nhắn một cách tin cậy
+
+=== Page 94 ===
+7
+và miễn phí đến các thiết bị di
+động [8]. Trong ứng dụng Flutter, việc tích hợp FCM đóng
+vai trò cốt lõi trong việc duy trì tính tương tác thời gian thực (Real
+-
+time) giữa hệ thống và
+người dùng [1], [8]. Cụ thể, Laravel Backend đóng vai trò là một App Server, gửi yêu cầu
+đẩy thông báo q
+ua FCM API để tác động đến ứng dụng di động trong các ngữ cảnh nghiệp
+vụ [4], [8]:
+−
+Gửi thông báo khi có tờ trình mới: Ngay khi một nhân viên khởi tạo và gửi một tờ trình
+lên hệ thống, Laravel Backend sẽ xác định người phê duyệt ở cấp tiếp theo và kích hoạt
+FCM để gửi thông báo tức thời đến thiết bị của người duyệt đó, giúp họ nắm bắt thông
+tin mà không cần mở ứng dụng để kiểm tra thủ công.
+−
+Gửi thông báo khi duyệt, từ chối hoặc yêu cầu chỉnh sửa: Khi cấp quản lý đưa ra quyết
+định xử lý (Phê duyệt, Từ
+chối, hoặc Yêu cầu chỉnh sửa), hệ thống sẽ tự động gửi thông
+báo phản hồi ngược lại cho người tạo tờ trình để họ kịp thời theo dõi trạng thái hoặc
+thực hiện điều chỉnh theo yêu cầu [10].
+−
+Nhắc nhở người duyệt xử lý tờ trình: Hệ thống triển khai các tác vụ l
+ập lịch tự động
+(Cron
+-
+job) trên Laravel [4]. Nếu một tờ trình quá hạn xử lý theo quy định, hệ thống sẽ
+tự động kích hoạt thông báo nhắc nhở (Reminder Notification) qua FCM tới thiết bị của
+người duyệt để đảm bảo tiến độ công việc không bị tắc nghẽn.
+1.2.4.
+2
+Gi
+ả
+i pháp k
+ế
+t xu
+ấ
+t và xu
+ấ
+t b
+ả
+n tài li
+ệ
+u đ
+ị
+nh d
+ạ
+ng PDF
+Bên cạnh việc quản lý trực tuyến, nhu cầu lưu trữ và xử lý văn bản theo quy chuẩn hành
+chính truyền thống là bắt buộc trong môi trường doanh nghiệp. Hệ thống tích hợp chức
+năng chuyển đổi và cấu hình
+xuất file PDF trực tiếp từ dữ liệu hệ thống:
+−
+Xuất tờ trình ra file PDF: Chuyển đổi toàn bộ dữ liệu động của tờ trình (Thông tin người
+khởi tạo, nội dung đề xuất, danh mục cơ sở vật chất, lịch sử các cấp đã ký duyệt và ý
+kiến kèm theo) từ định dạng giao diệ
+n ứng dụng sang một file tài liệu PDF có cấu trúc
+chuẩn hóa, phông chữ đồng nhất và bố cục rõ ràng.
+
+=== Page 95 ===
+8
+−
+Phục vụ lưu trữ, in ấn và báo cáo hành chính: File PDF được tạo ra là định dạng tài liệu
+độc lập với nền tảng, bảo toàn nguyên vẹn định dạng khi chia sẻ. Đi
+ều này phục vụ trực
+tiếp cho công tác lưu trữ hồ sơ điện tử (Archiving), in ấn ra văn bản giấy khi cần thiết,
+và cung cấp các báo cáo hành chính chính xác cho các đợt kiểm toán nội bộ hoặc quyết
+toán của tổ chức.
+1.2.4.3
+Các công ngh
+ệ
+và công c
+ụ
+b
+ổ
+tr
+ợ
+h
+ệ
+th
+ố
+ng
+−
+Giao tiếp dữ liệu bằng định dạng JSON: Toàn bộ quá trình trao đổi thông tin giữa
+Flutter (Client) và Laravel (Server) tuân thủ kiến trúc RESTful API qua cấu trúc dữ
+liệu JSON [7]. JSON là định dạng văn bản nhẹ, dễ đọc và phân tích cú pháp, giúp tối
+ư
+u hóa băng thông mạng và tăng tốc độ xử lý trên thiết bị di động [1], [4].
+−
+Kiểm thử API bằng Postman: Sử dụng Postman để giả lập các yêu cầu từ Client (GET,
+POST, PUT, DELETE) nhằm kiểm thử độc lập các điểm cuối API (Endpoints) trước
+khi tích hợp [7]. Quá
+trình này giúp xác thực cấu trúc JSON phản hồi, kiểm tra các mã
+trạng thái HTTP và bảo đảm tính chính xác của logic nghiệp vụ.
+−
+Quản lý mã nguồn bằng Git và GitHub: Áp dụng hệ thống quản lý phiên bản phân tán
+Git và đồng bộ kho lưu trữ (Repository) lên GitH
+ub cho cả hai phân hệ Flutter và
+Laravel. Công cụ này giúp phân chia các nhánh tính năng độc lập (Branching), kiểm
+soát lịch sử thay đổi, tối ưu hóa quy trình hợp nhất (Merging) và giảm thiểu xung đột
+mã nguồn (Conflicts).
+1.3
+Mô hình hóa ch
+ứ
+c năng
+ứ
+ng d
+ụ
+n
+g
+phê duy
+ệ
+t
+đi
+ệ
+n t
+ử
+1.3.
+1
+Yêu c
+ầ
+u
+ứ
+ng d
+ụ
+ng
+phê duy
+ệ
+t t
+ờ
+trình
+1.3.1.1 Yêu cầu chức năng
+Đối với Người lập (Nhân viên):
+−
+Quản lý tài khoản: Đăng nhập hệ thống, đổi mật khẩu và nhận thông báo đẩy (FCM) về
+trạng thái tờ trình.
+−
+Quản lý tờ trình: Tạo mới tờ
+trình, chỉnh sửa thông tin tờ trình (khi chưa duyệt) và hủy
+tờ trình khi không còn nhu cầu.
+
+=== Page 98 ===
+9
+−
+Tra cứu & Theo dõi: Xem danh sách toàn bộ tờ trình cá nhân, xem chi tiết nội dung từng
+tờ trình và theo dõi trạng thái phê duyệt theo thời gian thực.
+−
+Tiện ích: Xem
+lịch sử sử dụng địa điểm để phục vụ việc lập tờ trình chính xác.
+Đối với Quản lý phòng ban:
+−
+Nghiệp vụ phê duyệt: Tiếp nhận, xem chi tiết và thực hiện phê duyệt hoặc từ chối các
+tờ trình thuộc thẩm quyền.
+−
+Quản lý tài sản (CSVC & Thiết bị): Thêm mới cơ sở
+vật chất; xác nhận bàn giao/thu hồi
+thiết bị và cập nhật trạng thái thiết bị.
+−
+Thống kê & Xuất bản: Thống kê số lượng tờ trình theo định kỳ và xuất file PDF tờ trình
+để lưu trữ hành chính.
+−
+Giám sát: Xem danh sách trả mượn thiết bị và lịch sử sử dụng địa điể
+m của phòng ban.
+−
+Hệ thống: Đăng nhập, đổi mật khẩu và nhận thông báo nhắc việc.
+Đối với Cán bộ phòng ban:
+−
+Hỗ trợ quản lý thiết bị: Thực hiện các thao tác kỹ thuật như xác nhận bàn giao, thu hồi
+và cập nhật trạng thái thiết bị thực tế.
+−
+Quản lý dữ liệu CSVC:
+Xem thông tin và cập nhật dữ liệu cơ sở vật chất của phòng ban.
+−
+Hành chính: Thực hiện thống kê tờ trình và hỗ trợ xuất file PDF tờ trình khi có yêu cầu.
+−
+Tiện ích: Đăng nhập, đổi mật khẩu, nhận thông báo và tra cứu lịch sử địa điểm.
+Đối với Quản trị viên (
+Admin Web):
+−
+Quản trị nhân sự: Thêm, xóa, chỉnh sửa thông tin người dùng và phân quyền truy cập
+hệ thống.
+−
+Quản trị tổ chức: Quản lý danh mục các phòng ban (thêm, sửa, xóa thông tin phòng ban).
+−
+Thiết lập quy trình: Cấu hình và chỉnh sửa luồng sơ duyệt (workf
+low) cho từng loại tờ
+trình khác nhau.
+−
+Quản lý tài sản tổng thể: Quản lý danh mục cơ sở vật chất toàn hệ thống.
+
+=== Page 99 ===
+10
+−
+Hệ thống: Đăng nhập, đổi mật khẩu và giám sát hoạt động chung qua thông báo và
+lịch sử địa điểm.
+1.3.1.2 Yêu cầu phi chức năng
+Bên cạnh các chức
+năng chính, hệ thống cần đảm bảo các yêu cầu phi chức năng để nâng
+cao trải nghiệm của người dùng và chất lượng vận hành:
+−
+Giao di
+ệ
+n: Thân thiện, tối ưu các tác vụ, d
+ễ
+thao tác cho người mới và chi tiết cho
+ngư
+ờ
+i cũ.
+−
+Hiệu năng: Phản hồi các thông tin
+của người dùng nhanh, dữ liệu đẩy về máy nhanh
+và không bị tắc nghẽn,
+−
+Phát triển trong tương lai: Kiến trúc mở dễ dàng cho sự
+phát triển các tính năng trong
+tương l
+a
+i, đem lại hi
+ệu qu
+ả
+ứng dụng tốt nhất.
+−
+Đ
+ồ
+ng bộ dữ liệu: Dữ
+liệu thay đổi giữa các
+thiết bị hoặc khi người dùng thay đổi thiết
+bị cần được xử lý rõ ràng.
+1
+.
+3
+.
+2
+Bi
+ể
+u đ
+ồ
+u
+se case t
+ổ
+ng quát
+Hình 1
+.1
+Usecase tổng quát
+
+=== Page 101 ===
+11
+1
+.
+3
+.
+3
+Phân rã bi
+ể
+u đ
+ồ
+usecase
+a. Phân rã Use Case qu
+ả
+n lý t
+ờ
+trình
+Hình
+1.2 Us
+e
+case quản lý tờ trình
+b. Phân rã Use Case phê duy
+ệ
+t t
+ờ
+trình
+Hình
+1.3 Usecase quản lý phê duyệt
+
+=== Page 103 ===
+12
+c. Phân rã Use Case qu
+ả
+n lý cơ s
+ở
+v
+ậ
+t ch
+ấ
+t
+Hình
+1.4
+Usecase quản lý CSVC
+Hình
+1
+.
+5
+Usecase quản lý bàn giao/thu hồi
+d. Phân rã Use Case qu
+ả
+n lý
+phòng ban
+Hình
+1.5 Usecase quản lý phòng ban
+
+=== Page 104 ===
+13
+e. Phân rã Use Case qu
+ả
+n lý lu
+ồ
+ng phê duy
+ệ
+t
+Hình
+1.6
+Usecase quản lý luồng phê duyệt
+f
+. Phân rã Use Case qu
+ả
+n lý
+danh sách
+Hình
+1.7
+Usecase quản lý danh sách
+g
+. Phân rã Use Case qu
+ả
+n lý
+ngư
+ờ
+i dùng
+Hình
+1.8 Usecase quản lý người dùng
+
+=== Page 105 ===
+14
+1
+.3
+.4
+Phân tích các ch
+ứ
+c năn
+g
+chính
+ứ
+ng d
+ụ
+ng
+phê duy
+ệ
+t t
+ờ
+trình
+1.3.4.
+1
+Ch
+ứ
+c năng phê duy
+ệ
+t t
+ờ
+trình
+a)
+Bi
+ể
+u đ
+ồ
+use case phê duy
+ệ
+t t
+ờ
+trình
+Hình 1.9
+Usecase quản lý phê duyệt
+b)
+B
+ẳ
+ng đ
+ặ
+c t
+ả
+phê duy
+ệ
+t t
+ờ
+trình
+Bảng 1.
+1
+Bảng đặc tả use case Duyệt tờ trình
+Mô tả
+Cho
+phép quản lý phòng ban duyệt tờ trình
+đang chờ xử
+lý
+Tác nhân
+Quản lý phòng ban
+Điều kiện kích hoạt
+Khi tác nhân nhấn vào nút
+nhấn nút duyệt tờ trình
+Điều kiện tiên quyết
+Đã đăng nhập, có quyền phê duyệt, tờ trình ở trạng thái
+chờ duyệt
+
+=== Page 107 ===
+15
+Luồng sự kiện chính
+1.
+Quản lý
+mở danh sách tờ trình chờ duyệt
+2.
+Chọn tờ trình cần xem xét
+3.
+Xem nội dung chi tiết
+4.
+Nhập nội dung ghi chú
+5.
+Chọn “Duyệt”
+6.
+Hệ th
+ố
+ng y
+ê
+u cầu xác nhận mật khẩu
+7.
+Nhập mật khẩu
+8.
+Hệ thống xác thực mật khẩu
+9.
+Hệ thống cập nhật trạng thái và gửi thông báo
+10.
+Hệ th
+ố
+ng thông báo thành công
+Luồng sự kiện ngoại
+lệ
+9a. Hệ th
+ố
+ng xác định mật khẩu sai
+9a1. Hệ thống yêu cầu nhập lại mật khẩu
+92. Hệ th
+ố
+ng quay lại bước 7
+Bảng 1.
+2
+Bảng đặc tả use case Từ
+c
+hối tờ trình
+Mô tả
+Quản lý từ chối tờ trình không đủ điều kiện phê duyệt
+Tác nhân
+Quản lý phòng ban
+Điều kiện kích hoạt
+Khi tác nhân nhấn vào nút
+nhấn nút từ chối
+Điều kiện tiên quyết
+Đã đăng nhập, có quyền phê duyệt, tờ trình ở trạng thái
+chờ duyệt
+Luồng sự kiện chính
+1.
+Quản lý mở danh sách tờ trình chờ duyệt
+2.
+Chọn tờ trình cần xem xét
+
+=== Page 108 ===
+16
+3.
+Xem nội dung chi tiết
+4.
+Nhập nội dung ghi chú
+5.
+Chọn “
+Từ chối
+”
+6.
+Hệ t
+h
+ố
+ng yếu cầu xác nhận mật khẩu
+7.
+Nhập mật khẩu
+8.
+Hệ thống xác thực mật khẩu
+9.
+Hệ thống cập nhật trạng thái và gửi thông báo
+10.
+Hệ th
+ố
+ng thông báo thành công
+Luồng sự kiện ngoại
+lệ
+9a. Hệ th
+ố
+ng xác định mật khẩu sai
+9a1. Hệ thống yêu cầu nhập lại mật khẩu
+92. Hệ th
+ố
+ng quay lại bước 7
+Bảng 1.
+3
+Bảng đặc tả use case Yêu cầu chỉnh sửa
+Mô tả
+Quản lý trả tờ trình về người lập để bổ sung/chỉnh sửa
+Tác nhân
+Quản lý phòng ban
+Điều kiện kích hoạt
+Khi tác nhân nhấn vào
+nút nhấn nút yêu cầu chỉnh sửa
+Điều kiện tiên quyết
+Đã đăng nhập, có quyền phê duyệt, tờ trình ở trạng thái
+chờ duyệt
+Luồng sự kiện chính
+1.
+Quản lý mở danh sách tờ trình chờ duyệt
+2.
+Chọn tờ trình cần xem xét
+3.
+Xem nội dung chi tiết
+4.
+Nhập nội dung ghi chú
+5.
+Chọn
+“
+Yêu cầu chỉnh sửa
+”
+6.
+Hệ th
+ố
+ng yếu cầu xác nhận mật khẩu
+
+=== Page 109 ===
+17
+7.
+Nhập mật khẩu
+8.
+Hệ thống xác thực mật khẩu
+9.
+Hệ thống cập nhật trạng thái và gửi thông báo
+10.
+Hệ th
+ố
+ng thông báo thành công
+Luồng sự kiện ngoại
+lệ
+5a. Ghi chú bị trống
+5a1. Hệ th
+ố
+ng yêu cầu nhập
+5a2.
+Quay lại bước 4
+9a. Hệ th
+ố
+ng xác định mật khẩu sai
+9a1. Hệ thống yêu cầu nhập lại mật khẩu
+92. Hệ th
+ố
+ng quay lại bước 7
+
+=== Page 110 ===
+18
+c)
+Bi
+ể
+u đ
+ồ
+ho
+ạ
+t đ
+ộ
+ng phê duy
+ệ
+t t
+ờ
+trình
+Hình
+1.10
+Biểu đồ hoạt động phê duyệt tờ trình
+
+=== Page 111 ===
+19
+d)
+Bi
+ể
+u đ
+ồ
+tu
+ầ
+n t
+ự
+phê duy
+ệ
+t t
+ờ
+trình
+Hình
+1.11
+Biểu đồ tuần tự phê duyệt tờ
+trình
+
+=== Page 112 ===
+20
+1.3.4.
+2
+Ch
+ứ
+c năng
+qu
+ả
+n lý CSVC
+a)
+Bi
+ể
+u đ
+ồ
+usecase qu
+ả
+n lý CSVC
+Hình
+1.12 Usecase quản lý CSVC
+Hình
+1.13 Usecase quản lý bàn giao/thu hồi
+b)
+B
+ẳ
+ng đ
+ặ
+c t
+ả
+qu
+ả
+n lý CSVC
+Bảng 1
+.4
+Bảng đặc tả use case Thêm CSVC
+Mô
+tả
+Hệ thống quản trị nhập thông tin và thêm mới cơ sở vật
+chất vào hệ thống
+Tác nhân
+Hệ thống quản trị
+
+=== Page 113 ===
+21
+Điều kiện kích hoạt
+Khi tác nhân nhấn nút tạo
+cơ sở vật chất
+Điều kiện tiên quyết
+Đã đăng nhập, có quyền quản trị CSVC
+Luồng sự kiện chính
+1.
+Người dùng nhấn vào nút
+“Thêm CSVC”
+2.
+Hệ thống hiện thị form tạo cơ sở vật chất mới
+3.
+Nhập: tên, loại, số lượng, trạng thái, phòng ban quản lý
+4.
+Người dùng nhấn nút
+lưu
+5.
+Hệ thống kiểm tra hợp lệ
+6.
+Hệ thống lưu sở vật chất mới vào cơ sở d
+ữ
+liệu
+Luồng sự kiện ngoại
+lệ
+4a. Hệ thống kiểm tra thông tin phát hiện thiếu thông tin,
+sai kiểu dữ liệu
+Thông báo lỗi và quay lại bước 3
+Bảng 1.
+5
+Bảng đặc tả use case C
+ập nhật
+cơ sở vật chất
+Mô t
+ả
+Hệ thống quản trị chỉnh sửa thông tin CSVC đã có
+trong
+hệ thống
+Tác nhân
+Hệ thống quản trị
+Điều kiện kích hoạt
+Khi tác nhân nhấn nút
+cập nhật
+Điều kiện tiên quyết
+Đã đăng nhập, có quyền quản trị, CSVC đã tồn tại trong
+hệ thống
+Luồng sự kiện chính
+1.
+Hệ thống qu
+ản
+trị
+nhấn vào nút chỉnh sửa
+2.
+Hệ thống hiện thị form
+thông tin hiện tại của
+cơ sở vật
+chất
+
+=== Page 114 ===
+22
+3.
+Hệ thống quản trị chỉnh sửa thông tin cần thay đổi
+4.
+Hệ thống quản trị xác nhận lưu
+5.
+Hệ thống kiểm tra và cập nhật vào database
+6.
+Hệ thống ghi log thay đổi và thông báo thành
+công
+Luồng sự kiện ngoại
+lệ
+4a, Hệ thống kiểm tra có trường thông tin bị thiếu hoặc
+không đúng định d
+ạ
+ng
+4a1 thông báo cập nhật bị lỗi và quay lại bước 2
+Bảng 1.
+6
+Bảng đặc tả use case
+Quản lý bàn giao/thu hồi thiết bị
+Mô tả
+Xử lý quy trình bàn
+giao thiết bị cho phòng ban và thu hồi
+khi cần
+Tác nhân
+Cán bộ phòng ban
+Điều kiện kích hoạt
+Khi tác nhân nhấn nút cập nhật
+Điều kiện tiên quyết
+Đã đăng nhập, có quyền quản trị, CSVC đã tồn tại trong
+hệ thống
+Luồng chính
+—
+Bàn
+giao
+1.
+Admin tạo đơn bàn giao, chọn thiết bị và phòng ban
+2.
+Cán bộ phòng ban xác nhận tiếp nhận
+3.
+Hệ thống cập nhật trạng thái thiết bị → "Đang sử dụng"
+4.
+Hệ thống ghi nhận lịch sử bàn giao
+Luồng chính
+—
+Thu
+hồi
+1.
+Admin tạo đơn thu hồi, chọn thiết bị cần thu hồi
+2.
+Cán bộ
+phòng ban xác nhận bàn trả
+3.
+Hệ thống cập nhật trạng thái thiết bị → "Sẵn sàng" hoặc
+"Bảo trì"
+
+=== Page 115 ===
+23
+4.
+Hệ thống ghi nhận lịch sử thu hồi
+Luồng sự kiện ngoại
+lệ
+3a. Thiết bị đang ở tr
+ạ
+ng thái bảo trì hỏng
+3a1. Thông báo không thể bàn giao.
+c)
+Bi
+ể
+u đ
+ồ
+ho
+ạ
+t đ
+ộ
+ng
+qu
+ả
+n lý CSVC
+Hình
+1.14
+Biểu đồ hoạt động Usecase thêm
+CSVC
+Hình
+1.15
+Biểu đồ hoạt động Usecase thu hồi
+CSVC
+Hình
+1.16
+Biểu đồ hoạt động Usecase cập
+nhật CSVC
+Hình
+1.17
+Biểu đồ hoạt động Usecase thu
+hồi/bàn giao CSVC
+
+=== Page 116 ===
+24
+d)
+Bi
+ể
+u đ
+ồ
+tu
+ầ
+n t
+ự
+qu
+ả
+n lý CSVC
+Hình
+1.18
+Biểu đồ tuần tự usecase thêm CSVC
+Hình
+1.19
+Biểu đồ tuần tự usecase cập nhật CSVC
+
+=== Page 117 ===
+25
+Hình
+1.20
+Biểu đồ tuần tự usecase trả thiết bị
+Hình
+1.21
+Biểu đồ
+tuần tự usecase bàn giao/thu hồi CSVC
+
+=== Page 118 ===
+26
+1.3.4.
+4
+Ch
+ứ
+c năng qu
+ả
+n lý phòng ban
+e)
+Bi
+ể
+u đ
+ồ
+use case qu
+ả
+n lý phòng ban
+Hình
+1.22
+Usecase quản lý phòng ban
+f)
+B
+ẳ
+ng đ
+ặ
+c t
+ả
+qu
+ả
+n lý phòng ban
+Bảng 1.
+7
+Bảng đặc tả use case Thêm phòng ban
+Mô tả
+Cho phép admin thêm phòng ban mới trong tổ chức
+Tác nhân
+Admin
+Điều kiện kích hoạt
+Khi tác nhân nhấn nút phòng ban mới
+Điều kiện tiên quyết
+Đã đăng nhập vào tài khoản admin
+Luồng sự kiện chính
+1.
+Người dùng nhấn vào nút tạo phòng ban mới
+2.
+Hệ thống hiện thị form tạo phòng ban mới
+3.
+Người dùng điền đầy đủ thông tin phòng ban mới
+4.
+Người dùng nhấn nút tạo mới
+5.
+Hệ thống kiểm tra hợp lệ
+6.
+Hệ thống lưu sở vật chất mới vào cơ sở
+d
+ữ
+liệu
+Luồng sự kiện ngoại lệ
+4a. Hệ thống kiểm tra thông tin phát hiện thiếu thông tin, sai
+kiểu dữ liệu
+Thông báo lỗi và quay lại bước 3
+
+=== Page 119 ===
+27
+Bảng 1.
+8
+Bảng đặc tả use case C
+ập nhật
+phòng ban
+Mô tả
+Cho phép admin cập nhật phòng ban trong tổ chức
+Tác nhân
+Admin
+Điều kiện kích hoạt
+Khi tác nhân nhấn nút
+cập nhật
+phòng ban
+Điều kiện tiên quyết
+Đã đăng nhập vào tài khoản admin
+Luồng sự kiện chính
+1.
+Người dùng nhấn vào nút chỉnh sửa
+2.
+Hệ thống
+hiện thị form chỉnh sửa phòng ban
+3.
+Người dùng nhấn nút cập nhật
+4.
+Hệ thống kiểm tra thông tin cập nhật của đơn
+5.
+Hệ thống hiện thị thông báo xác nhận cập nhật
+6.
+Người dùng nhấn nút xác nhận
+7.
+Hệ thống cập nhật thông tin lên cơ sở dữ liệu
+Luồng sự kiện ngoại lệ
+4a, Hệ thống kiểm tra có trường thông tin bị thiếu hoặc không
+đúng định dang
+4a1 thông báo cập nhật bị lỗi và quay lại bước 2
+6a. Người dùng nhấn nút hủy
+6a1. Hệ thống quay lại bước 2
+
+=== Page 120 ===
+28
+g)
+Bi
+ể
+u đ
+ồ
+ho
+ạ
+t đ
+ộ
+ng qu
+ả
+n lý phòng ban
+Hình
+1.23
+Biểu đồ hoạt động
+thêm
+phòng ban
+Hình
+1.24
+Biểu đồ hoạt động
+cập nhật
+phòng
+ban
+h)
+Bi
+ể
+u đ
+ồ
+tu
+ầ
+n t
+ự
+qu
+ả
+n lý phòng ban
+Hình
+1.25
+Biểu đồ tuần tự thêm phòng ban
+
+=== Page 121 ===
+29
+Hình
+1.26
+Biểu đồ tuần tự
+cập nhật
+phòng ban
+1.3.4
+.5
+Ch
+ứ
+c năng qu
+ả
+n lý lu
+ồ
+ng
+phê
+duy
+ệ
+t
+i)
+Bi
+ể
+u đ
+ồ
+use case qu
+ả
+n lý lu
+ồ
+ng
+phê
+duy
+ệ
+t
+Hình
+1.27
+Biểu đồ use case quản lý luồng phê duyệt
+
+=== Page 122 ===
+30
+j)
+B
+ẳ
+ng đ
+ặ
+c t
+ả
+qu
+ả
+n lý lu
+ồ
+ng
+phê
+duy
+ệ
+t
+Bảng 1.
+9
+Bảng đặc tả use case Thêm luồng
+phê
+duyệt
+Mô tả
+Cho phép admin thêm
+luồng duyệt m
+ới
+Tác nhân
+Admin
+Điều kiện kích hoạt
+Khi tác nhân nhấn nút
+thêm
+luồng duyệt mới
+Điều kiện tiên quyết
+Đã đăng nhập vào tài khoản admin
+Luồng sự kiện chính
+1.
+Người dùng nhấn vào nút tạo luồng duyệt mới
+2.
+Hệ thống hiện thị form tạo luồng duyệt mới
+3.
+Người dùng điền đầy đủ thông tin sở vật chất mới
+4.
+Người dùng nhấn nút tạo mới
+5.
+Hệ thống kiểm tra hợp lệ
+6.
+Hệ thống lưu
+phòng ban
+mới vào cơ sở
+d
+ữ
+liệu
+Luồng sự kiện ngoại lệ
+4a. Hệ thống kiểm tra thông tin phát hiện thiếu thông tin, sai
+kiểu dữ liệu
+Thông báo lỗi và quay lại bước 3
+Bảng 1.
+10
+Bảng đặc tả use case C
+ập nhật
+luồng
+phê
+duyệt
+Mô tả
+Cho phép admin cập nhật luồng duyệt mới
+Tác nhân
+Admin
+Điều kiện kích hoạt
+Khi tác nhân nhấn nút xóa luồng duyệt mới
+Điều kiện tiên quyết
+Đã đăng nhập vào tài khoản admin
+Luồng sự kiện chính
+1.
+Người dùng nhấn vào nút chỉnh sửa
+2.
+Hệ thống hiện thị form chỉnh sửa luồng duyệt
+3.
+Người dùng nhấn nút cập nhật
+4.
+Hệ thống kiểm tra thông tin cập nhật của đơn
+
+=== Page 123 ===
+31
+5.
+Hệ thống hiện thị
+thông báo xác nhận cập nhật
+6.
+Người dùng nhấn nút xác nhận
+7.
+Hệ thống cập nhật thông tin lên cơ sở dữ liệu
+Luồng sự kiện ngoại lệ
+4a, Hệ thống kiểm tra có trường thông tin bị thiếu hoặc không
+đúng định dang
+4a1 thông báo cập nhật bị lỗi và quay lại bước 2
+k)
+Bi
+ể
+u đ
+ồ
+ho
+ạ
+t đ
+ộ
+ng qu
+ả
+n lý lu
+ồ
+ng
+phê
+duy
+ệ
+t
+Hình
+1.28
+Biểu đồ hoạt động thêm luồng phê
+duyệt
+Hình
+1.29
+Biểu đồ hoạt động cập nhậtluồng
+phê duyệt
+
+=== Page 124 ===
+32
+l)
+Bi
+ể
+u đ
+ồ
+tu
+ầ
+n t
+ự
+qu
+ả
+n lý lu
+ồ
+ng
+phê
+duy
+ệ
+t
+Hình
+1.30
+Biểu đồ tuần tự
+thêm
+luồng phê duyệt
+Hình
+1.3
+0
+Biểu đồ tuần tự
+cập nhật
+luồng phê duyệt
+
+=== Page 125 ===
+33
+1
+.4
+Mô hình d
+ữ
+li
+ệ
+u
+ứ
+ng d
+ụ
+ng
+phê duy
+ệ
+t t
+ờ
+trình
+Hình
+1.3
+1
+Sơ đồ database
+Mô hình dữ liệu quan hệ MySQL bao gồm 17 bảng: users, roles, role
+U
+ser, departments,
+locations,
+submissions, submission
+C
+ategories, submission
+L
+ocations,
+submission
+A
+ttachments, submission
+P
+re
+A
+pprovals, submission
+P
+re
+A
+pproval
+A
+ttachments,
+submission
+St
+ep
+C
+ontents, approval
+C
+onfigs, approval
+L
+og, assets, asset
+L
+equests,
+notifications.
+
+=== Page 127 ===
+34
+1.4.1. Nhóm b
+ả
+ng
+ngư
+ờ
+i dùng và phân quy
+ề
+n
+a)
+B
+ả
+ng users
+Mục đích: lưu thông tin tài khoản người dùng của hệ thống, phục vụ đăng nhập, phân quyền
+và liên kết với phòng ban.
+Bảng 1.1
+1
+Bảng users
+Thuộc tính
+Kiểu dữ liệu
+Ràng buộc
+Mô tả
+id
+bigint unsigned
+PK, auto
+increment
+Khóa chính
+username
+varchar
+not null, unique
+Tên đăng nhập
+password
+varchar
+not null
+Mật khẩu đã mã hóa
+full_name
+varchar
+not null
+Họ và tên
+email
+varchar
+not null, unique
+Email người dùng
+fcm_token
+varchar
+nullable
+Token FCM để nhận
+thông báo
+đẩy
+department_id
+bigint unsigned
+not null, FK
+Phòng ban của người dùng
+status
+varchar
+default active
+Trạng thái tài khoản
+is_first_login
+boolean
+default false
+Cờ xác định đăng nhập lần đầu
+Signature_path
+varchar
+nullable
+Lưu chữ kí của
+tài khoản
+Is_first_login
+TINYINT
+default
+‘0’
+Lưu trang thái lần đầu đăng
+nhập của tài khoản
+created_at
+timestamp
+nullable
+Thời điểm tạo
+updated_at
+timestamp
+nullable
+Thời điểm cập nhật
+−
+PK: id
+−
+FK: department_id → departments.id
+
+=== Page 129 ===
+35
+−
+Quan hệ:
+₊
+belongsTo Department
+₊
+belongsToMany Role qua role_user
+₊
+hasMany Submission qua creator_id
+₊
+hasMany Notification qua user_id
+b)
+B
+ả
+ng roles
+Mục đích: lưu danh mục vai trò của hệ thống
+.
+Bảng 1.1
+2
+Bảng
+roles
+Thuộc tính
+Kiểu dữ liệu
+Ràng buộc
+Mô tả
+Thuộc tính
+id
+bigint unsigned
+PK, auto
+increment
+Khóa chính
+id
+role_name
+varchar
+not null
+Tên vai trò
+role_name
+description
+varchar
+nullable
+Mô tả vai trò
+description
+created_at
+timestamp
+nullable
+Thời điểm tạo
+created_at
+updated_at
+timestamp
+nullable
+Thời
+điểm cập
+nhật
+updated_at
+−
+PK: id
+−
+Quan hệ:
+₊
+belongsToMany User qua role_user
+₊
+hasMany ApprovalConfig qua target_role_id
+c)
+B
+ả
+ng role_user
+Mục đích: bảng trung gian nhiều
+-
+nhiều giữa người dùng và vai trò.
+
+=== Page 130 ===
+36
+Bảng 1.1
+3
+Bảng
+role_user
+Thuộc tính
+Kiểu dữ liệu
+Ràng buộc
+Mô tả
+id
+bigint unsigned
+PK, auto increment
+Khóa chính
+user_id
+bigint unsigned
+not null, FK, cascade delete
+Người dùng
+role_id
+bigint unsigned
+not null, FK, cascade delete
+Vai trò
+created_at
+timestamp
+nullable
+Thời điểm tạo
+updated_at
+timestamp
+nullable
+Thời điểm cập
+nhật
+−
+PK: id
+−
+FK:
+₊
+user_id → users.id
+₊
+role_id → roles.id
+−
+Quan hệ:
+₊
+Nhiều người dùng có thể có nhiều vai trò
+₊
+Một vai trò có thể gán cho nhiều người dùng
+m)
+B
+ả
+ng sessions
+Mục đích: lưu thông tin phiên đăng nhập của hệ
+thống Laravel.
+
+=== Page 131 ===
+37
+Bảng 1.1
+4
+Bảng
+sessions
+Thuộc tính
+Kiểu dữ liệu
+Ràng buộc
+Mô tả
+id
+varchar
+PK
+Mã session
+user_id
+bigint unsigned
+nullable, indexed
+Liên kết logic đến người dùng
+ip_address
+varchar(45)
+nullable
+Địa chỉ IP
+user_agent
+text
+nullable
+Thông tin trình duyệt/thiết bị
+payload
+longtext
+not null
+Dữ liệu session
+last_activity
+int
+indexed
+Thời điểm hoạt động cuối
+−
+PK: id
+−
+FK: không khai báo FK vật lý trong migration
+−
+Quan hệ: liên kết logic với users thông qua user_id
+1.4.2. Nhóm
+b
+ả
+ng phòng ban
+a)
+B
+ả
+ng departments
+Mục đích: lưu thông tin các phòng ban, đơn vị trong hệ thống.
+Bảng 1.1
+5
+Bảng
+departments
+Thuộc tính
+Kiểu dữ liệu
+Ràng buộc
+Mô tả
+id
+bigint unsigned
+PK, auto increment
+Khóa chính
+dept_name
+varchar
+not null
+Tên phòng
+ban
+location_desc
+varchar
+nullable
+Mô tả vị trí phòng ban
+parent_dept_id
+bigint unsigned
+nullable, FK
+Phòng ban cha
+
+=== Page 133 ===
+38
+Bảng 1.15 Bảng
+departments
+(Tiếp)
+Thuộc tính
+Kiểu dữ liệu
+Ràng buộc
+Mô tả
+status
+varchar
+default active
+Trạng thái phòng ban
+created_at
+timestamp
+nullable
+Thời điểm tạo
+updated_at
+timestamp
+nullable
+Thời điểm cập nhật
+−
+PK: id
+−
+FK: parent_dept_id → departments.id
+−
+Quan hệ:
+−
+belongsTo Department qua parent_dept_id
+₊
+hasMany Department qua children
+₊
+hasMany User
+₊
+hasMany Asset
+₊
+hasMany Location
+₊
+hasMany SubmissionStepContent
+b)
+B
+ả
+ng locations
+Mục đích: lưu thông tin địa điểm/phòng sử dụng trong hệ thống.
+Bảng 1.
+16
+Bảng
+locations
+Thuộc tính
+Kiểu dữ liệu
+Ràng buộc
+Mô tả
+id
+bigint unsigned
+PK, auto increment
+Khóa chính
+location_code
+varchar(20)
+nullable, unique
+Mã địa điểm
+
+=== Page 134 ===
+39
+Bảng 1.16 Bảng
+locations
+(Tiếp)
+Thuộc tính
+Kiểu dữ liệu
+Ràng buộc
+Mô tả
+department_id
+bigint unsigned
+not null, FK
+Phòng ban quản lý địa điểm
+location_name
+varchar
+not null
+Tên địa điểm
+address
+varchar
+nullable
+Địa chỉ/ghi chú vị trí
+capacity
+varchar
+not null
+Sức chứa
+status
+varchar
+not null
+Trạng thái địa điểm
+created_at
+timestamp
+nullable
+Thời điểm tạo
+updated_at
+timestamp
+nullable
+Thời điểm cập nhật
+−
+PK: id
+−
+FK:
+department_id → departments.id
+−
+Quan hệ:
+₊
+belongsTo Department
+₊
+hasMany SubmissionLocation
+1.4.3. Nhóm b
+ả
+ng t
+ờ
+trình
+a)
+B
+ả
+ng submission_categories
+Mục đích: lưu danh mục loại tờ trình.
+
+=== Page 136 ===
+40
+Bảng 1.1
+7
+Bảng
+submission_categories
+Thuộc tính
+Kiểu dữ liệu
+Ràng
+buộc
+Mô tả
+id
+bigint unsigned
+PK, auto increment
+Khóa chính
+category_name
+varchar
+not null
+Tên loại tờ trình
+description
+varchar
+nullable
+Mô tả loại tờ trình
+apply_for_dept_id
+bigint unsigned
+nullable, FK
+Phòng ban áp dụng quy trình
+status
+varchar
+default active
+Trạng thái danh mục
+created_at
+timestamp
+nullable
+Thời điểm tạo
+updated_at
+timestamp
+nullable
+Thời điểm cập nhật
+−
+PK: id
+−
+FK: apply_for_dept_id → departments.id
+−
+Quan hệ:
+₊
+hasMany ApprovalConfig
+₊
+belongsTo Department qua
+apply_for_dept_id
+b)
+B
+ả
+ng submissions
+Mục đích: lưu thông tin chính của tờ trình.
+Bảng 1.18 Bảng
+submissions
+Thuộc tính
+Kiểu dữ liệu
+Ràng buộc
+Mô tả
+id
+bigint unsigned
+PK, auto increment
+Khóa chính
+title
+varchar
+not null
+Tiêu đề tờ trình
+
+=== Page 137 ===
+41
+Bảng 1.18
+Bảng
+submissions
+(Tiếp)
+Thuộc tính
+Kiểu dữ liệu
+Ràng buộc
+Mô tả
+content
+text
+not null
+Nội dung tờ trình
+creator_id
+bigint unsigned
+not null, FK
+Người tạo tờ trình
+status
+varchar
+not null
+Trạng thái tờ trình
+start_time
+timestamp
+nullable
+Thời gian
+bắt đầu
+end_time
+timestamp
+nullable
+Thời gian kết thúc
+created_at
+timestamp
+nullable
+Thời điểm tạo
+updated_at
+timestamp
+nullable
+Thời điểm cập nhật
+−
+PK: id
+−
+FK:creator_id → users.id
+−
+category_id → submission_categories.id
+−
+Quan hệ:
+₊
+belongsTo User qua
+creator_id
+₊
+belongsTo SubmissionCategory
+₊
+hasMany AssetRequest
+₊
+hasMany ApprovalLog
+₊
+hasMany SubmissionPreApproval
+₊
+hasMany SubmissionStepContent
+₊
+hasMany SubmissionLocation
+
+=== Page 138 ===
+42
+c)
+B
+ả
+ng submission_locations
+Mục đích: bảng trung gian giữa tờ trình và địa điểm,
+dùng để gán thời gian sử dụng địa
+điểm theo từng tờ trình.
+Bảng 1.1
+9
+Bảng
+submission_locations
+Thuộc tính
+Kiểu dữ liệu
+Ràng buộc
+Mô tả
+id
+bigint unsigned
+PK, auto increment
+Khóa chính
+submission_id
+bigint unsigned
+not null, FK
+Tờ trình
+location_id
+bigint unsigned
+not null, FK
+Địa điểm
+start_time
+timestamp
+nullable
+Giờ bắt đầu sử dụng
+end_time
+timestamp
+nullable
+Giờ kết thúc sử dụng
+created_at
+timestamp
+nullable
+Thời điểm tạo
+updated_at
+timestamp
+nullable
+Thời điểm cập nhật
+−
+PK: id
+−
+FK:
+₊
+submission_id → submissions.id
+₊
+location_id → locations.id
+−
+Quan hệ:
+₊
+belongsTo Submission
+₊
+belongsTo Location
+d)
+B
+ả
+ng submission_step_contents
+Mục đích: lưu nội dung từng bước xử lý của một tờ trình theo phòng ban.
+
+=== Page 139 ===
+43
+Bảng 1.
+20
+Bảng
+submission_step_contents
+Thuộc tính
+Kiểu dữ liệu
+Ràng buộc
+Mô tả
+id
+bigint unsigned
+PK, auto increment
+Khóa chính
+submission_id
+bigint unsigned
+not null, FK
+Tờ trình
+step_order
+int
+not null
+Thứ tự bước xử lý
+target_dept_id
+bigint unsigned
+not
+null, FK
+Phòng ban xử lý bước này
+content_text
+text
+not null
+Nội dung yêu cầu/ý kiến
+created_at
+timestamp
+nullable
+Thời điểm tạo
+updated_at
+timestamp
+nullable
+Thời điểm cập nhật
+−
+PK: id
+−
+FK:
+₊
+submission_id → submissions.id
+₊
+target_dept_id →
+departments.id
+−
+Quan hệ:
+₊
+belongsTo Submission
+₊
+belongsTo Department
+₊
+hasMany ApprovalLog
+₊
+hasMany SubmissionPreApproval
+
+=== Page 140 ===
+44
+e) B
+ả
+ng
+submission_attachments
+Mục đích: lưu file đính kèm của tờ trình.
+Bảng 1.
+2
+1 Bảng
+submission_attachments
+Thuộc tính
+Kiểu dữ liệu
+Ràng buộc
+Mô tả
+id
+bigint unsigned
+PK, auto increment
+Khóa chính
+submission_id
+bigint unsigned
+not null, FK, cascade delete
+Tờ trình
+file_path
+varchar
+not null
+Đường dẫn file
+file_name
+varchar
+not null
+Tên file
+file_size
+bigint unsigned
+nullable
+Dung lượng file
+file_type
+varchar(10)
+nullable
+Định dạng file
+created_at
+timestamp
+nullable
+Thời điểm tạo
+updated_at
+timestamp
+nullable
+Thời điểm cập nhật
+−
+PK: id
+−
+FK: submission_id → submissions.id
+−
+Quan hệ: belongsTo Submission
+
+=== Page 141 ===
+45
+1.4.4. Nhóm
+b
+ả
+ng phê duy
+ệ
+t
+a)
+B
+ả
+ng approval_configs
+Mục đích: cấu hình luồng phê duyệt theo từng loại tờ trình.
+Bảng 1.
+22
+Bảng
+approval_configs
+Thuộc tính
+Kiểu dữ liệu
+Ràng buộc
+Mô tả
+id
+bigint unsigned
+PK, auto increment
+Khóa chính
+category_id
+bigint
+unsigned
+not null, FK
+Loại tờ trình áp
+dụng
+step_order
+int
+not null
+Thứ tự bước duyệt
+target_role_id
+bigint unsigned
+not null, FK
+Vai trò được phép
+duyệt
+target_dept_id
+bigint unsigned
+nullable, FK
+Phòng ban duyệt
+apply_for_dept_id
+bigint
+unsigned
+nullable, FK
+Phòng ban áp dụng
+created_at
+timestamp
+nullable
+Thời điểm tạo
+updated_at
+timestamp
+nullable
+Thời điểm cập nhật
+−
+PK: id
+−
+FK:
+
+=== Page 143 ===
+46
+₊
+category_id → submission_categories.id
+₊
+target_role_id → roles.id
+₊
+target_dept_id → departments.id
+₊
+apply_for_de
+pt_id → departments.id
+−
+Quan hệ:
+₊
+belongsTo SubmissionCategory
+₊
+belongsTo Role qua target_role_id
+₊
+belongsTo Department qua target_dept_id
+b)
+B
+ả
+ng approval_log
+Mục đích: lưu lịch sử duyệt của từng tờ trình.
+Bảng 1.
+23
+Bảng
+approval_log
+Thuộc tính
+Kiểu dữ
+liệu
+Ràng buộc
+Mô tả
+id
+bigint unsigned
+PK, auto increment
+Khóa chính
+submission_id
+bigint unsigned
+not null, FK, cascade
+delete
+Tờ trình
+step_content_id
+bigint unsigned
+nullable, FK, nullOnDelete
+Bước xử lý tương
+ứng
+approver_id
+bigint
+unsigned
+not null, FK
+Người duyệt
+action
+varchar
+not null
+Hành động duyệt
+comment
+text
+nullable
+Ghi chú/ý kiến
+
+=== Page 144 ===
+47
+Bảng 1.23 Bảng
+approval_log
+(Tiếp)
+Thuộc tính
+Kiểu dữ liệu
+Ràng buộc
+Mô tả
+created_at
+timestamp
+nullable
+Thời điểm tạo
+updated_at
+timestamp
+nullable
+Thời điểm cập nhật
+−
+PK: id
+−
+FK:
+₊
+submission_id → submissions.id
+₊
+step_content_id → submission_step_contents.id
+₊
+approver_id → users.id
+−
+Quan hệ:
+₊
+belongsTo Submission
+₊
+belongsTo User qua approver_id
+₊
+belongsTo
+SubmissionStepContent
+c) B
+ả
+ng
+submission_pre_approvals
+Mục đích: lưu luồng ký nháy hoặc phản hồi trước khi bước vào phê duyệt chính thức.
+Bảng 1
+.24
+Bảng
+submission_pre_approvals
+Thuộc tính
+Kiểu dữ liệu
+Ràng buộc
+Mô tả
+id
+bigint unsigned
+PK, auto
+increment
+Khóa chính
+submission_id
+bigint unsigned
+not null, FK, cascade
+delete
+Tờ trình
+
+=== Page 145 ===
+48
+Bảng 1.24 Bảng
+submission_pre_approvals
+(Tiếp)
+Thuộc tính
+Kiểu dữ liệu
+Ràng buộc
+Mô tả
+step_content_id
+bigint unsigned
+not null, FK, cascade
+delete
+Bước xử lý
+staff_id
+bigint unsigned
+not null, FK
+Cán bộ/phòng ban ký
+nháy
+action
+varchar(30)
+not null
+Hành động ký nháy
+comment
+text
+nullable
+Ghi chú
+created_at
+timestamp
+nullable
+Thời điểm tạo
+updated_at
+timestamp
+nullable
+Thời điểm cập nhật
+−
+PK: id
+−
+FK
+:
+₊
+submission_id → submissions.id
+₊
+step_content_id → submission_step_contents.id
+₊
+staff_id → users.id
+−
+Quan hệ:
+₊
+belongsTo Submission
+₊
+belongsTo SubmissionStepContent
+₊
+belongsTo User qua staff_id
+₊
+hasMany
+SubmissionPreApprovalAttachment
+
+=== Page 146 ===
+49
+d)
+B
+ả
+ng
+submission_pre_approval_attachments
+Mục đích:
+Lưu các file mà can bộ gửi tham khảo và sửa đổi tờ trình.
+Bảng 1.
+25
+Bảng
+submission_pre_approval_attachments
+Thuộc tính
+Kiểu dữ liệu
+Ràng buộc
+Mô tả
+id
+bigint
+unsigned
+PK, auto increment
+Khóa chính
+pre_approval_id
+bigint unsigned
+not null, FK, cascade delete
+Bản ghi ký nháy
+file_path
+varchar
+not null
+Đường dẫn file
+file_name
+varchar
+not null
+Tên file
+file_size
+bigint unsigned
+nullable
+Dung lượng file
+file_type
+varchar(20)
+nullable
+Định dạng file
+created_at
+timestamp
+nullable
+Thời điểm tạo
+updated_at
+timestamp
+nullable
+Thời điểm cập
+nhật
+−
+PK: id
+−
+FK: pre_approval_id → submission_pre_approvals.id
+−
+Quan hệ: belongsTo
+SubmissionPreApproval
+1.4.5. Nhóm b
+ả
+ng cơ s
+ở
+v
+ậ
+t ch
+ấ
+t
+a)
+B
+ả
+ng assets
+Mục đích: lưu danh mục tài sản, vật tư của các phòng ban.
+
+=== Page 148 ===
+50
+Bảng 1.26
+Bảng assets
+Thuộc tính
+Kiểu dữ liệu
+Ràng buộc
+Mô tả
+id
+bigint unsigned
+PK, auto increment
+Khóa chính
+department_id
+bigint unsigned
+not null, FK
+Phòng ban quản lý tài
+sản
+asset_name
+varchar
+not null
+Tên tài sản
+asset_code
+varchar
+not null
+Mã tài sản
+status
+varchar
+not null
+Trạng thái tài sản
+unit
+varchar
+not null
+Đơn vị tính
+type
+Enum
+(consumable,
+returnable)
+default returnable
+Loại tài sản
+created_at
+timestamp
+nullable
+Thời điểm tạo
+updated_at
+timestamp
+nullable
+Thời điểm cập nhật
+−
+PK: id
+−
+FK: department_id → departments.id
+−
+Quan hệ:
+₊
+belongsTo Department
+₊
+hasOne/hasMany
+AssetRequest qua asset_id
+b)
+B
+ả
+ng asset_requests
+Mục đích: lưu yêu cầu mượn, bàn giao và trả tài sản theo từng tờ trình.
+
+=== Page 149 ===
+51
+Bảng 1.
+27
+Bảng
+asset_requests
+Thuộc tính
+Kiểu dữ liệu
+Ràng buộc
+Mô tả
+id
+bigint unsigned
+PK, auto increment
+Khóa chính
+submission_id
+bigint unsigned
+not null, FK
+Tờ trình liên quan
+asset_id
+bigint unsigned
+not null, FK
+Tài sản/vật tư
+borrower_id
+bigint unsigned
+not null, FK
+Người mượn
+handler_id
+bigint unsigned
+nullable, FK
+Người xử lý/bàn
+giao
+expected_borrow_date
+timestamp
+not null
+Ngày dự kiến nhận
+borrow_date
+timestamp
+nullable
+Ngày thực nhận
+expected_return_date
+timestamp
+nullable
+Ngày dự kiến trả
+actual_return_date
+timestamp
+nullable
+Ngày trả thực tế
+note
+varchar
+nullable
+Ghi chú
+status
+varchar
+default pending
+Trạng thái mượn
+trả
+created_at
+timestamp
+nullable
+Thời điểm tạo
+updated_at
+timestamp
+nullable
+Thời điểm cập nhật
+−
+PK: id
+−
+FK:
+
+=== Page 150 ===
+52
+₊
+submission_id → submissions.id
+₊
+asset_id → assets.id
+₊
+borrower_id → users.id
+₊
+handler_id →
+users.id
+−
+Quan hệ:
+₊
+belongsTo Submission
+₊
+belongsTo Asset
+₊
+belongsTo User qua borrower_id
+₊
+belongsTo User qua handler_id
+1.4.6. Nhóm b
+ả
+ng thông báo
+B
+ả
+ng notifications
+Mục đích: lưu thông báo hệ thống gửi cho người dùng.
+Bảng 1.
+28
+Bảng
+notifications
+Thuộc
+tính
+Kiểu dữ liệu
+Ràng buộc
+Mô tả
+id
+bigint unsigned
+PK, auto increment
+Khóa chính
+type
+varchar
+default info
+Loại thông báo
+user_id
+bigint unsigned
+not null, FK
+Người nhận thông
+báo
+submission_id
+bigint unsigned
+nullable
+Tờ trình liên quan
+title
+varchar
+not null
+Tiêu đề thông báo
+
+=== Page 152 ===
+53
+message
+text
+not null
+Nội dung thông báo
+Bảng 1.28 Bảng
+notifications
+(Tiếp)
+Thuộc tính
+Kiểu dữ liệu
+Ràng buộc
+Mô tả
+is_read
+boolean
+default false
+Trạng thái đã đọc
+created_at
+timestamp
+nullable
+Thời điểm tạo
+updated_at
+timestamp
+nullable
+Thời điểm cập nhật
+−
+PK: id
+−
+FK:user_id → users.id
+−
+Quan hệ:
+₊
+belongsTo User
+₊
+submission_id là liên kết logic tới submissions nhưng migration hiện tại chưa ràng
+buộc FK vật lý
+
+=== Page 153 ===
+54
+C
+HƯƠNG 2
+:
+THI
+Ế
+T K
+Ế
+Ứ
+NG D
+Ụ
+NG
+PHÊ DUY
+Ệ
+T T
+Ờ
+TRÌNH
+ĐI
+Ệ
+N T
+Ử
+2
+.1
+Thi
+ế
+t k
+ế
+h
+ệ
+th
+ố
+ng
+t
+ổ
+ng th
+ể
+2
+.1
+.1
+Mô hình
+t
+ổ
+ng quan
+h
+ệ
+th
+ố
+ng
+Hệ thống được xây dựng theo kiến trúc phân tầng với các thành phần tương tác chặt chẽ
+sau:
+−
+Ứng dụng di động Flutter (Client Layer): Sử dụng ngôn ngữ Dart [3] và framework
+Flutter [1],
+[2] để xây dựng giao diện người dùng, quản lý trạng thái (State), tiếp nhận
+tương tác và hiển thị thông báo.
+−
+Backend Laravel API (Application Layer): Trung tâm xử lý logic nghiệp vụ chạy trên
+nền tảng PHP [5] và Laravel [4]; tiếp nhận và phản hồi các yêu c
+ầu từ phía client
+thông qua hệ thống RESTful API bảo mật.
+−
+Cơ sở dữ liệu MySQL (Data Layer): Hệ quản trị cơ sở dữ liệu quan hệ [6], chịu trách
+nhiệm lưu trữ bền vững, tổ chức chặt chẽ và bảo đảm tính toàn vẹn cho toàn bộ thực
+thể dữ liệu của hệ thống.
+−
+Fireb
+ase Cloud Messaging (FCM): Thành phần trung gian chịu trách nhiệm định tuyến
+và truyền tải thông báo đẩy (Push Notification) theo thời gian thực từ máy chủ Laravel
+đến thiết bị di động [8].
+−
+Dịch vụ xuất PDF: Tích hợp trực tiếp tại backend để biên dịch các
+biểu mẫu (Blade
+template) thành tệp PDF chuẩn, giúp tối ưu hóa hiệu năng và tiết kiệm tài nguyên xử
+lý cho thiết bị di động.
+
+=== Page 157 ===
+55
+2
+.1.2
+Sơ đ
+ồ
+ki
+ế
+n trúc h
+ệ
+th
+ố
+ng
+Hình
+2.1
+Sơ đồ
+kiến trúc hệ thống
+Mô tả các thành phần và cách giao tiếp của kiến trúc hệ thống
+B
+ả
+ng 2.1
+B
+ả
+ng mô t
+ả
+sơ đ
+ồ
+ki
+ế
+n trúc h
+ệ
+th
+ố
+ng
+Thành phần
+Vai trò
+Giao tiếp
+Ứng dụng di động
+Flutter
+Giao diện người dùng cuối. Gửi các
+yêu cầu request lên server yêu cầu
+tạo, xử lý và gửi dữ liệu tờ trình.
+Giao tiếp qua giao thức HTTP
+(RESTful API), nhận
+và giải mã
+chuỗi định dạng JSON để cập
+nhật trạng thái giao diện; đăng
+ký nhận gói tin từ nền tảng đám
+mây.
+Backend Laravel
+API
+Nhận các yêu cầu từ mobile, xử lý
+các nghiệp vụ của hệ thống (xác
+thực, phê duyệt), kết nối cơ sở dữ
+liệu và điều phối các dịch
+vụ tích
+hợp.
+Sử dụng các bộ điều hướng, bộ
+lọc phân quyền và xử lý nghiệp
+vụ để xây dựng hệ thống REST
+API; tương tác trực tiếp với cơ
+sở dữ liệu thông qua lớp ánh xạ
+đối tượng.
+
+=== Page 159 ===
+56
+Cơ sở dữ liệu
+MySQL
+L
+ưu trữ toàn bộ dữ liệu quan hệ bền
+vững của người dùng:
+tài khoản,
+luồng tờ trình, danh mục cơ sở vật
+chất, biểu mẫu và lịch sử duyệt.
+Giao tiếp trực tiếp với backend
+máy chủ thông qua các câu lệnh
+truy vấn cấu trúc, đảm bảo tính
+toàn vẹn dữ liệu bằng cơ chế
+quản lý giao dịch (Transaction).
+Firebase
+Cloud
+Messaging
+Kênh truyền tải thông báo đẩy trung
+gian giữa máy chủ backend và thiết
+bị di động của người dùng theo thời
+gian thực.
+Tiếp nhận yêu cầu gửi thông báo
+từ Laravel dưới dạng mảng cấu
+trúc dữ liệu chuẩn qua chứng chỉ
+bảo mật, sau đó tự động đẩy
+tín
+hiệu xuống thiết bị đích.
+Dịch vụ xuất PDF
+Chức năng kết xuất đồ họa mẫu biểu
+tờ trình dạng Server
+-
+side, hỗ trợ in
+ấn và lưu trữ hành chính.
+Tích hợp bộ thư viện chuyển đổi
+mã nguồn ngay tại máy chủ để
+biên dịch trực tiếp giao diện mẫu
+biểu
+thành file tài liệu chuẩn, trả
+về URL để client mở trực tuyến.
+2
+.2
+Thi
+ế
+t k
+ế
+giao di
+ệ
+n ngư
+ờ
+i dùng
+2
+.2.1 Nguyên t
+ắ
+c thi
+ế
+t k
+ế
+giao di
+ệ
+n
+Để tối ưu hóa trải nghiệm và hạn chế sai sót khi phê duyệt đơn từ, vật tư [10], giao diện
+ứng dụng Flutter tuân thủ các n
+guyên tắc cốt lõi sau:
+−
+Đơn giản và trực quan: Loại bỏ chi tiết phức tạp, tập trung vào nội dung tờ trình. Sử
+dụng biểu tượng quen thuộc và nhãn chữ ngắn gọn [1].
+−
+Bố cục thống nhất: Đồng bộ cấu trúc về khoảng cách (Padding), cỡ chữ (Typography)
+và kiểu dáng
+bo góc của các thẻ Card trên mọi màn hình [2].
+−
+Tối ưu di động: Kích thước nút bấm và trường nhập liệu tối thiểu 48 x 48 dp; bố trí phím
+chức năng chính trong "vùng ngón cái" (Thumb Zone) để dễ thao tác một tay [1].
+
+=== Page 162 ===
+57
+−
+Màu sắc & Trạng thái: Phối màu độ tương
+phản cao để hiển thị rõ ràng [2]. Tiến độ tờ
+trình (Chờ duyệt, Đã duyệt, Từ chối, Sửa đổi) được phân biệt tức thì bằng các nhãn màu
+(Tags/Badges) riêng biệt [10].
+−
+Phân quyền vai trò: Giao diện tự động thay đổi theo tài khoản. Nhân viên chỉ theo dõi
+đơn cá
+nhân; cấp quản lý hiển thị thêm các nút phê duyệt đặc thù.
+−
+Định danh nút hành động: Các phím quyết định nghiệp vụ được tách màu trực quan để
+tránh bấm nhầm [10]:
+₊
+Phê duyệt: Màu xanh lục (kèm dấu tích).
+₊
+Từ chối: Màu đỏ.
+₊
+Yêu cầu chỉnh sửa: Màu
+cam/vàng đất.
+2.2.2
+M
+ộ
+t s
+ố
+giao di
+ệ
+n c
+ủ
+a
+ứ
+ng d
+ụ
+ng
+Dưới đây là một số màn hình được thiết kế cho một số chức năng
+tiêu biểu
+bao gồm các
+chức năng:
+quản lý phê duy
+ệ
+t, quản lý cơ sở vật chất, quản lý, theo d
+õ
+i trạng thái tờ trình,
+xuất file PDF. Các giao diện
+được thiết kê theo nguyên tắc đơn giản, dễ nhìn, thao tác cơ
+bản ph
+ù
+hợp với người dùng mới.
+
+=== Page 164 ===
+58
+Hình 2.
+2
+Giao diện đăng nhập
+Hình 2.
+3
+Giao diện trang chủ.
+Hình 2
+.
+2
+là giao diện đăng nhập của ứng dụng cho mọi loại tài khoản, khi và chỉ
+t
+ài
+khoản
+đăng nh
+ập
+mới có thể vào được giao diện trang chủ
+Hình 2.
+3
+Là giao diện màn hình trang chủ b
+a
+o g
+ồ
+m số tờ trình của tài khoản số tờ
+trình đang
+chờ và bị từ chối bao
+gồm các button cơ b
+ả
+n của các cập phân quyền khác nhau và các
+ho
+ạt
+động gần đây của tài khoản
+
+=== Page 165 ===
+59
+Hình 2.
+4
+Giao diện danh sách tờ trình của người dùng
+Hinh 2.
+4
+là màn
+h
+ình
+danh sách các tờ trình đang chờ đã được duyệt và đã bị từ chối có ở
+tất cả
+các cấp phân quyền của ứng dụng
+Hình
+2.
+5
+Giao diện tạo tờ trình
+Hình 2.
+5
+Là màn hình soạn tờ trình với các thông tin cơ bản chọn lư
+ồ
+ng duyệt phù hợp và
+các vật dụng liên quan đến tờ trình.
+
+=== Page 166 ===
+60
+Hình
+2.
+6
+Giao diện theo dõi trạng thái tờ trình
+Hình 2.
+6
+l
+à giao diện th
+ể
+hiện trang th
+ái
+duyệt của tờ trình đã được duyệt chư
+a
+đãng ở bước
+nào
+,
+phòng b
+an
+nào
+
+=== Page 167 ===
+61
+Hình
+2.
+7
+Giao diện danh sách tờ trình chờ duyệt.
+Hình 2.
+7
+Là giao diện gồm danh sách các tờ trình đang chờ duyệt tại phòng ban đó
+,
+khi tờ
+trình được kiểm tra và kí thì có nó sẽ được lưu v
+à
+o lịch sử duyệt và chuyển sang phòng ban
+tiếp theo .
+
+=== Page 168 ===
+62
+Hình
+2.
+8
+Giao diện phê duyệt tờ trình
+Hình 2.
+8
+dây là giao diện chi tiết kí của người dùng giúp người duyệt có thể xem được
+phòng trước đó kí là phòng nào, cán bộ phòng đã kiểm tra các thông tin và để lại k
+í
+nháy
+hay chưa rồi quản lý phòng ban sẽ duyệt tờ trình để chuyển đến phòng tiếp theo
+
+=== Page 169 ===
+63
+Hình 2.
+9
+Giao diện quản lý CSVC
+Hình 2.
+10
+Giao diện thông báo.
+Hình 2.
+9
+là danh sách thể hiện t
+ổ
+ng hợp các vật dụng của tổ chức hiện tại
+Hình 2.
+10
+Là giao diện danh sách thông báo của người d
+ùng
+thể hiện được thông báo nào
+chư
+a
+đọc và đã đọc
+
+=== Page 170 ===
+64
+Hình 2.
+11
+Giao diện xuất PDF
+Hình 2.
+11
+là giao diện xuất file PDF của ứng dụng
+, giúp người dùng có thể biết file đã
+đến giai đoạn nào
+2
+.3
+Thi
+ế
+t k
+ế
+API
+2
+.3.1
+Nguyên t
+ắ
+c thi
+ế
+t k
+ế
+API
+Hệ thống tuân thủ các nguyên tắc thiết kế nghiêm ngặt nhằm đảm bảo hiệu năng và bảo mật
+khi kết nối ứng dụng Flutter và backend Laravel.
+−
+RESTful API & JSON: Định vị tài nguyên qua URI, giao tiếp bằng phương thức HTTP
+tiêu chuẩn
+(GET, POST, PUT, DELETE) và định dạng dữ liệu JSON đồng nhất.
+−
+Xác thực Token & RBAC: Dùng Bearer Token xác thực trạng thái stateless. Middleware
+server trích xuất vai trò từ Token để phân quyền hành động.
+−
+Mã HTTP & Xử lý lỗi: Phản hồi kết quả bằng mã HTTP
+tiêu chuẩn. Đóng gói lỗi dạng
+JSON kèm thông báo chi tiết để client bắt ngoại lệ và hiển thị UI.
+
+=== Page 174 ===
+65
+−
+Validation (Kiểm dữ liệu): Lọc dữ liệu qua Form Request để ngăn lỗi và SQL Injection;
+lập tức trả mã 422 nếu dữ liệu không hợp lệ.
+2.3.2. Danh sách các
+nhóm API chính
+Bảng 2.2 Bảng danh sách API
+Nhóm
+API
+API tiêu biểu
+Phương
+thức
+Mô tả
+Xác thực
+POST /api/login
+POST
+Xác thực tài khoản người dùng
+thông qua mã token đầu vào.
+POST /api/logout
+POST
+Hủy bỏ token bảo mật hiện tại
+thông qua
+middleware Sanctum.
+POST /api/change
+-
+password
+POST
+Cập nhật mật khẩu mới dựa trên
+xác thực mật khẩu cũ.
+GET /api/account
+GET
+Trả về hồ sơ cá nhân, vai trò và
+phòng ban của tài khoản.
+POST
+/api/notifications/save
+-
+fcm
+-
+token
+POST
+Đăng ký và cập nhật mã định danh
+thiết bị cho thông báo đẩy.
+Tờ trình
+GET /api/v1/submissions
+GET
+Lấy danh sách tờ trình, hỗ trợ tìm
+kiếm, phân trang và lọc.
+POST /api/v1/submissions
+POST
+Tạo mới tờ trình và tự
+động thiết
+lập luồng phê duyệt.
+GET
+/api/v1/submissions/{id}/detail
+GET
+Xem chi tiết nội dung, bước duyệt
+và lịch sử xử lý tờ trình.
+PUT /api/v1/submissions/{id}
+PUT
+Cập nhật, chỉnh sửa nội dung tờ
+trình sau khi đã tạo.
+POST
+/api/v1/submissions/{id}/submit
+POST
+Gửi tờ trình lên hệ thống phê
+duyệt (endpoint độc lập).
+GET
+/api/v1/submissions/{id}/detail
+GET
+Theo dõi trạng thái tờ trình qua
+trường status trong response.
+
+=== Page 176 ===
+66
+Phê duyệt
+GET
+/api/v1/submissions?type=pendi
+ng_approval
+G
+Lấy danh sách tờ trình đang chờ
+phê duyệt theo vai trò.
+POST
+/api/v1/approver/submission/{id
+}/decide [approved]
+POST
+Chấp thuận tờ trình và chuyển
+sang bước duyệt tiếp theo.
+POST
+/api/v1/approver/submission/{id
+}/decide [rejected]
+POST
+Từ chối phê duyệt và dừng luồng
+xử lý tờ trình.
+POST
+/api/v1/approver/submission/{id
+}/pre
+-
+sign [revision]
+POST
+Trả lại tờ trình, yêu cầu người tạo
+hiệu chỉnh dữ liệu.
+GET
+/api/v1/submissions/{id}/history
+GET
+Lấy lịch sử phê duyệt riêng biệt
+theo từng tờ trình.
+CSVC
+GET /api/asset/list
+GET
+Hiển thị danh mục vật tư, thiết bị
+hiện có trong kho.
+POST /api/asset/create
+POST
+Khởi tạo và nhập mới tài sản vào
+cơ sở dữ liệu.
+PUT /api/asset/update/{id}
+PUT
+Hiệu chỉnh thông tin thuộc tính
+của vật tư, thiết bị.
+GET /api/asset/detail/{id}
+GET
+Hiển thị thông số kỹ thuật, trạng
+thái và lịch sử thiết bị.
+PUT /api/asset/update/{id}
+PUT
+Cập nhật trạng thái thiết bị qua
+tham số stat
+us truyền vào.
+POST
+/api/v1/borrow/{id}/confirm
+-
+receive | return
+POST
+Xác nhận mượn hoặc hoàn trả tài
+sản của nhân sự.
+Phòng
+ban
+GET /api/department/list
+GET
+Trả về danh sách phòng ban kèm
+tính năng tìm kiếm.
+
+=== Page 177 ===
+67
+POST
+/api/department/create
+POST
+Khởi tạo một đơn vị tổ chức mới
+trên hệ thống.
+PUT /api/department/{id}
+PUT
+Cập nhật thông tin hành chính của
+phòng ban chỉ định.
+GET /api/department/{id}/detail
+GET
+Xem chi tiết phòng ban kèm nhân
+sự và tài sản quản lý.
+Luồng
+phê duyệt
+GET /api/workflow/list
+GET
+Liệt kê danh mục tờ trình và luồng
+quy trình tương ứng.
+POST /api/workflow/store
+POST
+Thiết lập luồng phê duyệt mới
+gồm các bước và cấp quản lý.
+PUT /api/workflow/update/{id}
+PUT
+Thay đổi, sắp xếp lại các
+bước
+trong luồng quy trình có sẵn.
+GET /api/workflow/detail/{id}
+GET
+Xem cấu trúc chi tiết tất cả bước
+cấu hình của luồng.
+Thông
+báo
+GET /api/notifications/list
+GET
+Truy vấn danh sách thông báo cá
+nhân theo user_id.
+POST|PATCH
+/api/notifications/{id}/read |
+read_all/{user_id}
+PATCH
+Đánh dấu đã đọc một hoặc toàn bộ
+thông báo cùng lúc.
+POST /api/send
+-
+test
+-
+notification
+POST
+Kiểm tra cấu hình và gửi nhận
+thông báo đẩy qua Firebase.
+Thống kê
+& PDF
+GET
+/api/v1/user/statistics
+GET
+Tổng hợp số lượng tờ trình theo
+trạng thái của từng cá nhân.
+GET /api/department/{id}/detail
+GET
+Thống kê tổng hợp tài sản, nhân
+sự theo phòng ban.
+GET
+/api/v1/submissions/{id}/pdf
+GET
+Chuyển đổi tờ trình và xuất thành
+file định dạng PDF.
+
+=== Page 178 ===
+68
+C
+HƯƠNG 3
+:
+TRI
+Ể
+N KHAI
+Ứ
+NG D
+Ụ
+NG
+PHÊ DUY
+Ệ
+T T
+Ờ
+TRÌNH
+Đ
+I
+Ệ
+N T
+Ử
+3
+.1
+Tri
+ể
+n khai
+ứ
+ng d
+ụ
+ng
+3.1.1 Môi trư
+ờ
+ng phát tri
+ể
+n
+Mobile App (Flutter):
+−
+Ngôn ngữ lập trình: Dart.
+−
+Framework: Flutter SDK.
+−
+Môi trường phát triển tích hợp: Android
+Studio hoặc Visual Studio Code.
+−
+Thiết bị kiểm thử: Thiết bị thực Android/iOS hoặc emulator.
+−
+Thư viện bên thứ ba: dio/http để gọi API; hive_ce để lưu trữ dữ liệu cục bộ;
+firebase_messaging để nhận thông báo đẩy; provider/getx/bloc để quản lý trạng thái;
+pdf
+/printing để xuất tài liệu PDF.
+Backend (API Server):
+−
+Ngôn ngữ lập trình: PHP.
+−
+Framework: Laravel.
+−
+Cơ sở dữ liệu: MySQL.
+−
+Môi trường phát triển: Laragon.
+−
+Công cụ quản lý thư viện: Composer.
+−
+Quản lý mã nguồn: Git và GitHub.
+−
+Công cụ kiểm thử API: Postman được
+sử dụng để kiểm thử các endpoint RESTful API.
+Dịch vụ tích hợp:
+−
+Firebase Cloud Messaging (FCM): Gửi thông báo đẩy từ backend tới ứng dụng.
+−
+PDF Export: Xuất tài liệu PDF phục vụ báo cáo.
+−
+JSON RESTful API: Chuẩn giao tiếp giữa ứng dụng di động và máy chủ.
+
+=== Page 182 ===
+69
+3
+.1.2
+C
+ấ
+u trúc mã ngu
+ồ
+n
+a. C
+ấ
+u trúc mã ngu
+ồ
+n Flutter
+Hình 3.1 Cấu trúc mã nguồn Flutter
+−
+core/: Các thành phần dùng chung toàn ứng dụng như hằng số, đa ngôn ngữ, điều hướng,
+cài đặt và theme.
+−
+data/: Tầng dữ liệu gồm gọi API, lưu trữ cục bộ, model và
+repository.
+−
+domain/: Tầng nghiệp vụ gồm entities, interface repository và các usecase.
+−
+ui/: Giao diện người dùng, chia theo từng tính năng như đăng nhập, lịch, phòng ban,
+thông báo, phiếu đề xuất, tài sản, tìm kiếm, v.v.
+
+=== Page 184 ===
+70
+b. C
+ấ
+u trúc mã ngu
+ồ
+n Laravel
+H
+ì
+nh
+3.2 Cấu trúc
+Laravel
+−
+app/Http/Controllers/: Chứa các controller xử lý yêu cầu và trả về phản hồi API.
+−
+app/Http/Requests/: Chứa các class validate dữ liệu đầu vào.
+−
+app/Models/: Chứa các model định nghĩa cấu trúc và tương tác với cơ sở dữ liệu
+MySQL.
+−
+conf
+ig/: Các file cấu hình ứng dụng như database, firebase, mail, auth, v.v.
+−
+routes/api.php: Định nghĩa các tuyến đường cho RESTful API.
+−
+database/: Chứa migration và seeder để khởi tạo cơ sở dữ liệu.
+
+=== Page 185 ===
+71
+3
+.1.3
+Lu
+ồ
+ng ho
+ạ
+t đ
+ộ
+ng cơ b
+ả
+n
+a. Lu
+ồ
+ng t
+ạ
+o và g
+ử
+i t
+ờ
+trình
+−
+Nhập liệu từ Client: Người dùng điền thông tin biểu mẫu trên Flutter bao gồm tiêu đề,
+loại quy trình, phòng ban phối hợp, danh mục vật tư và file đính kèm rồi nhấn gửi.
+−
+Xử lý tại Server: Server thực hiện kiểm tra tính hợp lệ của dữ liệu đầu vào (vali
+date),
+sau đó tiến hành lưu dữ liệu đồng thời vào nhiều bảng trong cơ sở dữ liệu dưới một cơ
+chế giao dịch chung (Database Transaction) để tránh lỗi dữ liệu.
+−
+Kích hoạt thông báo: Hệ thống tự động xác định chặng duyệt đầu tiên và kích hoạt
+Firebase để bắn t
+hông báo đẩy (Push Notification) đến thiết bị của người duyệt chặng
+đó.
+−
+Xử lý sửa đổi: Trường hợp tờ trình từng bị từ chối và người dùng hiệu chỉnh lại, hệ
+thống sẽ xóa cấu trúc luồng duyệt cũ, cập nhật thông tin mới, dựng lại chuỗi các bước
+duyệt và tái k
+ích hoạt luồng từ đầu
+.
+b. Lu
+ồ
+ng phê duy
+ệ
+t t
+ờ
+trình
+−
+Hiển thị trực quan: Khi người duyệt mở danh sách chờ và chọn xem chi tiết một tờ trình,
+hệ thống tự động ráp nối dữ liệu để dựng lên trục thời gian thể hiện chính xác chặng
+duyệt hiện tại.
+−
+Tầng 1
+-
+Ký
+nháy: Cán bộ chức năng (vai trò soát xét) tiến hành kiểm tra thông tin và
+thực hiện ký nháy trước, hoặc có thể trả về yêu cầu chỉnh sửa nếu phát hiện sai sót.
+−
+Tầng 2
+-
+Duyệt chính: Cấp quản lý quyết định sẽ nhập mật khẩu để xác nhận Duyệt hoặc
+Từ chối tờ t
+rình sau khi hệ thống đã kiểm tra đủ điều kiện ký nháy của chặng trước.
+−
+Cập nhật trạng thái: Nếu có bất kỳ bước nào bị từ chối, toàn bộ tờ trình sẽ bị hủy; nếu
+được thông qua, hệ thống tự động chuyển tiếp thông báo đẩy đến người duyệt ở bước
+kế tiếp cho đế
+n khi hoàn thành.
+c. Lu
+ồ
+ng qu
+ả
+n tr
+ị
+h
+ệ
+th
+ố
+ng
+−
+Quản lý danh mục: Quản trị viên (Admin) chịu trách nhiệm quản lý danh sách người
+dùng, sơ đồ các phòng ban và danh mục các vai trò trong tổ chức.
+
+=== Page 190 ===
+72
+−
+Cơ chế phân quyền: Quyền hạn được áp dụng trực tiếp bằng cách gán
+mã vai trò cụ thể
+cho tài khoản nhân sự khi tạo mới hoặc cập nhật thông tin, giúp hệ thống kiểm tra quyền
+hạn trực tiếp tại tầng điều khiển khi người dùng thao tác chức năng.
+−
+Cấu hình quy trình: Quản trị viên cấu hình linh hoạt các chuỗi quy trình phê duy
+ệt
+(Workflow) để định nghĩa sẵn loại tờ trình nào thì bắt buộc phải đi qua những bước
+duyệt của phòng ban nào và tuân theo thứ tự cụ thể ra sao
+.
+3.2. M
+ộ
+t s
+ố
+k
+ế
+t qu
+ả
+c
+ủ
+a
+ứ
+ng d
+ụ
+ng
+3.2.1. Giao di
+ệ
+n đăng nh
+ậ
+p
+Hình
+3.
+3
+Màn hình đăng nhập
+Màn hình đăng nhập gồm ô nhập tài khoản, ô nhập mật khẩu (có nút ẩn/hiện ký tự) và nút
+Đăng nhập. Khi xác thực, hệ thống kiểm tra và thông báo lỗi tương ứng với từng trường
+hợp: thiếu thông tin, sai tài khoản/mật khẩu, tài khoản không t
+ồn tại hoặc bị khóa, mất kết
+
+=== Page 193 ===
+73
+nối, timeout, hoặc lỗi server. Nút đăng nhập bị vô hiệu hóa trong quá trình xử lý để tránh
+gửi trùng yêu cầu. Đăng nhập thành công sẽ chuyển hướng đến màn hình chính tương ứng
+với quyền của người dùng.
+3.2.2. Giao di
+ệ
+n trang ch
+ủ
+H
+ì
+nh
+3.
+4
+M
+à
+n hình trang chủ
+Trang chủ là trung tâm điều phối hiển thị các chức năng tùy biến theo vai trò và quyền hạn
+(Role ID) của tài khoản. Giao diện tích hợp danh sách các tờ trình gần đây, biểu tượng
+chuông thông báo từ Firebase (FCM) và các phím
+tắt giúp điều hướng nhanh đến các phân
+hệ chính.
+
+=== Page 195 ===
+74
+3.2.3. Giao di
+ệ
+n danh sách t
+ờ
+trình
+H
+ì
+nh
+3.
+5
+Màn hình danh sách tờ trình
+Màn hình hiển thị danh sách các tờ trình dưới dạng thẻ thông tin tóm tắt, đi kèm nhãn màu
+phân biệt rõ trạng thái xử lý (chờ
+duyệt, đã duyệt, cần sửa, đã hủy). Người dùng có thể sử
+dụng bộ lọc theo trạng thái, khoảng thời gian tạo đơn và chọn một thẻ bất kỳ để xem chi
+tiết.
+
+=== Page 197 ===
+75
+3.2.4. Giao di
+ệ
+n t
+ạ
+o t
+ờ
+trình
+Hình
+3.
+6
+Màn hình tạo tờ trình
+Giao diện tạo tờ trình cho phép
+nhập tiêu đề, nội dung đề xuất, chọn thời gian diễn ra, lựa
+chọn phòng ban phối hợp, sau đó trong từng phòng ban người dùng có thể thêm vật tư hoặc
+địa điểm kèm số lượng và khung thời gian chi tiết, đồng thời đính kèm file minh chứng.
+Khi nhấn Gửi tờ trình
+, hệ thống tạo mới và đưa tờ trình sang trạng thái chờ duyệt; nếu mở
+ở chế độ chỉnh sửa thì nút sẽ đổi thành Cập nhật tờ trình. Luồng duyệt hiện được dựng từ
+các phòng ban tham gia, không phải chọn workflow trực tiếp trên màn hình này.
+
+=== Page 199 ===
+76
+3.2.
+5
+. Giao
+di
+ệ
+n phê duy
+ệ
+t t
+ờ
+trình
+Hình
+3.
+7
+Màn hình phê duyệt/từ chối
+Giao diện dành cho cấp quản lý rà soát nội dung tờ trình, xem lịch sử ký nháy và nhập ghi
+chú ý kiến phản hồi. Màn hình bố trí rõ ràng các nút duyệt, từ chối, yêu cầu chỉnh sửa và
+tự
+động hiển thị cửa sổ xác nhận mật khẩu tài khoản trước khi hệ thống chính thức ghi nhận
+kết quả.
+
+=== Page 201 ===
+77
+3.2.7. Giao di
+ệ
+n qu
+ả
+n lý cơ s
+ở
+v
+ậ
+t ch
+ấ
+t
+Hình
+3.
+8
+Màn hình tạo CSVC
+Hình
+3.
+9
+Màn hình danh sách
+tờ trình
+Hình
+3.1
+0
+Màn hình chi tiết
+CSVC
+Màn hình cung cấp danh sách toàn bộ trang thiết bị và địa điểm kèm trạng thái thực tế (sẵn
+sàng, đang mượn, bảo trì). Quản trị viên sử dụng bộ công cụ để thực hiện các tác vụ thêm,
+sửa, xóa thiết bị và quản lý, điều phối luồng mượ
+n/hoàn trả tài sản của nhân sự.
+
+=== Page 203 ===
+78
+3.2.8. Giao di
+ệ
+n thông báo
+Hình
+3.1
+1
+Màn hình danh sách thông báo
+Màn hình hiển thị các tin báo biến động trạng thái tờ trình theo thứ tự thời gian mới nhất,
+sử dụng màu sắc phân biệt giữa thông báo chưa đọc và đã đọc.
+Khi người dùng nhấn chọn
+một thông báo, ứng dụng sẽ tự động điều hướng thẳng đến màn hình chi tiết của tờ trình
+đó.
+
+=== Page 205 ===
+79
+3.2.10. Giao di
+ệ
+n xu
+ấ
+t PDF
+Hình
+3.1
+2
+Màn hình xuất file PDF
+Giao diện phê duyệt tờ trình cho phép người dùng xem đầy đủ nội dung tờ
+trình, tệp đính
+kèm, thời gian thực hiện, địa điểm/vật tư liên quan và lịch sử xử lý trước đó, bao gồm cả
+trạng thái ký nháy của các phòng ban. Người dùng có thể nhập ghi chú phản hồi ngay trên
+màn hình. Tùy theo vai trò, hệ thống hiển thị các nút xử lý ph
+ù hợp: cấp quản lý có DUYỆT
+ĐƠN và TỪ CHỐI, còn nhân viên phòng ban có KÝ NHÁY và BÁO SỬA. Khi người
+dùng chọn một hành động, ứng dụng sẽ mở hộp thoại xác nhận mật khẩu tài khoản; chỉ khi
+xác thực hợp lệ thì kết quả mới được ghi nhận lên server.
+
+=== Page 207 ===
+80
+3.
+3
+. Đánh
+giá k
+ế
+t qu
+ả
+đ
+ạ
+t đư
+ợ
+c
+3.
+3
+.1. Ch
+ứ
+c năng đã hoàn thành
+−
+Đăng nhập: Xác thực tài khoản người dùng, cấp phiên làm việc bảo mật (session_id) và
+phân quyền rẽ nhánh giao
+d
+iện phù hợp với từng vai trò.
+−
+Quản lý tờ trình: Hỗ trợ người dùng theo dõi danh sách, tra cứu
+trạng thái, bộ lọc nâng
+cao và xem chi tiết thông tin các tờ trình trong hệ thống.
+−
+Gửi duyệt tờ trình: Cho phép khởi tạo biểu mẫu đề xuất mới bao gồm tiêu đề, nội dung,
+loại quy trình, đính kèm tệp tin và liên kết cơ sở vật chất liên quan.
+−
+Quy trình phê
+duyệt: Thực hiện cơ chế kiểm soát hai tầng bao gồm ký nháy trước (đối
+với cán bộ chức năng) và phê duyệt, từ chối hoặc yêu cầu chỉnh sửa kèm xác thực mật
+khẩu (đối với cấp quản lý)
+.
+−
+Quản lý cơ sở vật chất (CSVC): Số hóa danh mục trang thiết bị, địa điểm; q
+uản lý tình
+trạng hoạt động và điều phối toàn bộ luồng bàn giao, mượn trả hoặc thu hồi tài sản hậu
+phê duyệt.
+−
+Quản lý phòng ban: Quản trị sơ đồ tổ chức, thông tin các phòng ban gắn liền với việc
+phân bổ và kiểm soát tài nguyên cơ sở vật chất nội bộ.
+−
+Quản l
+ý luồng phê duyệt: Hỗ trợ cấu hình linh hoạt các chuỗi quy trình (Workflow),
+định nghĩa sẵn thứ tự và các bước ký duyệt bắt buộc cho từng nhóm tờ trình cụ thể.
+−
+Gửi thông báo: Tự động ghi nhận lịch sử và kích hoạt gửi thông báo đẩy (Push
+Notification) theo
+thời gian thực qua Firebase Cloud Messaging (FCM) đến đúng đối
+tượng xử lý chặng kế tiếp.
+−
+Xuất PDF: Biên dịch toàn bộ dữ liệu tờ trình điện tử đã hoàn thành chuỗi ký duyệt sang
+định dạng tài liệu PDF, hỗ trợ xem trước, tải xuống hoặc chia sẻ trực tiếp trên
+thiết bị
+di động.
+3.
+3
+.2. Ưu đi
+ể
+m c
+ủ
+a h
+ệ
+th
+ố
+ng
+Việc triển khai hệ thống quản lý và phê duyệt tờ trình điện tử mang lại nhiều ưu điểm vượt
+trội so với phương thức vận hành truyền thống
+:
+
+=== Page 211 ===
+81
+−
+Tối ưu thời gian: Duyệt mọi lúc mọi nơi qua ứng dụng di động, loại bỏ đ
+ộ trễ địa lý.
+−
+Tiết kiệm chi phí: Số hóa hoàn toàn hồ sơ, giảm thiểu in ấn và sử dụng giấy tờ.
+−
+Minh bạch tiến độ: Theo dõi trạng thái tờ trình theo thời gian thực (Đang duyệt, Cần
+sửa, Từ chối).
+−
+Lưu trữ tập trung: Quản lý dữ liệu đồng bộ tại MySQL, dễ dàng
+tra cứu tránh thất lạc.
+−
+Bảo mật phân quyền: Áp dụng RBAC để giới hạn chức năng dữ liệu theo đúng chức vụ.
+−
+Linh hoạt mở rộng: Dễ dàng tùy biến, thêm bớt bước trong quy trình duyệt tại backend.
+−
+Thông báo tức thời: Tích hợp FCM giúp cập nhật trạng thái đơn
+từ ngay lập tức.
+3.
+3
+.3. H
+ạ
+n ch
+ế
+c
+ủ
+a h
+ệ
+th
+ố
+ng
+−
+Phụ thuộc kết nối: Hệ thống hoạt động theo cơ chế stateless thời gian thực nên yêu cầu
+thiết bị phải duy trì mạng Internet liên tục.
+−
+Chưa có chữ ký số: Việc phê duyệt hiện dựa trên định danh tài khoản, chưa
+tích hợp mã
+hóa chứng thư số (CA) để đảm bảo tính pháp lý cao nhất.
+−
+Giới hạn quy mô: Kiến trúc hiện tại phù hợp với mô hình doanh nghiệp vừa và nhỏ, cần
+tối ưu hóa sâu hơn nếu xử lý lượng tải lớn đồng thời (High Concurrency).
+−
+Báo cáo đơn giản: Phân hệ thốn
+g kê, báo cáo dữ liệu và trực quan hóa biểu đồ mới dừng
+ở mức cơ bản, cần phát triển chuyên sâu hơn.
+−
+Độ bao phủ thiết bị: Ứng dụng di động cần được kiểm thử và tối ưu hóa giao diện thêm
+trên nhiều kích thước màn hình và hệ điều hành khác nhau.
+3.
+3
+.4. Hư
+ớ
+ng
+phát tri
+ể
+n
+−
+Tích hợp chữ ký số: Triển khai chứng thư số mã hóa (CA) vào luồng phê duyệt để nâng
+cao tính pháp lý và bảo mật tối đa cho tài liệu điện tử.
+−
+Xác thực hai lớp (2FA): Bổ sung mã OTP qua SMS hoặc ứng dụng xác thực (Google
+Authenticator) khi đăng n
+hập hoặc duyệt các tờ trình quan trọng.
+−
+Mở rộng Web Admin: Phát triển hoàn thiện phân hệ quản trị trên nền tảng Web giúp
+cấp quản lý thao tác biểu mẫu cấu hình hệ thống thuận tiện hơn.
+
+=== Page 214 ===
+82
+−
+Lịch biểu thông minh: Tích hợp tính năng quản lý và tự động kiểm tra xu
+ng đột lịch sử
+dụng phòng họp, trang thiết bị khi tạo tờ trình.
+−
+Dashboard nâng cao: Xây dựng hệ thống biểu đồ trực quan hóa số liệu, báo cáo chi tiết
+về tần suất, thời gian và hiệu suất duyệt đơn từ.
+−
+Triển khai Cloud: Đưa hệ thống lên các dịch vụ đám mây t
+hực tế (AWS, Google Cloud,
+Azure) để đánh giá hiệu năng và khả năng chịu tải thực tế.
+−
+Chế độ ngoại tuyến (Offline Mode): Phát triển bộ nhớ đệm (Cache) trên ứng dụng
+Flutter để người dùng có thể xem dữ liệu cũ ngay cả khi mất kết nối mạng.
+
+=== Page 215 ===
+83
+K
+Ế
+T LU
+Ậ
+N VÀ HƯ
+Ớ
+NG PHÁT TRI
+Ể
+N
+Hệ thống quản lý tờ trình đã được xây dựng với mục tiêu số hóa quy trình phê duyệt nội
+bộ, giúp các tổ chức tiết kiệm thời gian, giảm thiểu sai sót và nâng cao tính minh bạch trong
+công tác hành chính. Qua quá trình nghiên cứu và triển khai,
+hệ thống đã đáp ứng được các
+yêu cầu cơ bản đặt ra, từ phân quyền người dùng, luồng phê duyệt đa cấp đến hiển thị trạng
+thái tờ trình theo thời gian thực.
+Tuy nhiên, để hệ thống ngày càng hoàn thiện và phục vụ được nhiều đối tượng hơn, một số
+định hướng ph
+át triển trong tương lai đã được xác định. Trước tiên, hệ thống sẽ được mở
+rộng quy mô để đáp ứng nhu cầu của các tổ chức lớn hơn, với cơ cấu phòng ban phức tạp
+và khối lượng tờ trình cao hơn. Điều này đòi hỏi việc tối ưu hóa hiệu năng hệ thống, nâng
+cấp h
+ạ tầng và bổ sung các tính năng quản trị phù hợp với môi trường doanh nghiệp quy
+mô lớn.
+Song song đó, trong quá trình vận hành thực tế, các lỗi kỹ thuật phát sinh sẽ được ghi nhận,
+phân tích và khắc phục kịp thời. Hệ thống sẽ được cập nhật thường xuyên nh
+ằm đảm bảo
+sự ổn định, đồng thời lắng nghe phản hồi từ người dùng để điều chỉnh giao diện và tính
+năng ngày càng phù hợp hơn với thực tế sử dụng.
+Ngoài ra, quy trình rà soát và phê duyệt tờ trình sẽ tiếp tục được cải tiến để loại bỏ các bước
+chưa tối ưu, r
+út ngắn thời gian xử lý và giảm tải cho người duyệt. Việc tích hợp thêm các
+công cụ thông báo tự động, báo cáo thống kê và hỗ trợ tìm kiếm nâng cao cũng sẽ được
+xem xét triển khai trong các phiên bản tiếp theo.
+
+=== Page 217 ===
+84
+TÀI LI
+Ệ
+U THAM KH
+Ả
+O
+[1]
+Flutter Team. (2026).
+Flutter Documentation (v3.44.0). Tài liệu truy cập từ:
+https://docs.flutter.dev/
+[2]
+Flutter Team. (2026). Flutter API Reference (v3.44.0). Tài liệu truy cập từ:
+https://api.flutter.dev/
+[3]
+Dart Team. (n.d.). The Dart Programming Language
+—
+Documentation. Tài liệu
+truy cập từ: https://dart.dev/guides
+[4]
+Laravel LLC. (2026). Laravel Documentation (v13.x). Tài liệu truy cập từ:
+https://laravel.com/docs/13.x
+[5]
+The PHP Group. (n.d.). PHP: Hypertext Preprocessor
+—
+Official Documentation.
+Tài li
+ệu truy cập từ: https://www.php.net/docs.php
+[6]
+Oracle Corporation. (n.d.). MySQL 8.4 Reference Manual. Tài liệu truy cập từ:
+https://dev.mysql.com/doc/refman/8.4/en/
+[7]
+Fielding, R. T., & Taylor, R. N. (2000). Architectural Styles and the Design of
+Netw
+ork
+-
+based Software Architectures. Tài liệu truy cập từ: https://restfulapi.net/
+[8]
+Google LLC. (n.d.). Firebase Cloud Messaging
+—
+Flutter Integration. Tài liệu truy
+cập từ: https://firebase.flutter.dev/docs/messaging/overview/
+[9]
+Leisink, F. (n.d.). Hiv
+e CE
+—
+Lightweight and blazing fast key
+-
+value database.
+Tài liệu truy cập từ: https://pub.dev/packages/hive_ce
+[10]
+Object Management Group. (2011). Business Process Model and Notation
+(BPMN) 2.0 Specification. Tài liệu truy cập từ: https://www.omg.org/spe
+c/BPMN/2.0/
+
+=== Page 477 ===
+85
+
+=== Page 479 ===
+86
+

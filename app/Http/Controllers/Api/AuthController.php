@@ -72,31 +72,86 @@ class AuthController extends Controller
     public function getAccountDetails(Request $request)
     {
         $sessionId = $request->query('session_id');
-    $tokenModel = \Laravel\Sanctum\PersonalAccessToken::findToken($sessionId);
+        $tokenModel = \Laravel\Sanctum\PersonalAccessToken::findToken($sessionId);
 
-    if (!$tokenModel) {
-        return response()->json(['message' => 'Session không hợp lệ'], 401);
+        if (!$tokenModel) {
+            return response()->json(['message' => 'Session không hợp lệ'], 401);
+        }
+
+        $user = $tokenModel->tokenable()
+            ->with(['roles', 'department'])
+            ->withCount('submissions as total_submissions')
+            ->withCount(['notifications as unread_notifications' => function ($q) {
+                $q->where('is_read', false);
+            }])
+            ->first();
+
+        return response()->json([
+            'id' => $user->id,
+            'username' => $user->username,
+            'full_name' => $user->full_name,
+            'email' => $user->email,
+            'department_id' => $user->department_id,
+            'department_name' => $user->department?->dept_name,
+            'status' => $user->status,
+            'signature_url' => $this->buildSignatureUrl($user->signature_path),
+            'session_id' => $sessionId,
+            'total_submissions' => $user->total_submissions,
+            'unread_notifications' => $user->unread_notifications,
+            'created_at' => $user->created_at?->toIso8601String(),
+            'updated_at' => $user->updated_at?->toIso8601String(),
+            'is_first_login' => (bool) $user->is_first_login,
+            'roles' => $user->roles->map(function ($role) {
+                return [
+                    'id' => $role->id,
+                    'role_name' => $role->role_name,
+                    'description' => $role->description,
+                ];
+            }),
+        ]);
     }
 
-    // Load kèm theo các roles của user
-    $user = $tokenModel->tokenable()->with('roles')->first();
+    public function saveSignature(Request $request)
+    {
+        $request->validate([
+            'signature' => ['required', 'image', 'max:5120'],
+        ]);
 
-    return response()->json([
-        'id' => $user->id,
-        'username' => $user->username,
-        'full_name' => $user->full_name,
-        'email' => $user->email,
-        'department_id' => $user->department_id,
-        'session_id' => $sessionId,
-        'is_first_login' => (bool) $user->is_first_login,
-        'roles' => $user->roles->map(function($role) {
-            return [
-                'id' => $role->id,
-                'role_name' => $role->role_name,
-                'description' => $role->description,
-            ];
-        })
-    ]);
+        $token = $request->bearerToken();
+        $tokenModel = \Laravel\Sanctum\PersonalAccessToken::findToken($token);
+
+        if (!$tokenModel) {
+            return response()->json(['message' => 'Session không hợp lệ'], 401);
+        }
+
+        $user = $tokenModel->tokenable;
+        if (!$user) {
+            return response()->json(['message' => 'Không tìm thấy người dùng'], 404);
+        }
+
+        $signature = $request->file('signature');
+        if (!$signature || !$signature->isValid()) {
+            return response()->json(['message' => 'File chữ ký không hợp lệ'], 422);
+        }
+
+        $path = $signature->storeAs(
+            'signatures',
+            'user-' . $user->id . '.png',
+            'public'
+        );
+
+        $user->update([
+            'signature_path' => $path,
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Đã lưu chữ ký thành công',
+            'data' => [
+                'signature_path' => $path,
+                'signature_url' => $this->buildSignatureUrl($path),
+            ],
+        ]);
     }
 
     public function logout(Request $request)
@@ -175,5 +230,14 @@ class AuthController extends Controller
             'success' => true,
             'message' => 'Mật khẩu mới đã được gửi về email của bạn',
         ]);
+    }
+
+    private function buildSignatureUrl(?string $path): ?string
+    {
+        if (!$path) {
+            return null;
+        }
+
+        return url('/storage/' . ltrim($path, '/'));
     }
 }

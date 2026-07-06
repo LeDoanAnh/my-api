@@ -3,14 +3,20 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\ApprovalLog;
+use App\Models\SubmissionPreApproval;
 use App\Models\Submission;
 use App\Models\SubmissionStepContent;
 use App\Models\User;
+use App\Services\SubmissionApprovalFlowService;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Symfony\Component\HttpFoundation\Response;
 
 class SubmissionController extends Controller
 {
@@ -310,65 +316,269 @@ class SubmissionController extends Controller
     /**
  * Lấy chi tiết một tờ trình (Dùng Eloquent Model)
  */
-  public function show($id): JsonResponse
+    public function show($id): JsonResponse
     {
         try {
-            // Gọi đúng tên relationship: approvalLogs và steps
-            $submission = Submission::with(['category', 'steps.department', 'approvalLogs.approver.department'])
-                ->find($id);
+            $submission = Submission::with([
+                'category',
+                'creator.department',
+                'steps.department',
+                'steps.approvalLogs.approver.department',
+                'steps.preApprovals.staff.department',
+                'assetRequests.asset.department',
+                'submissionLocations.location.department',
+            ])->find($id);
 
             if (!$submission) {
-                return response()->json(['message' => 'Không tìm thấy đơn'], 404);
+                return response()->json(['message' => 'Khong tim thay don'], 404);
             }
 
-            $formattedLogs = [];
-            $doneStepsCount = 0;
+            $detail = app(\App\Services\SubmissionDetailService::class)->buildDetail($submission);
 
-            // Duyệt qua 5 bước quy trình (image_4a2716.png)
-            foreach ($submission->steps as $step) {
-
-                /**
-                 * VÌ BẢNG LOG CHƯA CÓ step_order (xem image_48d93d.png):
-                 * Ta tìm log dựa trên việc người duyệt (approver) thuộc phòng ban (target_dept_id) của bước đó.
-                 */
-                $log = $submission->approvalLogs->first(function ($item) use ($step) {
-                    if ($item->step_content_id) {
-                        return (int) $item->step_content_id === (int) $step->id;
-                    }
-
-                    return $item->approver && $item->approver->department_id == $step->target_dept_id;
-                });
-
-                if ($log) {
-                    $doneStepsCount++;
-                }
-
-                $formattedLogs[] = [
-                    "dept_name" => $step->department->dept_name ?? 'N/A',
-                    "status"    => $log ? ($log->action === 'approved' ? 'done' : 'rejected') : 'pending',
-                    "time"      => $log ? $log->created_at->format('d/m/Y H:i') : '--:--',
-                    "comment"   => $log ? $log->comment : "Đang chờ xử lý...",
-                    "request_content" => $step->content_text
-                ];
-            }
-
-            return response()->json([
-                "id"             => $submission->id,
-                "code"           => ($submission->category_id == 2 ? 'TD-' : 'DV-') . (9900 + $submission->id),
-                "title"          => $submission->title,
-                "content"        => $submission->content,
-                "status"         => $submission->status,
-                "current_step"   => $submission->status === 'pending' ? $doneStepsCount + 1 : $doneStepsCount,
-                "total_steps"    => $submission->steps->count(),
-                "logs"           => $formattedLogs,
-                "last_dept_name" => $submission->approvalLogs->last()->approver->department->dept_name
-                                    ?? $submission->steps->first()->department->dept_name
-            ]);
-
+            return response()->json(array_merge([
+                'id' => $submission->id,
+                'code' => ($submission->category_id == 2 ? 'TD-' : 'DV-') . (9900 + $submission->id),
+                'title' => $submission->title,
+                'content' => $submission->content,
+                'status' => $submission->status,
+            ], $detail));
         } catch (\Exception $e) {
-            return response()->json(["success" => false, "message" => "Lỗi: " . $e->getMessage()], 500);
+            return response()->json([
+                'success' => false,
+                'message' => 'Loi: ' . $e->getMessage(),
+            ], 500);
         }
     }
+    public function pdf(int $id): Response
+    {
+        $submission = Submission::with([
+            'category',
+            'creator.department',
+            'steps.department',
+            'steps.approvalLogs.approver',
+            'steps.preApprovals.staff',
+            'assetRequests.asset',
+            'submissionLocations.location',
+        ])->findOrFail($id);
+
+        $code = ($submission->category_id == 2 ? 'TD-' : 'DV-') . (9900 + $submission->id);
+        $fileName = "to-trinh-{$code}.pdf";
+
+        return Pdf::loadView('pdf.submission', [
+            'submission' => $submission,
+            'code' => $code,
+            'statusLabel' => $this->getStatusLabel($submission->status),
+        ])->setPaper('a4')->stream($fileName);
+    }
+    public function update(Request $request, int $id): JsonResponse
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'workflow_id' => 'required|integer',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after_or_equal:start_date',
+            'departments' => 'required|string',
+            'creator_id' => 'required|integer',
+        ]);
+
+        $departmentsData = json_decode($request->departments, true);
+
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Du lieu phong ban khong hop le: ' . json_last_error_msg(),
+            ], 422);
+        }
+
+        if (empty($departmentsData) || !is_array($departmentsData)) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Danh sach phong ban khong duoc rong.',
+            ], 422);
+        }
+
+        $submission = Submission::find($id);
+        if (!$submission) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Khong tim thay to trinh.',
+            ], 404);
+        }
+
+        if ((int) $submission->creator_id !== (int) $request->creator_id) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Ban khong co quyen cap nhat to trinh nay.',
+            ], 403);
+        }
+
+        $hasRevisionRequested = SubmissionPreApproval::where('submission_id', $id)
+            ->where('action', 'revision_requested')
+            ->exists();
+        $hasRejectedDecision = ApprovalLog::where('submission_id', $id)
+            ->where('action', 'rejected')
+            ->exists();
+
+        if ($submission->status !== 'rejected' && !$hasRevisionRequested && !$hasRejectedDecision) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Chi co the cap nhat khi to trinh da bi tu choi.',
+            ], 409);
+        }
+
+        $stepOrderCol = 'step_oder';
+        $cols = DB::select("SHOW COLUMNS FROM submission_step_contents LIKE 'step_order%'");
+        if (!empty($cols)) {
+            $stepOrderCol = $cols[0]->Field;
+        }
+
+        DB::beginTransaction();
+
+        try {
+            DB::table('submission_step_contents')->where('submission_id', $id)->delete();
+            DB::table('approval_log')->where('submission_id', $id)->delete();
+            DB::table('submission_pre_approvals')->where('submission_id', $id)->delete();
+            DB::table('asset_requests')->where('submission_id', $id)->delete();
+            DB::table('submission_locations')->where('submission_id', $id)->delete();
+
+            $submission->update([
+                'title' => $request->title,
+                'content' => $request->description ?? '',
+                'category_id' => (int) $request->workflow_id,
+                'status' => 'pending',
+                'start_time' => $request->start_date,
+                'end_time' => $request->end_date,
+                'updated_at' => now(),
+            ]);
+
+            foreach ($departmentsData as $dept) {
+                $deptName = $dept['dept_name'] ?? 'Phong ban chung';
+                $noteText = $dept['note'] ?? '';
+                $priority = (int) ($dept['priority'] ?? 99);
+                $opinionOnly = (bool) ($dept['opinion_only'] ?? false);
+
+                $deptId = isset($dept['dept_id']) ? (int) $dept['dept_id'] : 0;
+                $targetDeptId = $deptId > 0 ? $deptId : null;
+
+                if ($targetDeptId === null && !empty($deptName) && $deptName !== 'Dia diem') {
+                    $dbDept = DB::table('departments')
+                        ->where('dept_name', $deptName)
+                        ->first();
+                    $targetDeptId = $dbDept?->id;
+                }
+
+                if ($targetDeptId !== null) {
+                    $stepData = [
+                        'submission_id' => $id,
+                        'target_dept_id' => $targetDeptId,
+                        'content_text' => $noteText,
+                        'created_at' => now(),
+                    ];
+                    $stepData[$stepOrderCol] = $priority;
+
+                    DB::table('submission_step_contents')->insert($stepData);
+                }
+
+                if ($opinionOnly || empty($dept['items']) || !is_array($dept['items'])) {
+                    continue;
+                }
+
+                foreach ($dept['items'] as $item) {
+                    $entityId = isset($item['entity_id']) ? (int) $item['entity_id'] : null;
+                    $quantity = (int) ($item['quantity'] ?? 1);
+                    $timeInfo = $item['time_info'] ?? '';
+                    $itemType = $item['type'] ?? 'returnable';
+
+                    if ($itemType === 'location') {
+                        $locStartTime = !empty($item['start_time'])
+                            ? $item['start_time']
+                            : $request->start_date;
+
+                        $locEndTime = !empty($item['end_time'])
+                            ? $item['end_time']
+                            : $request->end_date;
+
+                        DB::table('submission_locations')->insert([
+                            'submission_id' => $id,
+                            'location_id' => $entityId,
+                            'start_time' => $locStartTime,
+                            'end_time' => $locEndTime,
+                            'created_at' => now(),
+                            'updated_at' => now(),
+                        ]);
+                    } else {
+                        $expectedBorrowDate = !empty($item['expected_borrow_date'])
+                            ? $item['expected_borrow_date']
+                            : $request->start_date;
+
+                        $expectedReturnDate = !empty($item['expected_return_date'])
+                            ? $item['expected_return_date']
+                            : null;
+
+                        if ($itemType === 'returnable' && $expectedReturnDate === null) {
+                            $expectedReturnDate = $request->end_date;
+                        }
+
+                        DB::table('asset_requests')->insert([
+                            'submission_id' => $id,
+                            'asset_id' => $entityId,
+                            'borrower_id' => $submission->creator_id,
+                            'handler_id' => null,
+                            'expected_borrow_date' => $expectedBorrowDate,
+                            'borrow_date' => null,
+                            'expected_return_date' => $expectedReturnDate,
+                            'actual_return_date' => null,
+                            'note' => "SL: {$quantity} | Chi tiet: {$timeInfo}",
+                            'created_at' => now(),
+                        ]);
+                    }
+                }
+            }
+
+            $uploadedFiles = $request->file('attachments') ?? [];
+            if (!is_array($uploadedFiles)) {
+                $uploadedFiles = [$uploadedFiles];
+            }
+
+            foreach ($uploadedFiles as $file) {
+                if (!$file || !$file->isValid()) {
+                    continue;
+                }
+
+                $path = $file->store('uploads/submissions', 'public');
+                DB::table('submission_attachments')->insert([
+                    'submission_id' => $id,
+                    'file_path' => $path,
+                    'file_name' => $file->getClientOriginalName(),
+                    'file_size' => $file->getSize(),
+                    'file_type' => $file->getClientOriginalExtension(),
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]);
+            }
+
+            DB::commit();
+
+            app(SubmissionApprovalFlowService::class)->dispatchSubmissionById($id);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'To trinh da duoc cap nhat thanh cong.',
+                'submission_id' => $id,
+            ]);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('[SubmissionController@update] ' . $e->getMessage(), [
+                'trace' => $e->getTraceAsString(),
+            ]);
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Loi he thong: ' . $e->getMessage(),
+            ], 500);
+        }
+    }
+
     public function store(Request $request): JsonResponse
     {
         // ── Validate ──────────────────────────────────────────────────────────
@@ -557,14 +767,7 @@ class SubmissionController extends Controller
 
             DB::commit();
 
-            $firstStep = SubmissionStepContent::where('submission_id', $submissionId)
-                ->orderBy($stepOrderCol)
-                ->orderBy('id')
-                ->first();
-
-            if ($firstStep) {
-                app(NotificationController::class)->notifyPreApproversForStep($firstStep);
-            }
+            app(SubmissionApprovalFlowService::class)->dispatchSubmissionById($submissionId);
 
             return response()->json([
                 'success'       => true,
@@ -584,3 +787,4 @@ class SubmissionController extends Controller
         }
     }
 }
+

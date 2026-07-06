@@ -1,0 +1,57 @@
+diff --git a/lib/ui/submission/submission_detail/submission_detail_screen.dart b/lib/ui/submission/submission_detail/submission_detail_screen.dart
+--- a/lib/ui/submission/submission_detail/submission_detail_screen.dart
++++ b/lib/ui/submission/submission_detail/submission_detail_screen.dart
+@@ -1,6 +1,8 @@
+ import 'dart:ui';
+ import 'package:flutter/material.dart';
++import 'package:my_app/core/constants/api_const.dart';
+ import 'package:my_app/core/theme/app_colors.dart';
++import 'package:url_launcher/url_launcher.dart';
+ import 'package:flutter_bloc/flutter_bloc.dart';
+ import 'package:my_app/ui/submission/create_submission/create_submission_screen.dart';
+ import 'package:my_app/ui/submission/submission_detail/submission_detail_bloc.dart';
+@@ -18,6 +20,28 @@ class SubmissionDetailScreen extends StatefulWidget {
+ }
+ 
+ class _SubmissionDetailScreenState extends State<SubmissionDetailScreen> {
++  bool _isOpeningPdf = false;
++
++  Future<void> _openPdf() async {
++    if (_isOpeningPdf) return;
++    setState(() => _isOpeningPdf = true);
++
++    try {
++      final uri = Uri.parse(
++        '${ApiConst.baseUrl}/v1/submissions/${widget.submissionId}/pdf',
++      );
++      final opened = await launchUrl(uri, mode: LaunchMode.externalApplication);
++      if (!opened) throw Exception('Không mở được file PDF');
++    } catch (_) {
++      if (!mounted) return;
++      ScaffoldMessenger.of(context).showSnackBar(
++        const SnackBar(content: Text('Không thể mở bản PDF của tờ trình.')),
++      );
++    } finally {
++      if (mounted) setState(() => _isOpeningPdf = false);
++    }
++  }
++
+   @override
+   void initState() {
+@@ -309,7 +330,9 @@ class _SubmissionDetailScreenState extends State<SubmissionDetailScreen> {
+               const SizedBox(height: 12),
+               _buildSoftButton(
+-                label: isRejected ? "Chỉnh sửa tờ đơn" : "Yêu cầu in bản cứng",
++                label: isRejected
++                    ? "Chỉnh sửa tờ đơn"
++                    : (_isOpeningPdf ? "Đang mở PDF..." : "Xem / in bản PDF"),
+                 icon: isRejected ? Icons.edit_outlined : Icons.print_outlined,
+                 color: mainColor,
+@@ -323,7 +346,7 @@ class _SubmissionDetailScreenState extends State<SubmissionDetailScreen> {
+                       ),
+                     );
+                   } else {
+-                    // Logic in
++                    _openPdf();
+                   }
+                 },
